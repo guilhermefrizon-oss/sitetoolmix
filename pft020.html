@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOOLMIX - PFT 020</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    /* =============================================
+       ESTILOS EXCLUSIVOS — PÁGINA DE PRODUTO (PDP)
+       ============================================= */
+
+    /* Breadcrumb */
+    .pdp2-breadcrumb {
+      max-width: 1280px;
+      margin: 24px auto 0;
+      padding: 0 40px;
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+    }
+
+    .pdp2-breadcrumb a {
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      transition: color 0.2s;
+    }
+
+    .pdp2-breadcrumb a:hover { color: var(--tm-primary); }
+
+    /* Container principal */
+    .pdp2-container {
+      max-width: 1280px;
+      margin: 40px auto 0;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ---- COLUNA ESQUERDA — GALERIA ---- */
+    .pdp2-galeria {
+      position: sticky;
+      top: 30px;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    /* Badge lançamento */
+    .pdp2-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    /* Imagem principal */
+    .pdp2-img-principal {
+      position: relative;
+      background-color: var(--tm-white-light);
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      max-height: 520px;
+      margin-bottom: 16px;
+    }
+
+    /* Setas do carrossel — reaproveitando o JS existente */
+    .pdp2-img-principal .pdp-carrossel {
+      width: 100%;
+      height: 100%;
+      padding: 0 50px;
+      overflow: hidden;
+    }
+
+    .pdp2-img-principal .pdp-carrossel-janela {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .pdp2-img-principal .pdp-carrossel-lista {
+      display: flex;
+      transition: transform 0.2s ease-in-out;
+      width: 100%;
+      will-change: transform;
+    }
+
+    .pdp2-img-principal .pdp-carrossel-imagem {
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .pdp2-img-principal .pdp-carrossel-seta {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--tm-gray-secondary);
+      background-color: var(--tm-white);
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      color: var(--tm-gray-secondary);
+      transition: all 0.2s;
+      z-index: 5;
+    }
+
+    .pdp2-img-principal .pdp-carrossel-seta:hover {
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      border-color: var(--tm-primary);
+      opacity: 1;
+    }
+
+    .pdp2-img-principal .pdp-carrossel-seta-esquerda { left: 10px; }
+    .pdp2-img-principal .pdp-carrossel-seta-direita  { right: 10px; }
+
+    /* Miniaturas */
+    .pdp2-miniaturas {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .pdp2-miniaturas-janela {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .pdp2-miniaturas-faixa {
+      display: flex;
+      gap: 10px;
+      transition: transform 0.25s ease;
+    }
+
+    .pdp2-miniatura {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      border: 2px solid var(--tm-gray-light);
+      background-color: var(--tm-white);
+      cursor: pointer;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .pdp2-miniatura:hover {
+      border-color: var(--tm-gray-secondary);
+      transform: scale(1.05);
+    }
+
+    .pdp2-miniatura.ativa {
+      border-color: var(--tm-primary);
+    }
+
+    .pdp2-miniatura img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .pdp2-mini-seta {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--tm-gray-light);
+      background: var(--tm-white);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tm-gray-secondary);
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .pdp2-mini-seta:hover {
+      border-color: var(--tm-primary);
+      color: var(--tm-primary);
+    }
+
+    /* ---- COLUNA DIREITA — INFORMAÇÕES ---- */
+    .pdp2-info {
+      padding-top: 10px;
+    }
+
+    .pdp2-categoria {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .pdp2-titulo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--tm-gray-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .pdp2-codigo {
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+      font-weight: 600;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--tm-gray-light);
+    }
+
+    .pdp2-descricao {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 28px;
+    }
+
+    /* Destaques rápidos */
+    .pdp2-destaques {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .pdp2-destaque-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--tm-gray-light);
+      clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+      padding: 12px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--tm-gray-dark);
+    }
+
+    .pdp2-destaque-item span:first-child {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .pdp2-destaque-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--tm-primary); /* Puxa a variável laranja da Toolmix */
+}
+
+    /* Botão onde comprar */
+    .pdp2-btn-comprar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 56px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+      transition: background 0.2s;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .pdp2-btn-comprar:hover {
+      background-color: var(--tm-primary-hover);
+    }
+
+    .pdp2-btn-atendimento {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 56px;
+      background-color: var(--tm-gray-dark);
+      color: var(--tm-white);
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+    }
+
+    .pdp2-btn-atendimento:hover {
+      background-color: var(--tm-primary);
+    }
+
+    /* ---- SEÇÃO DE CARACTERÍSTICAS (legado - mantido para compatibilidade) ---- */
+    .pdp2-caracteristicas {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+    }
+
+    .pdp2-sec-titulo {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid var(--tm-primary);
+      display: inline-block;
+    }
+
+    /* Conteúdo embalagem */
+    .pdp2-embalagem h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      margin-top: 24px;
+    }
+
+    .pdp2-embalagem h4:first-child { margin-top: 0; }
+
+    .pdp2-embalagem p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--tm-gray-secondary);
+    }
+
+    /* Grid de specs */
+    .pdp2-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+    }
+
+    .pdp2-spec-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      font-size: 14px;
+      color: var(--tm-gray-dark);
+      border-radius: 6px;
+      background-color: var(--tm-gray-light);
+    }
+
+    .pdp2-spec-item:nth-child(4n+3),
+    .pdp2-spec-item:nth-child(4n+4) {
+      background-color: var(--tm-white);
+      border: 1px solid var(--tm-gray-light);
+    }
+
+    .pdp2-spec-label { font-weight: 700; }
+    .pdp2-spec-value {
+      text-align: right;
+      color: var(--tm-gray-secondary);
+      max-width: 55%;
+    }
+
+    /* ---- SEÇÃO CARACTERÍSTICAS + 360 LADO A LADO ---- */
+    .pdp2-caracteristicas-360 {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .pdp2-col-caracteristicas {
+      /* coluna esquerda */
+    }
+
+    .pdp2-col-360 {
+      position: sticky;
+      top: 30px;
+    }
+
+    /* ---- SEÇÃO SPECS (aba separada) ---- */
+    .pdp2-specs-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+    }
+
+    /* Tabs — só para specs agora */
+    .pdp2-tabs-simples {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--tm-gray-light);
+      margin-bottom: 32px;
+    }
+
+    .pdp2-tab-simples {
+      padding: 12px 24px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--tm-gray-secondary);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pdp2-tab-simples:hover { color: var(--tm-primary); }
+
+    .pdp2-tab-simples.active {
+      color: var(--tm-primary);
+      border-bottom-color: var(--tm-primary);
+    }
+
+    .pdp2-painel-simples { display: none; }
+    .pdp2-painel-simples.active { display: block; }
+
+    /* Badge 360 */
+    .pdp2-360-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .pdp2-caracteristicas-360 {
+        grid-template-columns: 1fr !important;
+        padding: 0 20px 40px !important;
+        gap: 32px !important;
+      }
+
+      .pdp2-col-360 {
+        position: relative !important;
+        top: auto !important;
+      }
+
+      .pdp2-specs-section {
+        padding: 0 20px 40px !important;
+      }
+
+      .pdp2-tab-simples {
+        flex: 1 !important;
+        white-space: normal !important;
+        text-align: center !important;
+        padding: 10px 8px !important;
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        letter-spacing: 0 !important;
+      }
+
+      .pdp2-specs-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* ---- TABLET E MOBILE ---- */
+    @media (max-width: 1024px) {
+
+      .pdp2-breadcrumb { padding: 0 20px; }
+
+      .pdp2-container {
+        grid-template-columns: 1fr !important;
+        padding: 0 20px 50px !important;
+        gap: 30px !important;
+        overflow: visible !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .pdp2-galeria {
+        position: relative !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 520px !important;
+        margin: 0 auto !important;
+        min-width: 0 !important;
+      }
+
+      .pdp2-img-principal {
+        width: 100% !important;
+        max-width: 520px !important;
+        margin: 0 auto !important;
+        overflow: hidden !important;
+        aspect-ratio: 1 / 1 !important;
+        border-radius: 12px !important;
+        background-color: transparent !important;
+      }
+
+      /* Garante que as classes pdp- dentro da nova PDP se comportem corretamente */
+      .pdp2-img-principal .pdp-carrossel {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 44px !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+      }
+
+      .pdp2-img-principal .pdp-carrossel-janela {
+        width: 100% !important;
+        overflow: hidden !important;
+        max-width: 100% !important;
+        flex: 1 !important;
+      }
+
+      .pdp2-img-principal .pdp-carrossel-lista {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+        transition: transform 0.2s ease-in-out !important;
+      }
+
+      .pdp2-img-principal .pdp-carrossel-imagem {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block !important;
+      }
+
+      /* Setas dentro da nova PDP — visíveis e posicionadas */
+      .pdp2-img-principal .pdp-carrossel-seta {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 20px !important;
+        z-index: 5 !important;
+        display: flex !important;
+      }
+
+      .pdp2-img-principal .pdp-carrossel-seta-esquerda { left: 8px !important; }
+      .pdp2-img-principal .pdp-carrossel-seta-direita  { right: 8px !important; }
+
+      /* Setas das miniaturas — escondidas no mobile */
+      .pdp2-mini-seta {
+        display: none !important;
+      }
+
+      /* Coluna de informações */
+      .pdp2-info {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding-top: 0 !important;
+        box-sizing: border-box !important;
+      }
+
+      .pdp2-titulo {
+        font-size: 1.3rem !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+
+      .pdp2-descricao {
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+      }
+
+      .pdp2-destaques {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Tabs — garante que as abas de specs apareçam */
+      .pdp2-specs-section {
+        padding: 0 20px 40px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+      }
+
+      .pdp2-tabs-simples {
+        overflow-x: visible !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+      }
+
+      .pdp2-tab-simples {
+        flex: 1 !important;
+        white-space: normal !important;
+        text-align: center !important;
+        padding: 10px 8px !important;
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        letter-spacing: 0 !important;
+      }
+
+      .pdp2-specs-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .pdp2-360-wrapper {
+        padding: 24px 16px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS.
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <main>
+
+    <!-- BREADCRUMB -->
+    <nav class="pdp2-breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp;
+      <a href="produtos.html">Parafusadeiras</a> &nbsp;›&nbsp;
+      <span style="font-weight: 700; color: var(--tm-gray-dark);">PFT 020</span>
+    </nav>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="pdp2-container">
+
+      <!-- COLUNA ESQUERDA — GALERIA -->
+      <div class="pdp2-galeria">
+
+        <div class="pdp2-badge"> Lançamento </div>
+
+        <!-- Imagem principal com carrossel -->
+        <div class="pdp2-img-principal">
+          <div class="pdp-carrossel">
+            <button class="pdp-carrossel-seta pdp-carrossel-seta-esquerda" aria-label="Imagem anterior">
+              <span>&lsaquo;</span>
+            </button>
+            <div class="pdp-carrossel-janela">
+              <div class="pdp-carrossel-lista">
+                <img src="images/produtos/pft020/1211969_mercado_3.jpg" alt="PFT 020 - imagem 1" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_mercado_2.jpg" alt="PFT 020 - imagem 2" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_mercado_1.jpg" alt="PFT 020 - imagem 3" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_acessorios_1.jpg" alt="PFT 020 - imagem 4" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_acessorios_2.jpg" alt="PFT 020 - imagem 5" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_acessorios_3.jpg" alt="PFT 020 - imagem 6" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_acessorios_4.jpg" alt="PFT 020 - imagem 7" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_acessorios_5.jpg" alt="PFT 020 - imagem 8" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_acessorios_6.jpg" alt="PFT 020 - imagem 9" class="pdp-carrossel-imagem">
+                <img src="images/produtos/pft020/1211969_acessorios_11.jpg" alt="PFT 020 - imagem 10" class="pdp-carrossel-imagem">
+              </div>
+            </div>
+            <button class="pdp-carrossel-seta pdp-carrossel-seta-direita" aria-label="Próxima imagem">
+              <span>&rsaquo;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Miniaturas -->
+        <div class="pdp2-miniaturas">
+          <button class="pdp2-mini-seta pdp-miniaturas-seta pdp-miniaturas-seta-esquerda">‹</button>
+          <div class="pdp2-miniaturas-janela pdp-miniaturas-janela">
+            <div class="pdp2-miniaturas-faixa pdp-miniaturas-imagens">
+              <!-- geradas pelo JS existente -->
+            </div>
+          </div>
+          <button class="pdp2-mini-seta pdp-miniaturas-seta pdp-miniaturas-seta-direita">›</button>
+        </div>
+
+      </div>
+
+      <!-- COLUNA DIREITA — INFORMAÇÕES -->
+      <div class="pdp2-info">
+
+        <div class="pdp2-categoria">Ferramentas a Bateria</div>
+
+        <h1 class="pdp2-titulo">Parafusadeira/furadeira de impacto a bateria, 20 V, fonte bivolt automática, PFT 020</h1>
+
+        <p class="pdp2-codigo">Código: 93.60.000.200</p>
+
+        <p class="pdp2-descricao">
+          Versatilidade e potência em 20 V. Ideal para profissionais e entusiastas do DIY, com fonte bivolt automática para uso em qualquer lugar, sem se preocupar com a voltagem. Perfura madeira, metal e alvenaria.
+        </p>
+
+        <!-- Destaques rápidos -->
+        <div class="pdp2-destaques">
+          <div class="pdp2-destaque-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"/><path d="m11 7-3 5h4l-3 5"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+            <span>20 V — Íons de lítio</span>
+          </div>
+          <div class="pdp2-destaque-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
+            <span>Bivolt automático</span>
+          </div>
+          <div class="pdp2-destaque-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>3 funções: parafusadeira, furadeira e impacto</span>
+          </div>
+          <div class="pdp2-destaque-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.24 7.76 2.83-2.83"/><path d="M18 12h4"/><path d="m16.24 16.24 2.83 2.83"/><path d="M12 18v4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M2 12h4"/><path d="m4.93 4.93 2.83 2.83"/></svg>
+            <span>2 velocidades variáveis</span>
+          </div>
+          <div class="pdp2-destaque-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Acompanha maleta</span>
+          </div>
+          <div class="pdp2-destaque-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span>Torque: 40 N.m</span>
+          </div>
+        </div>
+
+        <a href="sedes.html" class="pdp2-btn-comprar"> Onde comprar</a>
+
+        <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer" class="pdp2-btn-atendimento">
+          Fale com nossa Assistência Técnica
+        </a>
+
+      </div>
+    </div>
+
+    <!-- SEÇÃO CARACTERÍSTICAS + 360 LADO A LADO -->
+    <div class="pdp2-caracteristicas-360">
+
+      <!-- COLUNA ESQUERDA — CARACTERÍSTICAS -->
+      <div class="pdp2-col-caracteristicas">
+        <span class="pdp2-sec-titulo">Características</span>
+        <div class="pdp2-embalagem">
+          <h4>Conteúdo da embalagem:</h4>
+          <p>
+            1 Parafusadeira/furadeira. Acompanha: 1 maleta, 1 bateria de 20 V, 1 fonte de carregamento bivolt automática, 3 brocas para madeira (4 mm, 5 mm e 6 mm), 8 bits phillips (2 PH0, 2 PH1, 2 PH2 e 2 PH3), 1 adaptador magnético para bits encaixe de 1/4", 1 bit ponta dupla phillips/fenda e 1 extensor flexível 300 mm encaixe de 1/4".
+          </p>
+
+          <h4>Aplicações / dicas de uso:</h4>
+          <p>
+            Indicada para soltar e apertar parafusos de até 6 mm de diâmetro e fazer furos em madeiras, metais e/ou alvenaria.
+          </p>
+
+          <h4>Destaques / diferenciais:</h4>
+          <p>
+            Acompanha acessórios encaixados perfeitamente na maleta, conferindo organização, praticidade e maior vida útil dos acessórios. Possui regulagem para 18 posições de torque e velocidade variável (2 velocidades). Contém 3 funções de operação: parafusadeira, furadeira sem impacto e furadeira com impacto. Possui LED para melhor visibilidade do local de trabalho, cabo com revestimento emborrachado proporcionando maior conforto ao operador, bateria de íons de lítio que confere alta eficiência de operação, além de fonte de alimentação bivolt automática com tensão de entrada de 100 V~ - 240 V~.
+          </p>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA — VISÃO 360° -->
+      <div class="pdp2-col-360">
+        <span class="pdp2-360-badge">⟳ &nbsp;Visão 360°</span>
+        <div class="pdp2-360-wrapper">
+          <p class="pdp2-360-label">Arraste para girar · Scroll para zoom · Duplo clique para resetar</p>
+          <div
+            class="pdp-360-viewer"
+            data-frames="36"
+            data-first="1"
+            data-start="2590"
+            data-path="images/produtos/pft020/assets/frames/"
+            data-prefix="MKT_"
+            data-ext=".jpg"
+            aria-label="Visualizador 360 graus"
+            style="max-width: 600px; width: 100%;">
+            <img class="pdp-360-frame" alt="Produto em rotação 360°" loading="lazy" />
+          </div>
+          <div class="pdp-360-base" style="width: 65%; max-width: 400px; height: 50px; margin: -15px auto 0; position: relative;">
+            <div class="pdp-360-ellipse"></div>
+            <div class="pdp-360-marker" aria-hidden="true">
+              <span class="pdp-360-marker-dot"></span>
+              <span class="pdp-360-marker-deg">0°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SEÇÃO DE ESPECIFICAÇÕES TÉCNICAS -->
+    <div class="pdp2-specs-section">
+
+      <div class="pdp2-tabs-simples">
+        <button class="pdp2-tab-simples active" data-tab-simples="specs">Especificações Técnicas</button>
+      </div>
+
+      <div class="pdp2-painel-simples active" id="tab-simples-specs">
+        <div class="pdp2-specs-grid">
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Referência</span>
+            <span class="pdp2-spec-value">9360000200</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Modelo</span>
+            <span class="pdp2-spec-value">PFT 020</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Bateria</span>
+            <span class="pdp2-spec-value">20 V — Íons de lítio — 1,5 Ah</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Capacidade do mandril</span>
+            <span class="pdp2-spec-value">3/8" — 10 mm</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Tipo de mandril</span>
+            <span class="pdp2-spec-value">Aperto rápido</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Tipo de velocidade</span>
+            <span class="pdp2-spec-value">Variável (2 velocidades)</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Sistema de reversão</span>
+            <span class="pdp2-spec-value">Sim</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Rotação</span>
+            <span class="pdp2-spec-value">0 — 400/min / 0 — 1.400/min</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Perfuração em aço</span>
+            <span class="pdp2-spec-value">10 mm</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Perfuração em madeira</span>
+            <span class="pdp2-spec-value">20 mm</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Torque máximo</span>
+            <span class="pdp2-spec-value">40 N.m</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Tensão de entrada</span>
+            <span class="pdp2-spec-value">100 V~ — 240 V~ (Bivolt)</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Frequência</span>
+            <span class="pdp2-spec-value">50/60 Hz</span>
+          </div>
+          <div class="pdp2-spec-item">
+            <span class="pdp2-spec-label">Aceleração vibração (ah)</span>
+            <span class="pdp2-spec-value">11,5 m/s²</span>
+          </div>
+          <div class="pdp2-spec-item" style="grid-column: 1 / -1;">
+            <span class="pdp2-spec-label">Garantia</span>
+            <span class="pdp2-spec-value">90 dias (legal) + 9 meses (contratual)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- INFOS GERAIS -->
+  <section class="tm-infos-gerais">
+    <div class="tm-infos-wrapper">
+      <div class="tm-info-card" id="onde-comprar">
+        <img src="images/infos/onde_encontrar.svg" alt="Ícone localização" class="tm-info-icon-onde-comprar">
+        <p class="tm-info-title">ONDE COMPRAR</p>
+        <p class="tm-info-text">
+          Os produtos e acessórios TOOLMIX estão
+          disponíveis em todas as lojas físicas
+          e também no site oficial da <br> Ferramentas Gerais.
+        </p>
+        <a href="sedes.html" class="tm-info-btn">Confira</a>
+      </div>
+      <div class="tm-info-card">
+        <img src="images/infos/duvidas.svg" alt="Ícone contato" class="tm-info-icon-contato">
+        <p class="tm-info-title">ENTRE EM CONTATO</p>
+        <p class="tm-info-text">
+          Dúvidas sobre os produtos TOOLMIX? Entre
+          em contato com nossa <br> Assistência
+          Técnica agora!
+        </p>
+        <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" class="tm-info-btn">Fale conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="tm-footer">
+    <div class="tm-footer-gray">
+      <div class="tm-footer-content">
+        <div class="tm-footer-columns">
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+            <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+            <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+            <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+            <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+            <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-orange">
+      <div class="tm-footer-orange-content">
+        <a href="index.html">
+          <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+        </a>
+        <div class="tm-footer-social">
+          <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+          </a>
+          <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+          </a>
+          <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+          </a>
+          <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-bottom">
+      © Grupo OVD. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <!-- JS carrossel + 360 (reaproveitado do original) -->
+  <script>
+  const LARGURA_THUMB = 72;
+  const GAP_THUMB = 10;
+
+  let currentIndex = 0;
+  let miniaturaIndex = 0;
+
+  function atualizarCarrossel() {
+    const lista = document.querySelector('.pdp-carrossel-lista');
+    const janela = document.querySelector('.pdp-carrossel-janela');
+    if (!lista || !janela) return;
+    const primeiraImagem = lista.querySelector('.pdp-carrossel-imagem');
+    const largura = primeiraImagem ? primeiraImagem.offsetWidth : janela.offsetWidth;
+    lista.style.transform = `translateX(-${currentIndex * largura}px)`;
+    atualizarMiniaturaAtiva();
+  }
+
+  function atualizarMiniaturaAtiva() {
+    document.querySelectorAll('.pdp-miniatura').forEach(m => m.classList.remove('pdp-miniatura-ativa', 'ativa'));
+    const mins = document.querySelectorAll('.pdp-miniatura');
+    if (mins[currentIndex]) mins[currentIndex].classList.add('pdp-miniatura-ativa', 'ativa');
+  }
+
+  function atualizarMiniaturasCarrossel() {
+    const faixa = document.querySelector('.pdp-miniaturas-imagens');
+    if (!faixa) return;
+    faixa.style.transform = `translateX(-${miniaturaIndex * (LARGURA_THUMB + GAP_THUMB)}px)`;
+  }
+
+  function garantirMiniaturaVisivel() {
+    const janela = document.querySelector('.pdp-miniaturas-janela');
+    const mins = document.querySelectorAll('.pdp-miniatura');
+    if (!janela || !mins.length) return;
+    const itensVisiveis = Math.max(1, Math.floor(janela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
+    let novo = currentIndex - Math.floor(itensVisiveis / 2);
+    novo = Math.max(0, Math.min(Math.max(0, mins.length - itensVisiveis), novo));
+    miniaturaIndex = novo;
+    atualizarMiniaturasCarrossel();
+  }
+
+  function gerarMiniaturas() {
+    const imgs = document.querySelectorAll('.pdp-carrossel-imagem');
+    const container = document.querySelector('.pdp-miniaturas-imagens');
+    if (!container || !imgs.length) return;
+
+    imgs.forEach((img, i) => {
+      const mini = document.createElement('img');
+      mini.src = img.src;
+      mini.alt = img.alt;
+      mini.classList.add('pdp-miniatura', 'pdp2-miniatura');
+      mini.addEventListener('click', () => {
+        currentIndex = i;
+        atualizarCarrossel();
+        garantirMiniaturaVisivel();
+      });
+      container.appendChild(mini);
+    });
+
+    atualizarCarrossel();
+    garantirMiniaturaVisivel();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    gerarMiniaturas();
+
+    const setaEsq = document.querySelector('.pdp-carrossel-seta-esquerda');
+    const setaDir = document.querySelector('.pdp-carrossel-seta-direita');
+    const miniEsq = document.querySelector('.pdp-miniaturas-seta-esquerda');
+    const miniDir = document.querySelector('.pdp-miniaturas-seta-direita');
+    const total = () => document.querySelectorAll('.pdp-carrossel-imagem').length;
+
+    if (setaEsq) setaEsq.addEventListener('click', () => { currentIndex = (currentIndex - 1 + total()) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
+    if (setaDir) setaDir.addEventListener('click', () => { currentIndex = (currentIndex + 1) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
+    if (miniEsq) miniEsq.addEventListener('click', () => { currentIndex = (currentIndex - 1 + total()) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
+    if (miniDir) miniDir.addEventListener('click', () => { currentIndex = (currentIndex + 1) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
+
+    window.addEventListener('resize', () => { atualizarCarrossel(); garantirMiniaturaVisivel(); });
+
+    // TABS
+    document.querySelectorAll('.pdp2-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.pdp2-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.pdp2-painel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+      });
+    });
+  });
+  </script>
+
+  <!-- 360 viewer -->
+  <script>
+  (function () {
+    function initViewer(el) {
+      const img = el.querySelector('.pdp-360-frame');
+      if (!img) return;
+      const total = parseInt(el.dataset.frames, 10) || 36;
+      const first = parseInt(el.dataset.first, 10) || 1;
+      const startNumber = parseInt(el.dataset.start, 10) || 1;
+      const basePath = el.dataset.path || '';
+      const prefix = el.dataset.prefix || '';
+      const ext = el.dataset.ext || '.jpg';
+      const section = el.closest('.pdp2-360-wrapper') || el.parentElement;
+      const baseEl = section?.querySelector('.pdp-360-base') || null;
+      const ellipseEl = baseEl?.querySelector('.pdp-360-ellipse') || null;
+      const markerEl = baseEl?.querySelector('.pdp-360-marker') || null;
+      const markerDegEl = baseEl?.querySelector('.pdp-360-marker-deg') || null;
+      const MARKER_DIR = -1;
+      let index = first, dragging = false, lastX = 0, accum = 0;
+      let zoom = 1, offsetX = 0, offsetY = 0;
+      const ZOOM_MIN = 1, ZOOM_MAX = 5, ZOOM_STEP = 0.12;
+
+      const wrap = i => { if (i < 1) return total - ((-i) % total); if (i > total) return ((i - 1) % total) + 1; return i; };
+      const urlFor = i => `${basePath}${prefix}${String(startNumber + (wrap(i) - 1)).padStart(4, '0')}${ext}`;
+
+      function clampPan() {
+        const r = el.getBoundingClientRect();
+        const maxX = Math.max(0, (r.width * zoom - r.width) / 2);
+        const maxY = Math.max(0, (r.height * zoom - r.height) / 2);
+        offsetX = Math.min(maxX, Math.max(-maxX, offsetX));
+        offsetY = Math.min(maxY, Math.max(-maxY, offsetY));
+      }
+
+      function updateMarker() {
+        if (!ellipseEl || !markerEl) return;
+        const r = ellipseEl.getBoundingClientRect();
+        const bw = parseFloat(getComputedStyle(ellipseEl).borderTopWidth) || 0;
+        const cx = r.width / 2, cy = r.height / 2;
+        const a = (r.width - bw) / 2, b = (r.height - bw) / 2;
+        const t = Math.PI / 2 + MARKER_DIR * ((index - 1) / total) * Math.PI * 2;
+        markerEl.style.left = (cx + a * Math.cos(t)) + 'px';
+        markerEl.style.top = (cy + b * Math.sin(t)) + 'px';
+        markerEl.style.transform = 'translate(-50%, -50%)';
+        if (markerDegEl) markerDegEl.textContent = `${Math.round(((index - 1) * 360) / total)}°`;
+      }
+
+      function applyTransform() { clampPan(); img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${zoom})`; el.classList.toggle('is-zoomed', zoom > 1); updateMarker(); }
+
+      const cache = {};
+      function preload(i) { for (let o = -8; o <= 8; o++) { const k = urlFor(wrap(i + o)); if (!cache[k]) { new Image().src = k; cache[k] = true; } } }
+
+      let lastUpdate = 0;
+      function setFrame(i) { const now = performance.now(); if (now - lastUpdate < 16) return; lastUpdate = now; index = wrap(i); img.src = urlFor(index); preload(index); updateMarker(); }
+
+      el.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; el.setPointerCapture(e.pointerId); el.classList.add('is-interacting'); });
+      el.addEventListener('pointermove', e => {
+        if (!dragging) return;
+        const dx = e.clientX - lastX; lastX = e.clientX;
+        if (zoom > 1 && (e.buttons === 2 || e.shiftKey)) { offsetX += dx; applyTransform(); }
+        else { accum += dx; const steps = Math.floor(accum * 0.5 / 10); if (steps) { setFrame(index - steps); accum -= steps * 20; } }
+      });
+      el.addEventListener('pointerup', e => { dragging = false; try { el.releasePointerCapture(e.pointerId); } catch (_) {} el.classList.remove('is-interacting'); });
+      el.addEventListener('dblclick', () => { setFrame(first); zoom = ZOOM_MIN; offsetX = 0; offsetY = 0; applyTransform(); });
+      el.addEventListener('wheel', e => { e.preventDefault(); const dir = e.deltaY < 0 ? 1 : -1; const prev = zoom; zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoom + dir * ZOOM_STEP)); const r = el.getBoundingClientRect(); const scale = zoom / prev; offsetX = offsetX + (e.clientX - r.left - r.width/2 - offsetX) * (1 - scale); offsetY = offsetY + (e.clientY - r.top - r.height/2 - offsetY) * (1 - scale); if (zoom === ZOOM_MIN) { offsetX = 0; offsetY = 0; } applyTransform(); }, { passive: false });
+      window.addEventListener('resize', applyTransform);
+      img.onload = () => applyTransform();
+      img.src = urlFor(first); preload(first);
+      requestAnimationFrame(updateMarker);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('.pdp-360-viewer').forEach(initViewer));
+  })();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

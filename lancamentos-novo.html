@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOOLMIX - Lançamentos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    /* =============================================
+       ESTILOS EXCLUSIVOS — LANÇAMENTOS
+       ============================================= */
+
+    /* Hero */
+    .lanc-hero {
+      background-color: var(--tm-gray-dark);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lanc-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 400px;
+      height: 100%;
+      background-color: var(--tm-primary);
+      clip-path: polygon(180px 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .lanc-hero-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lanc-hero-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .lanc-hero h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--tm-white);
+      text-transform: uppercase;
+      line-height: 1.1;
+      max-width: 700px;
+    }
+
+    .lanc-hero h1 span {
+      color: var(--tm-primary);
+    }
+
+    /* Breadcrumb */
+    .lanc-breadcrumb {
+      max-width: 1280px;
+      margin: 24px auto 0;
+      padding: 0 40px;
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+    }
+
+    .lanc-breadcrumb a {
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      transition: color 0.2s;
+    }
+
+    .lanc-breadcrumb a:hover { color: var(--tm-primary); }
+
+    /* Body principal */
+    .lanc-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Coluna esquerda — imagem + filtros */
+    .lanc-sidebar {
+      position: sticky;
+      top: 30px;
+    }
+
+    .lanc-banner-img {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .lanc-banner-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Filtro de categoria */
+    .lanc-filtro-titulo {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--tm-gray-light);
+    }
+
+    .lanc-filtros {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .lanc-filtro-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: none;
+      border: 1.5px solid var(--tm-gray-light);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: "Montserrat", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--tm-gray-secondary);
+      text-align: left;
+      transition: all 0.2s;
+    }
+
+    .lanc-filtro-btn:hover,
+    .lanc-filtro-btn.active {
+      border-color: var(--tm-primary);
+      color: var(--tm-primary);
+      background-color: rgba(242, 101, 34, 0.05);
+    }
+
+    .lanc-filtro-btn::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--tm-gray-light);
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .lanc-filtro-btn:hover::before,
+    .lanc-filtro-btn.active::before {
+      background-color: var(--tm-primary);
+    }
+
+    .lanc-filtro-count {
+      margin-left: auto;
+      background-color: var(--tm-gray-light);
+      color: var(--tm-gray-secondary);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .lanc-filtro-btn.active .lanc-filtro-count {
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+    }
+
+    /* Lista de lançamentos */
+    .lanc-conteudo {
+      min-width: 0;
+    }
+
+    .lanc-conteudo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--tm-gray-light);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .lanc-conteudo-titulo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lanc-conteudo-count {
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+      font-weight: 600;
+    }
+
+    /* Cards de lançamento */
+    .lanc-lista {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lanc-item {
+      border-bottom: 1px solid var(--tm-gray-light);
+      padding: 24px 0;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .lanc-item:first-child {
+      padding-top: 0;
+    }
+
+    .lanc-item:last-child {
+      border-bottom: none;
+    }
+
+    .lanc-item:hover .lanc-item-titulo {
+      color: var(--tm-primary);
+    }
+
+    .lanc-item-img {
+      width: 110px;
+      height: 110px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: var(--tm-gray-light);
+      border: 1.5px solid var(--tm-gray-light);
+      transition: border-color 0.2s;
+    }
+
+    .lanc-item:hover .lanc-item-img {
+      border-color: var(--tm-primary);
+    }
+
+    .lanc-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 8px;
+    }
+
+    .lanc-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .lanc-item-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .lanc-item-categoria {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--tm-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lanc-item-badge {
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .lanc-item-titulo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--tm-gray-dark);
+      line-height: 1.4;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .lanc-item-data {
+      font-size: 12px;
+      color: var(--tm-gray-secondary);
+      font-weight: 600;
+    }
+
+    .lanc-item-seta {
+      font-size: 22px;
+      color: var(--tm-gray-light);
+      flex-shrink: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .lanc-item:hover .lanc-item-seta {
+      color: var(--tm-primary);
+      transform: translateX(4px);
+    }
+
+    /* Paginação */
+    .lanc-paginacao {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid var(--tm-gray-light);
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .lanc-pag-btn {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid var(--tm-gray-light);
+      border-radius: 8px;
+      background: none;
+      font-family: "Montserrat", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--tm-gray-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .lanc-pag-btn:hover,
+    .lanc-pag-btn.active {
+      background-color: var(--tm-primary);
+      border-color: var(--tm-primary);
+      color: var(--tm-white);
+    }
+
+    /* Estado vazio (quando filtro não tem resultados) */
+    .lanc-vazio {
+      text-align: center;
+      padding: 60px 20px;
+      display: none;
+    }
+
+    .lanc-vazio.visible {
+      display: block;
+    }
+
+    .lanc-vazio p {
+      font-size: 15px;
+      color: var(--tm-gray-secondary);
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .lanc-body {
+        grid-template-columns: 1fr;
+        padding: 40px 30px 60px;
+        gap: 40px;
+      }
+
+      .lanc-sidebar {
+        position: relative;
+        top: auto;
+      }
+
+      .lanc-banner-img {
+        max-width: 500px;
+        margin: 0 auto 28px;
+      }
+
+      .lanc-filtros {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .lanc-filtro-btn {
+        flex: 0 0 auto;
+      }
+
+      .lanc-hero::before { width: 200px; }
+      .lanc-hero h1 { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 768px) {
+      .lanc-hero {
+        padding: 40px 20px;
+      }
+
+      .lanc-hero::before { display: none; }
+      .lanc-hero h1 { font-size: 1.5rem; }
+
+      .lanc-breadcrumb { padding: 0 20px; }
+
+      .lanc-body {
+        padding: 30px 20px 50px;
+        gap: 30px;
+      }
+
+      .lanc-item {
+        gap: 16px;
+      }
+
+      .lanc-item-img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .lanc-item-titulo {
+        font-size: 0.9rem;
+      }
+
+      .lanc-item-seta {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS.
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="lanc-hero">
+      <div class="lanc-hero-content">
+        <span class="lanc-hero-label">Novidades TOOLMIX</span>
+        <h1>Novos <span>Lançamentos</span></h1>
+      </div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <nav class="lanc-breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp;
+      <span style="font-weight: 700; color: var(--tm-gray-dark);">Lançamentos</span>
+    </nav>
+
+    <!-- CORPO -->
+    <div class="lanc-body">
+
+      <!-- SIDEBAR -->
+      <aside class="lanc-sidebar">
+
+        <div class="lanc-banner-img">
+          <img src="images/banners/lancamentos/01_banner__lateral_lancamentos.png" alt="Lançamentos TOOLMIX">
+        </div>
+
+        <p class="lanc-filtro-titulo">Filtrar por categoria</p>
+        <div class="lanc-filtros">
+          <button class="lanc-filtro-btn active" data-filtro="todos">
+            Todos os lançamentos
+            <span class="lanc-filtro-count">6</span>
+          </button>
+          <button class="lanc-filtro-btn" data-filtro="ferramentas">
+            Ferramentas a Bateria
+            <span class="lanc-filtro-count">4</span>
+          </button>
+          <button class="lanc-filtro-btn" data-filtro="baterias">
+            Baterias
+            <span class="lanc-filtro-count">2</span>
+          </button>
+        </div>
+
+      </aside>
+
+      <!-- LISTA -->
+      <div class="lanc-conteudo">
+
+        <div class="lanc-conteudo-header">
+          <span class="lanc-conteudo-titulo">Lançamentos</span>
+          <span class="lanc-conteudo-count" id="lanc-count">6 produtos encontrados</span>
+        </div>
+
+        <ul class="lanc-lista" id="lanc-lista">
+
+          <li data-categoria="ferramentas">
+            <a href="pft012.html" class="lanc-item">
+              <div class="lanc-item-img">
+                <img src="images/lancamentos/produto_01.jpg" alt="PFT 012">
+              </div>
+              <div class="lanc-item-info">
+                <div class="lanc-item-meta">
+                  <span class="lanc-item-categoria">Ferramentas a Bateria</span>
+                  <span class="lanc-item-badge">Lançamento</span>
+                </div>
+                <div class="lanc-item-titulo">Parafusadeira/furadeira a bateria, PFT 012</div>
+                <div class="lanc-item-data">Novembro de 2025</div>
+              </div>
+              <span class="lanc-item-seta">›</span>
+            </a>
+          </li>
+
+          <li data-categoria="ferramentas">
+            <a href="pft020I.html" class="lanc-item">
+              <div class="lanc-item-img">
+                <img src="images/lancamentos/produto_02.jpg" alt="PFT 020I">
+              </div>
+              <div class="lanc-item-info">
+                <div class="lanc-item-meta">
+                  <span class="lanc-item-categoria">Ferramentas a Bateria</span>
+                  <span class="lanc-item-badge">Lançamento</span>
+                </div>
+                <div class="lanc-item-titulo">Parafusadeira/furadeira de impacto a bateria, PFT 020I</div>
+                <div class="lanc-item-data">Novembro de 2025</div>
+              </div>
+              <span class="lanc-item-seta">›</span>
+            </a>
+          </li>
+
+          <li data-categoria="ferramentas">
+            <a href="pft012I.html" class="lanc-item">
+              <div class="lanc-item-img">
+                <img src="images/lancamentos/produto_03.jpg" alt="PFT 012I">
+              </div>
+              <div class="lanc-item-info">
+                <div class="lanc-item-meta">
+                  <span class="lanc-item-categoria">Ferramentas a Bateria</span>
+                  <span class="lanc-item-badge">Lançamento</span>
+                </div>
+                <div class="lanc-item-titulo">Parafusadeira/furadeira de impacto a bateria, PFT 012I</div>
+                <div class="lanc-item-data">Novembro de 2025</div>
+              </div>
+              <span class="lanc-item-seta">›</span>
+            </a>
+          </li>
+
+          <li data-categoria="ferramentas">
+            <a href="pft020.html" class="lanc-item">
+              <div class="lanc-item-img">
+                <img src="images/lancamentos/produto_04.jpg" alt="PFT 020">
+              </div>
+              <div class="lanc-item-info">
+                <div class="lanc-item-meta">
+                  <span class="lanc-item-categoria">Ferramentas a Bateria</span>
+                  <span class="lanc-item-badge">Lançamento</span>
+                </div>
+                <div class="lanc-item-titulo">Parafusadeira/furadeira a bateria, PFT 020</div>
+                <div class="lanc-item-data">Novembro de 2025</div>
+              </div>
+              <span class="lanc-item-seta">›</span>
+            </a>
+          </li>
+
+          <li data-categoria="baterias">
+            <a href="pft012_bateria.html" class="lanc-item">
+              <div class="lanc-item-img">
+                <img src="images/produtos/pft012_bateria/1213216_principal.jpg" alt="Bateria 12V">
+              </div>
+              <div class="lanc-item-info">
+                <div class="lanc-item-meta">
+                  <span class="lanc-item-categoria">Baterias</span>
+                  <span class="lanc-item-badge">Lançamento</span>
+                </div>
+                <div class="lanc-item-titulo">Bateria 12 V - 1,5 Ah, para PFT 012 e PFT 012I</div>
+                <div class="lanc-item-data">Novembro de 2025</div>
+              </div>
+              <span class="lanc-item-seta">›</span>
+            </a>
+          </li>
+
+          <li data-categoria="baterias">
+            <a href="pft020_bateria.html" class="lanc-item">
+              <div class="lanc-item-img">
+                <img src="images/produtos/pft020_bateria/1213219_embalagem_1.jpg" alt="Bateria 20V">
+              </div>
+              <div class="lanc-item-info">
+                <div class="lanc-item-meta">
+                  <span class="lanc-item-categoria">Baterias</span>
+                  <span class="lanc-item-badge">Lançamento</span>
+                </div>
+                <div class="lanc-item-titulo">Bateria 20 V - 1,5 Ah, íons de lítio, para PFT 020 e PFT 020I</div>
+                <div class="lanc-item-data">Novembro de 2025</div>
+              </div>
+              <span class="lanc-item-seta">›</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="lanc-vazio" id="lanc-vazio">
+          <p>Nenhum lançamento encontrado nessa categoria.</p>
+        </div>
+
+        <div class="lanc-paginacao" id="lanc-paginacao"></div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- INFOS GERAIS -->
+  <section class="tm-infos-gerais">
+    <div class="tm-infos-wrapper">
+      <div class="tm-info-card" id="onde-comprar">
+        <img src="images/infos/onde_encontrar.svg" alt="Ícone localização" class="tm-info-icon-onde-comprar">
+        <p class="tm-info-title">ONDE COMPRAR</p>
+        <p class="tm-info-text">
+          Os produtos e acessórios TOOLMIX estão
+          disponíveis em todas as lojas físicas
+          e também no site oficial da <br> Ferramentas Gerais.
+        </p>
+        <a href="sedes.html" class="tm-info-btn">Confira</a>
+      </div>
+      <div class="tm-info-card">
+        <img src="images/infos/duvidas.svg" alt="Ícone contato" class="tm-info-icon-contato">
+        <p class="tm-info-title">ENTRE EM CONTATO</p>
+        <p class="tm-info-text">
+          Dúvidas sobre os produtos TOOLMIX? Entre
+          em contato com nossa <br> Assistência
+          Técnica agora!
+        </p>
+        <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" class="tm-info-btn">Fale conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="tm-footer">
+    <div class="tm-footer-gray">
+      <div class="tm-footer-content">
+        <div class="tm-footer-columns">
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+            <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+            <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+            <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+            <a href="nossa-estrutura.html" class="tm-footer-link">Centros de Distribuição</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+            <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-orange">
+      <div class="tm-footer-orange-content">
+        <a href="index.html">
+          <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+        </a>
+        <div class="tm-footer-social">
+          <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+          </a>
+          <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+          </a>
+          <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+          </a>
+          <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-bottom">
+      © Grupo OVD. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    // --- FILTRO DE CATEGORIAS ---
+    const filtros = document.querySelectorAll('.lanc-filtro-btn');
+    const itens = document.querySelectorAll('#lanc-lista li');
+    const countEl = document.getElementById('lanc-count');
+    const vazioEl = document.getElementById('lanc-vazio');
+
+    filtros.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Atualiza botão ativo
+        filtros.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filtro = btn.getAttribute('data-filtro');
+        let visiveis = 0;
+
+        itens.forEach(item => {
+          const cat = item.getAttribute('data-categoria');
+          if (filtro === 'todos' || cat === filtro) {
+            item.style.display = '';
+            visiveis++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        countEl.textContent = `${visiveis} produto${visiveis !== 1 ? 's' : ''} encontrado${visiveis !== 1 ? 's' : ''}`;
+        vazioEl.classList.toggle('visible', visiveis === 0);
+      });
+    });
+  </script>
+
+</body>
+</html>

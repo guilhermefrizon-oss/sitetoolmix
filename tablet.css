@@ -1,0 +1,814 @@
+/* =========================================
+   TABLET.CSS — TOOLMIX
+   Portrait:  768px – 1024px
+   Landscape: 1024px – 1200px
+   ========================================= */
+
+
+/* ======================================================
+   PORTRAIT (tablet em pé) — 768px até 1024px
+   ====================================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .tm-header {
+    height: auto;
+  }
+
+  /* Forma cinza vira barra horizontal simples */
+  .tm-header-shape {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    clip-path: none;
+    background-color: var(--tm-gray-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .tm-logo {
+    width: 180px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Mostra o botão hamburguer */
+  .tm-mobile-menu-btn {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tm-white);
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 100;
+    padding: 0;
+  }
+
+  /* Esconde o menu desktop */
+  .tm-desktop-menu {
+    display: none;
+  }
+
+  /* Sidebar mobile funciona igual */
+  .tm-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--tm-white);
+    z-index: 9999;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .tm-sidebar.active {
+    left: 0;
+  }
+
+  .tm-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+  }
+
+  .tm-menu-overlay.active {
+    display: block;
+  }
+
+  /* Sidebar — estilos internos */
+  .tm-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--tm-gray-light);
+    color: var(--tm-gray-dark);
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  #btn-close-menu {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--tm-gray-dark);
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .tm-nav-mobile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tm-nav-mobile li {
+    border-bottom: 1px solid var(--tm-gray-light);
+  }
+
+  .tm-nav-mobile a {
+    display: block;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--tm-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .tm-nav-mobile a:hover {
+    color: var(--tm-primary);
+  }
+
+  /* Barra laranja — busca centralizada */
+  .tm-header-content-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .tm-header-orange {
+    height: auto;
+    padding: 15px 0;
+  }
+
+  .tm-orange-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
+    gap: 10px;
+  }
+
+  .tm-search-container {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .tm-header-support {
+    display: none;
+  }
+
+  /* Slogan */
+  .tm-header-top-gray {
+    height: auto;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tm-header-slogan {
+    font-size: 11px;
+    text-align: center;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  /* --- BANNER SLIDER --- */
+  .tm-slider {
+    height: 300px;
+  }
+
+  .tm-prev { left: 20px; }
+  .tm-next { right: 20px; }
+
+  .tm-slide-control {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+
+  /* --- TEXTO ABAIXO DO BANNER --- */
+  .tm-text-section {
+    padding: 50px 30px;
+  }
+
+  .tm-banner-title {
+    font-size: 22px;
+  }
+
+  /* --- CARDS MOSAICO --- */
+  .tm-cards {
+    gap: 20px !important;
+    padding: 0 20px !important;
+    margin: 40px auto 60px !important;
+  }
+
+  .tm-card {
+    max-width: none;
+  }
+
+  /* --- CARROSSEL DE LANÇAMENTOS --- */
+  .tm-background-gray {
+    padding: 50px 15px;
+  }
+
+  .tm-launch-wrapper {
+    padding: 10px 30px;
+  }
+
+  .tm-launch-card {
+    flex: 0 0 calc(33.333% - 14px); /* 3 cards por vez no tablet portrait */
+  }
+
+  .tm-launch-title h2 {
+    font-size: 22px;
+  }
+
+  /* --- INFOS GERAIS --- */
+  .tm-infos-gerais {
+    padding: 40px 20px;
+  }
+
+  .tm-infos-wrapper {
+    gap: 40px;
+  }
+
+  .tm-info-card {
+    height: auto;
+    padding: 20px;
+    max-width: 340px;
+  }
+
+  .tm-info-title {
+    font-size: 24px;
+  }
+
+  .tm-info-text {
+    font-size: 15px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .tm-info-card .tm-info-btn {
+    width: 220px;
+    height: 52px;
+    font-size: 18px;
+  }
+
+  /* --- FOOTER — mesmo padrão do mobile --- */
+  .tm-footer {
+    height: auto;
+    overflow: visible;
+  }
+
+  .tm-footer-gray {
+    position: relative;
+    height: auto;
+  }
+
+  .tm-footer-content {
+    padding: 40px 20px;
+    flex-direction: column;
+  }
+
+  .tm-footer-columns {
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .tm-footer-column {
+    min-width: 130px;
+  }
+
+  .tm-footer-orange {
+    position: relative;
+    width: 100%;
+    height: auto;
+    clip-path: none;
+    padding: 30px 0 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .tm-footer-orange-content {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    padding: 0 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tm-footer-logo {
+    width: 160px;
+    height: auto;
+  }
+
+  .tm-footer-bottom {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* --- PÁGINA INSTITUCIONAL --- */
+  .tm-institucional-primeiro-texto,
+  .tm-institucional-segundo-texto {
+    font-size: 17px;
+    line-height: 2;
+    padding: 0 30px;
+    margin: 50px auto;
+  }
+
+  .tm-institucional-duas-colunas {
+    flex-direction: column;
+    padding: 0 30px;
+    gap: 30px;
+  }
+
+  .tm-institucional-bloco-laranja {
+    padding: 40px 30px;
+    max-height: none;
+    width: 100%;
+  }
+
+  .tm-institucional-bloco-laranja p {
+    font-size: 17px;
+    line-height: 2;
+  }
+
+  .tm-institucional-imagem {
+    width: 100%;
+  }
+
+  /* --- PÁGINA LANÇAMENTOS --- */
+  .lancamentos-info {
+    flex-direction: column;
+    margin: 40px auto;
+    padding: 0 30px;
+    gap: 30px;
+  }
+
+  .lancamentos-image {
+    height: auto;
+    padding-right: 0;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .lancamentos-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 16px;
+  }
+
+  .lancamentos-title {
+    font-size: 19px;
+  }
+
+  .title-banner {
+    width: 380px;
+  }
+
+  /* --- PÁGINA DE PRODUTOS (PLP) --- */
+  .tm-plp-container {
+    flex-direction: row;
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  .tm-plp-sidebar {
+    width: 180px;
+  }
+
+  .tm-plp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- PÁGINA DE PRODUTO (PDP) --- */
+  .pdp-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px;
+  }
+
+  .pdp-imagem-produto {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .pdp-carrossel {
+    padding: 0 50px;
+  }
+
+  .pdp-carrossel-janela {
+    max-width: 100%;
+  }
+
+  .pdp-texto-produto {
+    padding-top: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .pdp-texto-produto h1 {
+    font-size: 1.6rem;
+    padding: 0 10px;
+  }
+
+  .pdp-codigo,
+  .pdp-descricao {
+    padding: 0 10px;
+  }
+
+  .pdp-botao-onde-comprar {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+
+  .pdp-miniaturas {
+    max-width: 600px;
+  }
+
+  .pdp-miniatura {
+    width: 90px;
+    height: 90px;
+  }
+
+  .pdp-especificacoes-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .pdp-spec-item {
+    padding-inline: 20px;
+  }
+
+  .pdp-360 {
+    max-width: 500px;
+  }
+}
+
+
+/* ======================================================
+   LANDSCAPE (tablet deitado) — 1025px até 1366px
+   ====================================================== */
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  /* --- HEADER — hamburguer também no landscape --- */
+  .tm-header {
+    height: auto;
+  }
+
+  .tm-header-shape {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    clip-path: none;
+    background-color: var(--tm-gray-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .tm-logo {
+    width: 200px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .tm-mobile-menu-btn {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tm-white);
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 100;
+    padding: 0;
+  }
+
+  .tm-desktop-menu {
+    display: none;
+  }
+
+  .tm-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--tm-white);
+    z-index: 9999;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .tm-sidebar.active {
+    left: 0;
+  }
+
+  .tm-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+  }
+
+  .tm-menu-overlay.active {
+    display: block;
+  }
+
+  /* Sidebar — estilos internos */
+  .tm-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--tm-gray-light);
+    color: var(--tm-gray-dark);
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  #btn-close-menu {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--tm-gray-dark);
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .tm-nav-mobile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tm-nav-mobile li {
+    border-bottom: 1px solid var(--tm-gray-light);
+  }
+
+  .tm-nav-mobile a {
+    display: block;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--tm-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .tm-nav-mobile a:hover {
+    color: var(--tm-primary);
+  }
+
+  .tm-header-top-gray {
+    height: auto;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tm-header-content-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .tm-header-orange {
+    height: auto;
+    padding: 15px 0;
+  }
+
+  .tm-orange-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
+    gap: 10px;
+  }
+
+  .tm-search-container {
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .tm-header-support {
+    display: none;
+  }
+
+  /* --- BANNER SLIDER --- */
+  .tm-slider {
+    height: 360px;
+  }
+
+  .tm-prev { left: 30px; }
+  .tm-next { right: 30px; }
+
+  /* --- TEXTO ABAIXO DO BANNER --- */
+  .tm-text-section {
+    padding: 60px 30px;
+  }
+
+  .tm-banner-title {
+    font-size: 24px;
+  }
+
+  /* --- CARDS MOSAICO --- */
+  .tm-cards {
+    gap: 25px !important;
+    padding: 0 30px !important;
+    margin: 50px auto 70px !important;
+  }
+
+  /* --- CARROSSEL DE LANÇAMENTOS --- */
+  .tm-background-gray {
+    padding: 60px 20px;
+  }
+
+  .tm-launch-wrapper {
+    padding: 15px 40px;
+    max-width: 1100px;
+  }
+
+  .tm-launch-card {
+    flex: 0 0 calc(33.333% - 14px); /* 3 cards por vez no landscape */
+  }
+
+  /* --- INFOS GERAIS --- */
+  .tm-infos-wrapper {
+    gap: 60px;
+  }
+
+  .tm-info-card {
+    height: auto;
+    max-width: 380px;
+  }
+
+  .tm-info-title {
+    font-size: 26px;
+  }
+
+  .tm-info-text {
+    height: auto;
+    font-size: 15px;
+  }
+
+  .tm-info-card .tm-info-btn {
+    width: 240px;
+    font-size: 20px;
+  }
+
+  /* --- FOOTER --- */
+  .tm-footer {
+    height: auto;
+    overflow: visible;
+  }
+
+  .tm-footer-gray {
+    position: relative;
+    height: auto;
+  }
+
+  .tm-footer-content {
+    padding: 60px 30px 40px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .tm-footer-columns {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .tm-footer-orange {
+    position: relative;
+    width: 100%;
+    height: auto;
+    clip-path: none;
+    padding: 30px 0 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .tm-footer-orange-content {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    padding: 0 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tm-footer-logo {
+    width: 160px;
+    height: auto;
+  }
+
+  .tm-footer-bottom {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* --- PÁGINA INSTITUCIONAL --- */
+  .tm-institucional-primeiro-texto,
+  .tm-institucional-segundo-texto {
+    font-size: 18px;
+    padding: 0 40px;
+  }
+
+  .tm-institucional-bloco-laranja {
+    padding: 50px 40px;
+  }
+
+  .tm-institucional-bloco-laranja p {
+    font-size: 18px;
+    line-height: 2.5;
+  }
+
+  /* --- PÁGINA LANÇAMENTOS --- */
+  .lancamentos-image {
+    height: 700px;
+    padding-right: 40px;
+  }
+
+  .lancamentos-title {
+    font-size: 20px;
+  }
+
+  /* --- PÁGINA DE PRODUTOS (PLP) --- */
+  .tm-plp-container {
+    padding: 0 30px;
+    gap: 30px;
+  }
+
+  .tm-plp-sidebar {
+    width: 200px;
+  }
+
+  .tm-plp-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* --- PÁGINA DE PRODUTO (PDP) --- */
+  .pdp-container {
+    padding: 60px 40px;
+  }
+
+  .pdp-carrossel-seta-esquerda { left: -70px; }
+  .pdp-carrossel-seta-direita  { right: -70px; }
+
+  .pdp-texto-produto {
+    padding-left: 100px;
+    padding-right: 10px;
+  }
+
+  .pdp-texto-produto h1 {
+    font-size: 1.7rem;
+  }
+
+  .pdp-miniatura {
+    width: 100px;
+    height: 100px;
+  }
+
+  .pdp-especificacoes-grid {
+    column-gap: 30px;
+  }
+
+  .pdp-360 {
+    max-width: 600px;
+  }
+}

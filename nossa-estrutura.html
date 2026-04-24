@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOOLMIX - Nossa Estrutura</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    /* =============================================
+       ESTILOS EXCLUSIVOS — NOSSA ESTRUTURA
+       ============================================= */
+
+    /* Hero */
+    .estrutura-hero {
+      background-color: var(--tm-gray-dark);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .estrutura-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 400px;
+      height: 100%;
+      background-color: var(--tm-primary);
+      clip-path: polygon(180px 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .estrutura-hero-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .estrutura-hero-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .estrutura-hero h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--tm-white);
+      text-transform: uppercase;
+      line-height: 1.1;
+      max-width: 700px;
+    }
+
+    .estrutura-hero h1 span {
+      color: var(--tm-primary);
+    }
+
+    /* Breadcrumb */
+    .estrutura-breadcrumb {
+      max-width: 1280px;
+      margin: 24px auto 0;
+      padding: 0 40px;
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+    }
+
+    .estrutura-breadcrumb a {
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      transition: color 0.2s;
+    }
+
+    .estrutura-breadcrumb a:hover { color: var(--tm-primary); }
+
+    /* Intro TOOLMIX */
+    .estrutura-intro {
+      max-width: 1280px;
+      margin: 60px auto 0;
+      padding: 0 40px;
+    }
+
+    .estrutura-intro-box {
+      background-color: var(--tm-primary);
+      border-radius: 12px;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .estrutura-intro-icon {
+      font-size: 52px;
+      flex-shrink: 0;
+    }
+
+    .estrutura-intro-texto h2 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--tm-white);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .estrutura-intro-texto p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.92);
+      margin: 0;
+    }
+
+    /* Seção FG */
+    .estrutura-fg {
+      max-width: 1280px;
+      margin: 60px auto 0;
+      padding: 0 40px;
+    }
+
+    .estrutura-fg-intro {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .estrutura-fg-intro h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .estrutura-fg-intro h2 span {
+      color: var(--tm-primary);
+    }
+
+    .estrutura-fg-intro p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--tm-gray-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mapa */
+    .estrutura-mapa {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .estrutura-mapa img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Estatísticas */
+    .estrutura-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .estrutura-stat {
+      background-color: var(--tm-gray-light);
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-align: center;
+      border-top: 4px solid var(--tm-primary);
+    }
+
+    .estrutura-stat-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--tm-primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .estrutura-stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--tm-gray-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Título seção CDs */
+    .estrutura-cds-titulo {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 30px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid var(--tm-primary);
+      display: inline-block;
+    }
+
+    /* Grid de CDs */
+    .estrutura-cds-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .estrutura-cd-card {
+      background-color: var(--tm-white);
+      border: 1.5px solid var(--tm-gray-light);
+      border-radius: 12px;
+      padding: 28px 24px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .estrutura-cd-card:hover {
+      border-color: var(--tm-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .estrutura-cd-estado {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+
+    .estrutura-cd-cidade {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--tm-gray-dark);
+      margin-bottom: 12px;
+    }
+
+    .estrutura-cd-endereco {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 16px;
+    }
+
+    .estrutura-cd-telefone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--tm-gray-dark);
+    }
+
+    .estrutura-cd-telefone::before {
+      content: "📞";
+      font-size: 14px;
+    }
+
+    /* CTA FG */
+    .estrutura-cta {
+      background-color: var(--tm-gray-dark);
+      border-radius: 12px;
+      padding: 48px 40px;
+      margin: 60px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .estrutura-cta-texto h3 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--tm-white);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .estrutura-cta-texto p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .estrutura-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-weight: 800;
+      font-size: 15px;
+      padding: 16px 36px;
+      text-decoration: none;
+      clip-path: polygon(6% 0, 100% 0, 94% 100%, 0% 100%);
+      transition: background 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .estrutura-cta-btn:hover {
+      background-color: var(--tm-primary-hover);
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .estrutura-intro,
+      .estrutura-fg {
+        padding: 0 30px;
+      }
+
+      .estrutura-cds-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .estrutura-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .estrutura-hero::before {
+        width: 200px;
+      }
+
+      .estrutura-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .estrutura-cta {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .estrutura-hero {
+        padding: 40px 20px;
+      }
+
+      .estrutura-hero::before { display: none; }
+
+      .estrutura-hero h1 { font-size: 1.5rem; }
+
+      .estrutura-breadcrumb { padding: 0 20px; }
+
+      .estrutura-intro,
+      .estrutura-fg {
+        padding: 0 20px;
+        margin-top: 40px;
+      }
+
+      .estrutura-intro-box {
+        flex-direction: column;
+        padding: 30px 24px;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .estrutura-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .estrutura-cds-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .estrutura-cta {
+        padding: 30px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .estrutura-cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS.
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="estrutura-hero">
+      <div class="estrutura-hero-content">
+        <span class="estrutura-hero-label">Grupo OVD · Ferramentas Gerais</span>
+        <h1>Nossa <span>Estrutura</span></h1>
+      </div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <nav class="estrutura-breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp;
+      <span style="font-weight: 700; color: var(--tm-gray-dark);">Nossa Estrutura</span>
+    </nav>
+
+    <!-- INTRO TOOLMIX -->
+    <div class="estrutura-intro">
+      <div class="estrutura-intro-box">
+        <div class="estrutura-intro-icon"></div>
+        <div class="estrutura-intro-texto">
+          <h2>TOOLMIX — Uma marca exclusiva FG</h2>
+          <p>
+            A <strong>TOOLMIX</strong> é uma marca exclusiva da <strong>Ferramentas Gerais (FG)</strong>, empresa com mais de 20 anos de experiência no mercado de ferramentas e equipamentos. Toda a estrutura de distribuição, logística e atendimento da FG está a serviço dos produtos TOOLMIX — garantindo que você encontre nossas ferramentas com a mesma qualidade e agilidade em todo o Brasil. Conheça as unidades da FG e descubra onde encontrar os produtos TOOLMIX perto de você!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO ESTRUTURA FG -->
+    <div class="estrutura-fg">
+
+      <div class="estrutura-fg-intro">
+        <h2>Estrutura <span>Ferramentas Gerais</span></h2>
+        <p>
+          A Ferramentas Gerais possui unidades nas regiões Sul, Sudeste e Nordeste do país, proporcionando um atendimento eficiente, de acordo com as necessidades de cada cliente.
+        </p>
+      </div>
+
+      <!-- MAPA -->
+      <div class="estrutura-mapa">
+        <img src="https://ferramentasgerais.vteximg.com.br/arquivos/mapa_fg_2022_1.jpg?v=637849520068830000" alt="Mapa de unidades Ferramentas Gerais no Brasil">
+      </div>
+
+      <!-- ESTATÍSTICAS -->
+      <div class="estrutura-stats">
+        <div class="estrutura-stat">
+          <div class="estrutura-stat-num">90.000 m²</div>
+          <div class="estrutura-stat-label">Área construída total</div>
+        </div>
+        <div class="estrutura-stat">
+          <div class="estrutura-stat-num">5</div>
+          <div class="estrutura-stat-label">Centros de Distribuição</div>
+        </div>
+        <div class="estrutura-stat">
+          <div class="estrutura-stat-num">Sul · Sudeste · Nordeste</div>
+          <div class="estrutura-stat-label">Regiões atendidas</div>
+        </div>
+      </div>
+
+      <!-- CENTROS DE DISTRIBUIÇÃO -->
+      <div class="estrutura-cds-titulo">Centros de Distribuição</div>
+
+      <div class="estrutura-cds-grid">
+
+        <div class="estrutura-cd-card">
+          <div class="estrutura-cd-estado"> RS</div>
+          <div class="estrutura-cd-cidade">Novo Hamburgo / RS</div>
+          <div class="estrutura-cd-endereco">
+            Rodovia RS 239, nº 1.199<br>
+            Operário<br>
+            CEP 93.352-700
+          </div>
+          <div class="estrutura-cd-telefone">(51) 3358-1213</div>
+        </div>
+
+        <div class="estrutura-cd-card">
+          <div class="estrutura-cd-estado"> PR</div>
+          <div class="estrutura-cd-cidade">Curitiba / PR</div>
+          <div class="estrutura-cd-endereco">
+            Av. Juscelino Kubitschek de Oliveira, 4158 — Conjunto 02<br>
+            Cidade Industrial<br>
+            CEP 81.260-000
+          </div>
+          <div class="estrutura-cd-telefone">(41) 3316-4500</div>
+        </div>
+
+        <div class="estrutura-cd-card">
+          <div class="estrutura-cd-estado"> SC</div>
+          <div class="estrutura-cd-cidade">Itajaí / SC</div>
+          <div class="estrutura-cd-endereco">
+            Rod. Jorge Lacerda, 835 — Galpão 11<br>
+            Espinheiros<br>
+            CEP 88.317-100
+          </div>
+          <div class="estrutura-cd-telefone">(41) 2101-2500</div>
+        </div>
+
+        <div class="estrutura-cd-card">
+          <div class="estrutura-cd-estado"> SP</div>
+          <div class="estrutura-cd-cidade">Jundiaí / SP</div>
+          <div class="estrutura-cd-endereco">
+            Rod. Vice-Prefeito Hermenegildo Tonolli, km 1,5<br>
+            Galpão G200, Módulo 7 — Distrito Industrial<br>
+            CEP 13.213-086
+          </div>
+          <div class="estrutura-cd-telefone">(11) 4813-8744 / (11) 2139-5757</div>
+        </div>
+
+        <div class="estrutura-cd-card">
+          <div class="estrutura-cd-estado"> BA</div>
+          <div class="estrutura-cd-cidade">Feira de Santana / BA</div>
+          <div class="estrutura-cd-endereco">
+            Av. Deputado Luis Eduardo Magalhães, S/Nº<br>
+            BR 324, KM 521 — Subaé<br>
+            CEP 44.079-002
+          </div>
+          <div class="estrutura-cd-telefone">(51) 3358-1213</div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="estrutura-cta">
+        <div class="estrutura-cta-texto">
+          <h3>Encontre os produtos TOOLMIX nas Lojas FG</h3>
+          <p>Com cobertura comercial e logística nacional, a FG garante rapidez, fidelidade e segurança nas entregas para todo o país. Acesse o site da Ferramentas Gerais e conheça todas as lojas físicas e virtuais onde você pode encontrar a linha TOOLMIX.</p>
+        </div>
+        <a href="https://www.fg.com.br/institucional/lojas" target="_blank" rel="noopener noreferrer" class="estrutura-cta-btn">
+          Ver Lojas FG
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- INFOS GERAIS -->
+  <section class="tm-infos-gerais">
+    <div class="tm-infos-wrapper">
+      <div class="tm-info-card" id="onde-comprar">
+        <img src="images/infos/onde_encontrar.svg" alt="Ícone localização" class="tm-info-icon-onde-comprar">
+        <p class="tm-info-title">ONDE COMPRAR</p>
+        <p class="tm-info-text">
+          Os produtos e acessórios TOOLMIX estão
+          disponíveis em todas as lojas físicas
+          e também no site oficial da <br> Ferramentas Gerais.
+        </p>
+        <a href="sedes.html" class="tm-info-btn">Confira</a>
+      </div>
+
+      <div class="tm-info-card">
+        <img src="images/infos/duvidas.svg" alt="Ícone contato" class="tm-info-icon-contato">
+        <p class="tm-info-title">ENTRE EM CONTATO</p>
+        <p class="tm-info-text">
+          Dúvidas sobre os produtos TOOLMIX? Entre
+          em contato com nossa <br> Assistência
+          Técnica agora!
+        </p>
+        <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" class="tm-info-btn">Fale conosco</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="tm-footer">
+    <div class="tm-footer-gray">
+      <div class="tm-footer-content">
+        <div class="tm-footer-columns">
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+            <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+            <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+            <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+            <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+            <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-orange">
+      <div class="tm-footer-orange-content">
+        <a href="index.html">
+          <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+        </a>
+        <div class="tm-footer-social">
+          <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+          </a>
+          <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+          </a>
+          <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+          </a>
+          <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-bottom">
+      © Grupo OVD. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+
+</body>
+</html>

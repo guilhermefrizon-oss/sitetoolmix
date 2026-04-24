@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOOLMIX - Política de Cookies</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    /* =============================================
+       ESTILOS EXCLUSIVOS — POLÍTICA DE COOKIES
+       ============================================= */
+
+    .politica-hero {
+      background-color: var(--tm-gray-dark);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .politica-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 100%;
+      background-color: var(--tm-primary);
+      clip-path: polygon(180px 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .politica-hero-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .politica-hero-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .politica-hero h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--tm-white);
+      text-transform: uppercase;
+      line-height: 1.1;
+      max-width: 600px;
+    }
+
+    .politica-hero h1 span {
+      color: var(--tm-primary);
+    }
+
+    /* Breadcrumb */
+    .politica-breadcrumb {
+      max-width: 1280px;
+      margin: 24px auto 0;
+      padding: 0 40px;
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+    }
+
+    .politica-breadcrumb a {
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      transition: color 0.2s;
+    }
+
+    .politica-breadcrumb a:hover {
+      color: var(--tm-primary);
+    }
+
+    /* Container principal do conteúdo */
+    .politica-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Índice lateral */
+    .politica-indice {
+      position: sticky;
+      top: 30px;
+    }
+
+    .politica-indice-titulo {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--tm-gray-light);
+    }
+
+    .politica-indice ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .politica-indice li {
+      margin-bottom: 4px;
+    }
+
+    .politica-indice a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+    }
+
+    .politica-indice a:hover {
+      background-color: var(--tm-gray-light);
+      color: var(--tm-primary);
+      border-left-color: var(--tm-primary);
+    }
+
+    .politica-indice a::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--tm-primary);
+      flex-shrink: 0;
+    }
+
+    /* Conteúdo das seções */
+    .politica-conteudo {
+      min-width: 0;
+    }
+
+    .politica-intro {
+      background-color: var(--tm-gray-light);
+      border-left: 5px solid var(--tm-primary);
+      padding: 28px 32px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 50px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--tm-gray-secondary);
+    }
+
+    .politica-intro strong {
+      color: var(--tm-gray-dark);
+    }
+
+    .politica-secao {
+      margin-bottom: 50px;
+      scroll-margin-top: 30px;
+    }
+
+    .politica-secao-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--tm-gray-light);
+    }
+
+    .politica-secao-num {
+      width: 36px;
+      height: 36px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 14px;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .politica-secao h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .politica-secao p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 16px;
+    }
+
+    .politica-secao p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Cards de tipos de cookies */
+    .cookies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .cookie-card {
+      background-color: var(--tm-white);
+      border: 1.5px solid var(--tm-gray-light);
+      border-radius: 10px;
+      padding: 24px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .cookie-card:hover {
+      border-color: var(--tm-primary);
+      transform: translateY(-3px);
+    }
+
+    .cookie-card-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--tm-primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .cookie-card h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .cookie-card p {
+      font-size: 13px !important;
+      line-height: 1.7 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Bloco de destaque */
+    .politica-destaque {
+      background: linear-gradient(135deg, var(--tm-gray-dark) 0%, #555 100%);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-top: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .politica-destaque-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .politica-destaque p {
+      color: rgba(255,255,255,0.85) !important;
+      margin-bottom: 0 !important;
+      font-size: 14px !important;
+      line-height: 1.7 !important;
+    }
+
+    .politica-destaque a {
+      color: var(--tm-primary);
+      font-weight: 700;
+    }
+
+    /* Data de atualização */
+    .politica-footer-info {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 2px solid var(--tm-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .politica-footer-info p {
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+      margin: 0;
+    }
+
+    .politica-footer-info strong {
+      color: var(--tm-gray-dark);
+    }
+
+    .politica-contato-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 28px;
+      text-decoration: none;
+      clip-path: polygon(6% 0, 100% 0, 94% 100%, 0% 100%);
+      transition: background 0.2s;
+    }
+
+    .politica-contato-btn:hover {
+      background-color: var(--tm-primary-hover);
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .politica-body {
+        grid-template-columns: 1fr;
+        padding: 40px 30px 60px;
+      }
+
+      .politica-indice {
+        position: relative;
+        top: auto;
+        background: var(--tm-gray-light);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .cookies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .politica-hero::before {
+        width: 200px;
+      }
+
+      .politica-hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .politica-hero {
+        padding: 40px 20px;
+      }
+
+      .politica-hero::before {
+        display: none;
+      }
+
+      .politica-hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .politica-breadcrumb {
+        padding: 0 20px;
+      }
+
+      .politica-body {
+        padding: 30px 20px 50px;
+        gap: 30px;
+      }
+
+      .politica-intro {
+        padding: 20px;
+      }
+
+      .politica-destaque {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+
+      .politica-footer-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cookies-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS.
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <main>
+
+    <!-- HERO DA PÁGINA -->
+    <section class="politica-hero">
+      <div class="politica-hero-content">
+        <span class="politica-hero-label">Transparência &amp; Privacidade</span>
+        <h1>Política de <span>Cookies</span></h1>
+      </div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <nav class="politica-breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp;
+      <span style="font-weight: 700; color: var(--tm-gray-dark);">Política de Cookies</span>
+    </nav>
+
+    <!-- CORPO DA PÁGINA -->
+    <div class="politica-body">
+
+      <!-- ÍNDICE LATERAL -->
+      <aside class="politica-indice">
+        <p class="politica-indice-titulo">Nesta página</p>
+        <ul>
+          <li><a href="#o-que-sao">O que são cookies?</a></li>
+          <li><a href="#para-que-servem">Para que servem?</a></li>
+          <li><a href="#tipos">Tipos de cookies</a></li>
+          <li><a href="#compartilhamento">Compartilhamento</a></li>
+          <li><a href="#tempo">Tempo de guarda</a></li>
+          <li><a href="#controle">Como controlar</a></li>
+          <li><a href="#alteracoes">Alterações</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <div class="politica-conteudo">
+
+        <!-- INTRO -->
+        <div class="politica-intro">
+          A <strong>TOOLMIX</strong> está comprometida em assegurar a privacidade dos Dados Pessoais coletados para realização das suas atividades empresariais, bem como cumprir a <strong>Lei Geral de Proteção de Dados (Lei 13.709/18)</strong>, Política de Privacidade da TOOLMIX e regulamentos aplicáveis sobre o tratamento de Dados Pessoais. Esta Política foi construída a partir da Política de Privacidade e Proteção de Dados Pessoais da TOOLMIX e traz as diretrizes para personalização da sua navegação através das informações coletadas pelos cookies.
+        </div>
+
+        <!-- SEÇÃO 1 -->
+        <section class="politica-secao" id="o-que-sao">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">1</div>
+            <h2>O que são cookies?</h2>
+          </div>
+          <p>Cookies são pequenos arquivos de dados que podem ser armazenados nos seus dispositivos (computador, tablet, smartphone, etc.), mediante sua autorização, para que a TOOLMIX possa conhecer melhor o seu perfil como cliente e usuário da Plataforma da TOOLMIX.</p>
+          <p>Os cookies são transferidos do servidor da Plataforma para o seu navegador e permitem que a TOOLMIX identifique o dispositivo final no qual o cookie é salvo durante o período de validade ou registro. Cada Plataforma pode apenas acessar os cookies salvos no seu dispositivo final. Os dados podem ser armazenados em cookies se você concordar ou se for necessário, por razões técnicas para acesso seguro à Plataforma da TOOLMIX.</p>
+        </section>
+
+        <!-- SEÇÃO 2 -->
+        <section class="politica-secao" id="para-que-servem">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">2</div>
+            <h2>Para que servem os cookies?</h2>
+          </div>
+          <p>Os cookies servem para melhorar a experiência de navegação do usuário, seja em termos de usabilidade ou em termos de desempenho da Plataforma.</p>
+          <p>Através dos cookies, as informações de sua visita, localização, preferências, quantidade de acessos e outras são memorizadas para aprimorar a experiência de navegação na Plataforma da TOOLMIX.</p>
+          <p>Além das funcionalidades descritas anteriormente, os cookies podem ser utilizados para gerar indicadores e estatísticas a respeito do uso e interação dos usuários na Plataforma. Os cookies estão presentes na grande maioria dos sites atualmente e o seu uso não prejudica os dispositivos nos quais foram armazenados.</p>
+        </section>
+
+        <!-- SEÇÃO 3 -->
+        <section class="politica-secao" id="tipos">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">3</div>
+            <h2>Quais tipos de cookies utilizamos?</h2>
+          </div>
+
+          <div class="cookies-grid">
+            <div class="cookie-card">
+              <div class="cookie-card-icon">🔒</div>
+              <h3>Essenciais / Necessários</h3>
+              <p>Essenciais para o bom funcionamento da Plataforma e atendimento à legislação. O usuário pode configurar seu navegador para bloqueá-los, mas algumas partes da Plataforma podem não funcionar.</p>
+            </div>
+
+            <div class="cookie-card">
+              <div class="cookie-card-icon">⚡</div>
+              <h3>Cookies de Desempenho</h3>
+              <p>Permitem que o site se comporte de acordo com o visitante, ajustando-se à sua localização, idioma preferido, entre outras preferências de navegação.</p>
+            </div>
+
+            <div class="cookie-card">
+              <div class="cookie-card-icon">⚙️</div>
+              <h3>Cookies Funcionais</h3>
+              <p>Permitem o fornecimento de funcionalidade e personalização aprimoradas, inclusive por meio de terceiros, tais como links para redes sociais, comentários, avaliações e chatbots.</p>
+            </div>
+
+            <div class="cookie-card">
+              <div class="cookie-card-icon">📊</div>
+              <h3>Cookies de Publicidade</h3>
+              <p>Rastreiam a navegação do visitante e coletam dados para criação de perfis demográficos, oferta de anúncios mais relevantes de acordo com o comportamento do usuário e levantamento de informações estatísticas.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 4 -->
+        <section class="politica-secao" id="compartilhamento">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">4</div>
+            <h2>Compartilhamento com terceiros</h2>
+          </div>
+          <p>Com objetivo de melhorar os serviços, a plataforma ou fornecer anúncios direcionados, a TOOLMIX poderá compartilhar com terceiros que prestem serviço a ela as informações coletadas por meio de cookies.</p>
+          <p>Os dados compartilhados podem incluir informações de navegação, interações com site, preferências do usuário e outras informações relevantes.</p>
+        </section>
+
+        <!-- SEÇÃO 5 -->
+        <section class="politica-secao" id="tempo">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">5</div>
+            <h2>Tempo de guarda</h2>
+          </div>
+          <p>Os cookies coletados serão armazenados por um período de até <strong>2 (dois) anos</strong> a contar de sua última visita no site.</p>
+        </section>
+
+        <!-- SEÇÃO 6 -->
+        <section class="politica-secao" id="controle">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">6</div>
+            <h2>Como controlar ou excluir os cookies?</h2>
+          </div>
+          <p>Caso deseje alterar suas preferências ou até mesmo excluir os cookies, você pode modificar as configurações de seu navegador ou marcar quais cookies deseja aceitar na aba "Minhas preferências", do banner de Aviso de Cookies.</p>
+          <p>Informamos, no entanto, que ao desabilitar a coleta e remover os cookies, é possível que você não consiga acessar certas páginas ou áreas de nossa plataforma e, ainda, que sua navegação fique prejudicada.</p>
+          <p>Você também pode baixar ou excluir os dados associados aos cookies clicando no botão "Opt-out" do aviso de cookies. Este canal é destinado exclusivamente ao controle e remoção de cookies, não se aplicando às demais bases de dados da TOOLMIX.</p>
+
+          <div class="politica-destaque">
+            <div class="politica-destaque-icon"></div>
+            <p>Caso necessite de mais informações, entre em contato enviando um e-mail para: <a href="mailto:privacidade@ovd.com.br">privacidade@ovd.com.br</a></p>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 7 -->
+        <section class="politica-secao" id="alteracoes">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">7</div>
+            <h2>Alterações na Política de Cookies</h2>
+          </div>
+          <p>Esta política poderá ser alterada a qualquer tempo. Para se manter atualizado, recomendamos que visite esta página com regularidade.</p>
+        </section>
+
+        <!-- RODAPÉ DO CONTEÚDO -->
+        <div class="politica-footer-info">
+          <p>Dúvidas sobre nossa política? <strong>Entre em contato.</strong></p>
+          <a href="mailto:privacidade@ovd.com.br" class="politica-contato-btn">
+            ✉ privacidade@ovd.com.br
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="tm-footer">
+    <div class="tm-footer-gray">
+      <div class="tm-footer-content">
+        <div class="tm-footer-columns">
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+            <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+            <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+            <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+            <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+            <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-orange">
+      <div class="tm-footer-orange-content">
+        <a href="index.html">
+          <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+        </a>
+        <div class="tm-footer-social">
+          <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+          </a>
+          <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+          </a>
+          <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+          </a>
+          <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-bottom">
+      © Grupo OVD. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

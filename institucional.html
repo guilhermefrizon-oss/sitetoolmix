@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>TOOLMIX - Institucional</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    /* Banner institucional — mostra a imagem inteira no mobile e tablet */
+    @media (max-width: 1024px) {
+      .tm-institucional .tm-slider {
+        height: auto !important;
+        aspect-ratio: auto !important;
+        overflow: visible !important;
+      }
+
+      .tm-institucional .tm-slide {
+        position: relative !important;
+        inset: auto !important;
+        opacity: 1 !important;
+      }
+
+      .tm-institucional .tm-slide img {
+        height: auto !important;
+        object-fit: contain !important;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+   <!-- HEADER/CABEÇALHO -->
+
+
+<header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS. 
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <!-- CONTEÚDO DA PÁGINA -->
+  <main class="tm-institucional">
+    
+    <!-- BANNER FIXO -->
+    <section class="tm-hero">
+      <div class="tm-slider" id="tm-slider">
+          <div class="tm-slide active">
+              <img src="images/banners/institucional/01_banner_institucional.png" alt="Banner Fixo - Institucional">
+          </div>
+      </div>
+    </section>
+
+    <!-- Linha horizontal logo abaixo do header -->
+    <hr class="horizontal-line">
+
+    <!-- Título com Faixa Estilizada -->
+    <hr class="horizontal-line">
+  <div class="title-section" style="margin-top: 40px; margin-bottom: 40px;">
+    <div class="title-banner" style="font-size: 18px; height: 50px; width: 450px; text-transform: uppercase;">
+      Institucional
+    </div>
+  </div>
+
+    <!-- TEXTO DE CIMA -->
+    <section class="tm-institucional-primeiro-texto">
+      <p>
+          Conectada às novas formas de trabalhar, a <strong>TOOLMIX</strong> é a marca que une tecnologia,
+          eficiência e custo-benefício real em ferramentas e equipamentos pensados para quem valoriza os
+          resultados com muita praticidade. Com mais de 20 anos de experiência no mercado, a
+          <strong>TOOLMIX</strong> evoluiu para acompanhar o ritmo e as inovações que transformam o nosso
+          dia a dia — para quem busca soluções inteligentes, fáceis de usar e com desempenho de verdade.
+      </p>
+    </section>
+
+    <section class="tm-institucional-duas-colunas">
+
+      <!-- BLOCO LARANJA (TEXTO SEO) -->
+      <div class="tm-institucional-bloco-laranja">
+          <p>
+          E agora, com a <strong>nova linha de Ferramentas a Bateria TOOLMIX</strong>, o trabalho ganha
+          mais <strong>autonomia</strong>, <strong>mobilidade</strong> e <strong>design funcional</strong>,
+          entregando o <strong>máximo de performance</strong> em qualquer lugar.
+          </p>
+      </div>
+
+      <!-- IMAGEM À DIREITA -->
+      <div class="tm-institucional-imagem">
+          <img src="images/banners/institucional/02_banner_institucional.png" 
+              alt="Ferramenta TOOLMIX furadeira">
+      </div>
+
+    </section>
+
+
+
+    <!-- TEXTO DE BAIXO -->
+    <section class="tm-institucional-segundo-texto">
+        <p>
+            Da construção civil à manutenção, reparo e instalações, cada produto é projetado para oferecer potência, 
+            resistência e liberdade de movimento, sem esforço! Mais do que ferramentas, a <strong>TOOLMIX</strong> representa uma 
+            mentalidade smart: fazer mais por menos! <strong>Mais simplicidade com os melhores resultados</strong>, investindo em 
+            produtos que realmente agregam valor em tudo o que você fizer. Por isso, cada lançamento carrega a missão
+            de simplificar o dia a dia de quem transforma, constrói e realiza. <strong>Sempre melhor, sempre TOOLMIX!</strong>
+        </p>
+    </section>
+
+      
+    <!-- Container Infos Gerais -->
+    <section class="tm-infos-gerais">
+      <div class="tm-infos-wrapper">
+        
+        <!-- Bloco 1 – ONDE COMPRAR -->
+        <div class="tm-info-card" id="onde-comprar">
+          <img src="images/infos/onde_encontrar.svg" alt="Ícone localização" class="tm-info-icon-onde-comprar">
+          <p class="tm-info-title">ONDE COMPRAR</p>
+            <p class="tm-info-text">
+              Os produtos e acessórios TOOLMIX estão
+              disponíveis em todas as lojas físicas
+              e também no site oficial da <br> Ferramentas Gerais.
+            </p>
+          <a href="sedes.html" class="tm-info-btn">Confira</a>
+        </div>
+
+        <!-- Bloco 2 – ENTRE EM CONTATO -->
+        <div class="tm-info-card">
+          <img src="images/infos/duvidas.svg" alt="Ícone contato" class="tm-info-icon-contato">
+          <p class="tm-info-title">ENTRE EM CONTATO</p>
+            <p class="tm-info-text">
+              Dúvidas sobre os produtos TOOLMIX? Entre
+              em contato com nossa <br> Assistência
+              Técnica agora!
+            </p>
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" class="tm-info-btn">Fale conosco</a>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+
+    <!-- FOOTER/RODAPÉ -->
+  <footer class="tm-footer">
+
+  <!-- Forma cinza -->
+  <div class="tm-footer-gray">
+    <div class="tm-footer-content">
+
+      <div class="tm-footer-columns">
+
+        <!-- COLUNA 1 – INSTITUCIONAL -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+          <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+        </div>
+
+        <!-- COLUNA 2 – POLÍTICAS -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+          <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+          <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+        </div>
+
+        <!-- COLUNA 3 – NOSSA ESTRUTURA -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+          <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+        </div>
+
+        <!-- COLUNA 4 – ATENDIMENTO -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Forma Laranja - Logo + Redes Sociais -->
+  <div class="tm-footer-orange">
+    <div class="tm-footer-orange-content">
+      <a href="index.html">
+        <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+      </a>
+
+      <div class="tm-footer-social">
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+        </a>
+        <!-- FACEBOOK -->
+        <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+        </a>
+        <!-- TIKTOK -->
+        <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+        </a>
+        <!-- YOUTUBE -->
+        <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Forma Branca inferior - Direitos Reservados -->
+  <div class="tm-footer-bottom">
+    © Grupo OVD. Todos os direitos reservados.
+  </div>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>

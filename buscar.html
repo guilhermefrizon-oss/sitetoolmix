@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Busca - TOOLMIX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+  
+  <style>
+    /* Estilos específicos para a página de busca para dar um respiro */
+    .tm-search-page-header {
+      max-width: 1440px;
+      margin: 60px auto 40px;
+      padding: 0 40px;
+    }
+    .tm-search-page-header h1 {
+      font-size: 24px;
+      color: var(--tm-gray-dark);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER/CABEÇALHO -->
+
+
+<header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS. 
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <main style="min-height: 50vh;">
+    <div class="tm-search-page-header">
+      <h1 id="search-title">Buscando...</h1>
+    </div>
+
+    <div class="tm-plp-container">
+      <div class="tm-plp-main">
+        <div class="tm-plp-grid" id="search-results">
+          </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="tm-footer">
+    <div class="tm-footer-gray">
+      <div class="tm-footer-content">
+        <div class="tm-footer-columns">
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+            <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+            <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+            <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+            <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+            <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tm-footer-orange">
+      <div class="tm-footer-orange-content">
+        <a href="index.html"><img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo"></a>
+        <div class="tm-footer-social">
+          <a href="#" class="tm-social-link"><img src="images/footer/instagram.svg" class="tm-social-icon"></a>
+          <a href="#" class="tm-social-link"><img src="images/footer/facebook.svg" class="tm-social-icon"></a>
+          <a href="#" class="tm-social-link"><img src="images/footer/tiktok.svg" class="tm-social-icon"></a>
+          <a href="#" class="tm-social-link"><img src="images/footer/youtube.svg" class="tm-social-icon"></a>
+        </div>
+      </div>
+    </div>
+    <div class="tm-footer-bottom">
+      © Grupo OVD. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Nosso "Banco de Dados" simulado com os produtos que você tem no index.html
+      const produtos = [
+        { 
+          nome: "Parafusadeira/furadeira a bateria, 12 V, fonte bivolt automática, PFT 012 TOOLMIX", 
+          imagem: "images/lancamentos/produto_01.jpg", 
+          link: "pft012.html",
+          tags: ["parafusadeira", "furadeira", "12v", "bateria", "pft012", "ferramenta"]
+        },
+        { 
+          nome: "Parafusadeira/furadeira de impacto a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020I TOOLMIX", 
+          imagem: "images/lancamentos/produto_02.jpg", 
+          link: "pft020I.html",
+          tags: ["parafusadeira", "furadeira", "impacto", "20v", "bateria", "pft020i", "ferramenta"]
+        },
+        { 
+          nome: "Parafusadeira/furadeira de impacto a bateria, 12 V, fonte de carregamento bivolt automática, PFT 012I TOOLMIX", 
+          imagem: "images/lancamentos/produto_03.jpg", 
+          link: "pft012I.html",
+          tags: ["parafusadeira", "furadeira", "impacto", "12v", "bateria", "pft012i", "ferramenta"]
+        },
+        { 
+          nome: "Parafusadeira/furadeira a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020 TOOLMIX", 
+          imagem: "images/lancamentos/produto_04.jpg", 
+          link: "pft020.html",
+          tags: ["parafusadeira", "furadeira", "20v", "bateria", "pft020", "ferramenta"]
+        },
+        { 
+          nome: "Bateria 12 V - 1,5 Ah, íons de lítio, para PFT 012 e PFT 012I TOOLMIX", 
+          imagem: "images/produtos/pft012_bateria/1213216_principal.jpg", 
+          link: "pft012_bateria.html",
+          tags: ["bateria", "12v", "acessorio", "litio", "pft012"]
+        },
+        { 
+          nome: "Bateria 20 V - 1,5 Ah, íons de lítio, para PFT 020 e PFT 020I TOOLMIX", 
+          imagem: "images/produtos/pft020_bateria/1213219_embalagem_1.jpg", 
+          link: "pft020_bateria.html",
+          tags: ["bateria", "20v", "acessorio", "litio", "pft020"]
+        }
+      ];
+
+      // 2. Pegar a palavra que o usuário digitou na URL (o parâmetro ?q=...)
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      
+      const searchTitle = document.getElementById('search-title');
+      const resultsContainer = document.getElementById('search-results');
+
+      // 3. Filtrar e exibir os resultados
+      if (query && query.trim() !== "") {
+        const termoBusca = query.toLowerCase().trim();
+        searchTitle.innerHTML = `Resultados para: <strong>"${query}"</strong>`;
+
+        // Filtra se o termo estiver no nome do produto OU nas tags invisíveis
+        const resultadosFiltrados = produtos.filter(produto => {
+          const noNome = produto.nome.toLowerCase().includes(termoBusca);
+          const nasTags = produto.tags.some(tag => tag.includes(termoBusca));
+          return noNome || nasTags;
+        });
+
+        // 4. Montar o HTML dos cards ou mostrar mensagem de vazio
+        if (resultadosFiltrados.length > 0) {
+          resultadosFiltrados.forEach(produto => {
+            const cardHTML = `
+              <div class="tm-plp-card">
+                <a href="${produto.link}" class="tm-plp-card-link">
+                  <img src="${produto.imagem}" alt="${produto.nome}">
+                  <p>${produto.nome}</p>
+                </a>
+              </div>
+            `;
+            resultsContainer.innerHTML += cardHTML;
+          });
+        } else {
+          resultsContainer.innerHTML = `<p style="grid-column: 1 / -1; font-size: 18px; color: var(--tm-gray-secondary);">Poxa, não encontramos nenhum produto para "${query}". Tente buscar por "parafusadeira" ou "bateria".</p>`;
+        }
+      } else {
+        searchTitle.textContent = "Digite o nome de uma ferramenta na barra de pesquisa.";
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>TOOLMIX - Produtos e Acessórios</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+</head>
+
+
+<body>
+
+  <!-- HEADER/CABEÇALHO -->
+
+
+<header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS. 
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+<hr class="horizontal-line">
+  <div class="title-section" style="margin-top: 40px; margin-bottom: 40px;">
+    <div class="title-banner" style="font-size: 18px; height: 50px; width: 450px; text-transform: uppercase;">
+      Produtos e Acessórios
+    </div>
+  </div>
+
+  <section class="tm-plp-container">
+    
+    <aside class="tm-plp-sidebar">
+  <h3>Categoria de<br>Produtos</h3>
+  <ul>
+    <li><a href="javascript:void(0)" data-filter="all">> Todos os Produtos</a></li>
+    <li><a href="javascript:void(0)" data-filter="parafusadeiras">> Parafusadeiras (4)</a></li>
+    <li><a href="javascript:void(0)" data-filter="baterias">> Baterias (2)</a></li>
+  </ul>
+</aside>
+
+    <main class="tm-plp-main">
+      <div class="tm-plp-topbar">
+        <span>Ordenar produtos por</span>
+        <select>
+          <option>Relevância</option>
+          <option>Menor Preço</option>
+          <option>Maior Preço</option>
+        </select>
+      </div>
+
+      <div class="tm-plp-grid">
+        
+        <div class="tm-plp-card" data-category="parafusadeiras">
+            <a href="pft012.html" class="tm-plp-card-link">
+            <span class="tm-plp-badge">Lançamento</span>
+            <span class="tm-plp-fav">♡</span>
+            <img src="images/lancamentos/produto_01.jpg" alt="Parafusadeira PFT 012I">
+            <p>Parafusadeira/furadeira a bateria, 12 V, fonte bivolt automática, PFT 012 TOOLMIX</p>
+          </a>
+        </div>
+
+        <div class="tm-plp-card" data-category="parafusadeiras">
+            <a href="pft020I.html" class="tm-plp-card-link">
+            <span class="tm-plp-badge">Lançamento</span>
+            <span class="tm-plp-fav">♡</span>
+            <img src="images/lancamentos/produto_02.jpg" alt="Parafusadeira PFT 012I">
+            <p>Parafusadeira/furadeira de impacto a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020I TOOLMIX</p>
+          </a>
+        </div>
+
+        <div class="tm-plp-card" data-category="parafusadeiras">
+            <a href="pft012I.html" class="tm-plp-card-link">
+            <span class="tm-plp-badge">Lançamento</span>
+            <span class="tm-plp-fav">♡</span>
+            <img src="images/lancamentos/produto_03.jpg" alt="Parafusadeira PFT 012I">
+            <p>Parafusadeira/furadeira de impacto a bateria, 12 V, fonte de carregamento bivolt automática, PFT 012I TOOLMIX</p>
+          </a>
+        </div>
+
+        <div class="tm-plp-card" data-category="parafusadeiras">
+            <a href="pft020.html" class="tm-plp-card-link">
+            <span class="tm-plp-badge">Lançamento</span>
+            <span class="tm-plp-fav">♡</span>
+            <img src="images/lancamentos/produto_04.jpg" alt="Parafusadeira PFT 012I">
+            <p>Parafusadeira/furadeira a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020 TOOLMIX</p>
+          </a>
+        </div>
+
+        <div class="tm-plp-card" data-category="baterias">
+            <a href="pft012_bateria.html" class="tm-plp-card-link">
+            <span class="tm-plp-badge">Lançamento</span>
+            <span class="tm-plp-fav">♡</span>
+            <img src="images/produtos/pft012_bateria/1213216_principal.jpg" alt="Parafusadeira PFT 012I">
+            <p>Bateria 12 V - 1,5 Ah, íons de lítio, para PFT 012 e PFT 012I TOOLMIX</p>
+          </a>
+        </div>
+
+        <div class="tm-plp-card" data-category="baterias">
+            <a href="pft020_bateria.html" class="tm-plp-card-link">
+            <span class="tm-plp-badge">Lançamento</span>
+            <span class="tm-plp-fav">♡</span>
+            <img src="images/produtos/pft020_bateria/1213219_embalagem_1.jpg" alt="Parafusadeira PFT 012I">
+            <p>Bateria 20 V - 1,5 Ah, íons de lítio, para PFT 020 e PFT 020I TOOLMIX</p>
+          </a>
+        </div>
+      </div>
+    </main>
+  </section>
+
+
+
+<section class="tm-infos-gerais">
+    <div class="tm-infos-wrapper">
+      
+      <div class="tm-info-card" id="onde-comprar">
+        <img src="images/infos/onde_encontrar.svg" alt="Ícone localização" class="tm-info-icon-onde-comprar">
+        <p class="tm-info-title">ONDE COMPRAR</p>
+          <p class="tm-info-text">
+            Os produtos e acessórios TOOLMIX estão
+            disponíveis em todas as lojas físicas
+            e também no site oficial da <br> Ferramentas Gerais.
+          </p>
+        <a href="sedes.html" class="tm-info-btn">Confira</a>
+      </div>
+
+      <div class="tm-info-card">
+        <img src="images/infos/duvidas.svg" alt="Ícone contato" class="tm-info-icon-contato">
+        <p class="tm-info-title">ENTRE EM CONTATO</p>
+          <p class="tm-info-text">
+            Dúvidas sobre os produtos TOOLMIX? Entre
+            em contato com nossa <br> Assistência
+            Técnica agora!
+          </p>
+        <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" class="tm-info-btn">Fale conosco</a>
+      </div>
+
+    </div>
+  </section>
+  
+     <!-- FOOTER/RODAPÉ -->
+  <footer class="tm-footer">
+
+  <!-- Forma cinza -->
+  <div class="tm-footer-gray">
+    <div class="tm-footer-content">
+
+      <div class="tm-footer-columns">
+
+        <!-- COLUNA 1 – INSTITUCIONAL -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+          <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+        </div>
+
+        <!-- COLUNA 2 – POLÍTICAS -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+          <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+          <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+        </div>
+
+        <!-- COLUNA 3 – NOSSA ESTRUTURA -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+          <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+        </div>
+
+        <!-- COLUNA 4 – ATENDIMENTO -->
+        <div class="tm-footer-column">
+          <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Forma Laranja - Logo + Redes Sociais -->
+  <div class="tm-footer-orange">
+    <div class="tm-footer-orange-content">
+      <a href="index.html">
+        <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+      </a>
+
+      <div class="tm-footer-social">
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+        </a>
+        <!-- FACEBOOK -->
+        <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+        </a>
+        <!-- TIKTOK -->
+        <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+        </a>
+        <!-- YOUTUBE -->
+        <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+          <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Forma Branca inferior - Direitos Reservados -->
+  <div class="tm-footer-bottom">
+    © Grupo OVD. Todos os direitos reservados.
+  </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

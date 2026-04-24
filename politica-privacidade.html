@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOOLMIX - Política de Privacidade</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    /* =============================================
+       ESTILOS EXCLUSIVOS — POLÍTICA DE PRIVACIDADE
+       ============================================= */
+
+    .politica-hero {
+      background-color: var(--tm-gray-dark);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .politica-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 100%;
+      background-color: var(--tm-primary);
+      clip-path: polygon(180px 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .politica-hero-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .politica-hero-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .politica-hero h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--tm-white);
+      text-transform: uppercase;
+      line-height: 1.1;
+      max-width: 700px;
+    }
+
+    .politica-hero h1 span {
+      color: var(--tm-primary);
+    }
+
+    .politica-breadcrumb {
+      max-width: 1280px;
+      margin: 24px auto 0;
+      padding: 0 40px;
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+    }
+
+    .politica-breadcrumb a {
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      transition: color 0.2s;
+    }
+
+    .politica-breadcrumb a:hover {
+      color: var(--tm-primary);
+    }
+
+    .politica-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .politica-indice {
+      position: sticky;
+      top: 30px;
+    }
+
+    .politica-indice-titulo {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--tm-gray-light);
+    }
+
+    .politica-indice ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .politica-indice li {
+      margin-bottom: 4px;
+    }
+
+    .politica-indice a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+    }
+
+    .politica-indice a:hover {
+      background-color: var(--tm-gray-light);
+      color: var(--tm-primary);
+      border-left-color: var(--tm-primary);
+    }
+
+    .politica-indice a::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--tm-primary);
+      flex-shrink: 0;
+    }
+
+    .politica-conteudo {
+      min-width: 0;
+    }
+
+    .politica-intro {
+      background-color: var(--tm-gray-light);
+      border-left: 5px solid var(--tm-primary);
+      padding: 28px 32px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 50px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--tm-gray-secondary);
+    }
+
+    .politica-intro strong {
+      color: var(--tm-gray-dark);
+    }
+
+    .politica-secao {
+      margin-bottom: 50px;
+      scroll-margin-top: 30px;
+    }
+
+    .politica-secao-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--tm-gray-light);
+    }
+
+    .politica-secao-num {
+      width: 36px;
+      height: 36px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 14px;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .politica-secao h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .politica-secao p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 16px;
+    }
+
+    .politica-secao p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Lista com letras */
+    .politica-lista {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    .politica-lista li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--tm-gray-secondary);
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--tm-gray-light);
+    }
+
+    .politica-lista li:last-child {
+      border-bottom: none;
+    }
+
+    .politica-lista li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--tm-primary);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    /* Tabela de coleta de dados */
+    .politica-tabela {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .politica-tabela th {
+      background-color: var(--tm-gray-dark);
+      color: var(--tm-white);
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .politica-tabela th:first-child {
+      border-radius: 8px 0 0 0;
+    }
+
+    .politica-tabela th:last-child {
+      border-radius: 0 8px 0 0;
+    }
+
+    .politica-tabela td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--tm-gray-light);
+      color: var(--tm-gray-secondary);
+      line-height: 1.7;
+      vertical-align: top;
+    }
+
+    .politica-tabela tr:nth-child(even) td {
+      background-color: #f8f8f8;
+    }
+
+    .politica-tabela tr:last-child td {
+      border-bottom: none;
+    }
+
+    .politica-tabela td:first-child {
+      font-weight: 600;
+      color: var(--tm-gray-dark);
+      width: 40%;
+    }
+
+    /* Glossário de definições */
+    .politica-definicoes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .politica-def-item {
+      background: var(--tm-gray-light);
+      border-radius: 8px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--tm-primary);
+    }
+
+    .politica-def-item strong {
+      display: block;
+      color: var(--tm-gray-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 6px;
+    }
+
+    .politica-def-item span {
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+      line-height: 1.6;
+    }
+
+    /* Direitos do titular */
+    .politica-direitos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .politica-direito-card {
+      background: var(--tm-white);
+      border: 1.5px solid var(--tm-gray-light);
+      border-radius: 8px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .politica-direito-card:hover {
+      border-color: var(--tm-primary);
+    }
+
+    .politica-direito-letra {
+      width: 28px;
+      height: 28px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .politica-direito-card p {
+      font-size: 13px !important;
+      line-height: 1.6 !important;
+      margin: 0 !important;
+    }
+
+    /* Bloco de destaque */
+    .politica-destaque {
+      background: linear-gradient(135deg, var(--tm-gray-dark) 0%, #555 100%);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-top: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .politica-destaque-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .politica-destaque p {
+      color: rgba(255,255,255,0.85) !important;
+      margin-bottom: 0 !important;
+      font-size: 14px !important;
+      line-height: 1.7 !important;
+    }
+
+    .politica-destaque a {
+      color: var(--tm-primary);
+      font-weight: 700;
+    }
+
+    /* Recomendações de segurança */
+    .politica-recomendacoes {
+      background-color: var(--tm-gray-light);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .politica-recomendacoes p {
+      font-size: 14px !important;
+      line-height: 1.8 !important;
+      margin-bottom: 12px !important;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .politica-recomendacoes p::before {
+      content: "⚠";
+      position: absolute;
+      left: 0;
+      color: var(--tm-primary);
+    }
+
+    .politica-recomendacoes p:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    /* Rodapé do conteúdo */
+    .politica-footer-info {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 2px solid var(--tm-gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .politica-footer-info p {
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+      margin: 0;
+    }
+
+    .politica-footer-info strong {
+      color: var(--tm-gray-dark);
+    }
+
+    .politica-contato-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 28px;
+      text-decoration: none;
+      clip-path: polygon(6% 0, 100% 0, 94% 100%, 0% 100%);
+      transition: background 0.2s;
+    }
+
+    .politica-contato-btn:hover {
+      background-color: var(--tm-primary-hover);
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .politica-body {
+        grid-template-columns: 1fr;
+        padding: 40px 30px 60px;
+      }
+
+      .politica-indice {
+        position: relative;
+        top: auto;
+        background: var(--tm-gray-light);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .politica-definicoes,
+      .politica-direitos {
+        grid-template-columns: 1fr;
+      }
+
+      .politica-tabela {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .politica-hero::before {
+        width: 200px;
+      }
+
+      .politica-hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .politica-hero {
+        padding: 40px 20px;
+      }
+
+      .politica-hero::before {
+        display: none;
+      }
+
+      .politica-hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .politica-breadcrumb {
+        padding: 0 20px;
+      }
+
+      .politica-body {
+        padding: 30px 20px 50px;
+        gap: 30px;
+      }
+
+      .politica-intro {
+        padding: 20px;
+      }
+
+      .politica-destaque {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+
+      .politica-footer-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .politica-definicoes,
+      .politica-direitos {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS.
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="politica-hero">
+      <div class="politica-hero-content">
+        <span class="politica-hero-label">Transparência &amp; Privacidade</span>
+        <h1>Política de <span>Privacidade</span> e Proteção de Dados</h1>
+      </div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <nav class="politica-breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp;
+      <span style="font-weight: 700; color: var(--tm-gray-dark);">Política de Privacidade</span>
+    </nav>
+
+    <!-- CORPO -->
+    <div class="politica-body">
+
+      <!-- ÍNDICE LATERAL -->
+      <aside class="politica-indice">
+        <p class="politica-indice-titulo">Nesta página</p>
+        <ul>
+          <li><a href="#definicoes">1. Definições</a></li>
+          <li><a href="#por-que-coletamos">2. Por que coletamos?</a></li>
+          <li><a href="#como-coletamos">3. Como coletamos?</a></li>
+          <li><a href="#hipoteses">4. Hipóteses legais</a></li>
+          <li><a href="#por-quanto-tempo">5. Por quanto tempo?</a></li>
+          <li><a href="#compartilhamento">6. Compartilhamento</a></li>
+          <li><a href="#transferencias">7. Transferências internacionais</a></li>
+          <li><a href="#direitos">8. Seus direitos</a></li>
+          <li><a href="#seguranca">9. Segurança</a></li>
+          <li><a href="#alteracoes">11. Alterações</a></li>
+          <li><a href="#legislacao">12. Legislação</a></li>
+          <li><a href="#disposicoes">13. Disposições gerais</a></li>
+          <li><a href="#contato">14. Contato</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <div class="politica-conteudo">
+
+        <!-- INTRO -->
+        <div class="politica-intro">
+          Sua privacidade e a segurança de seus Dados Pessoais são muito importantes para nós. Trabalhamos constantemente para ofertar produtos e nos relacionarmos com você atendendo a rigorosos padrões de segurança e qualidade. Esta política tem por objetivo descrever como e quais Dados Pessoais tratamos, a forma que os utilizamos, como os protegemos e como você poderá nos contatar para tratar quaisquer dúvidas, nos termos da <strong>Lei 13.709/18 (LGPD)</strong> e demais legislações aplicáveis. Este documento se aplica a todas as pessoas naturais que possuem relação com a <strong>Ferramentas Gerais e suas filiais</strong>. A presente Política poderá ser atualizada a qualquer momento, sem aviso prévio.
+        </div>
+
+        <!-- SEÇÃO 1 — DEFINIÇÕES -->
+        <section class="politica-secao" id="definicoes">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">1</div>
+            <h2>Definições</h2>
+          </div>
+
+          <div class="politica-definicoes">
+            <div class="politica-def-item">
+              <strong>ANPD</strong>
+              <span>Autoridade Nacional de Proteção de Dados.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Cliente</strong>
+              <span>Pessoa física ou jurídica que adquire produtos comercializados pela Ferramentas Gerais.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Colaborador FG</strong>
+              <span>Pessoa física que possui vínculo com a Ferramentas Gerais por relação empregatícia ou societária.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Controlador</strong>
+              <span>Empresa a quem cabe a decisão sobre o Tratamento de Dados Pessoais. Nesta política, a Ferramentas Gerais.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Dados Cadastrais</strong>
+              <span>Nome, documento de identidade, CPF.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Dados de Contato</strong>
+              <span>E-mail, telefone e endereço.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Dados Financeiros</strong>
+              <span>Dados de cartão de crédito, conta bancária e informações de cadastros de proteção ao crédito.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Dado Pessoal</strong>
+              <span>Toda informação que identifique ou que, combinada com outros dados, possa identificar uma pessoa física.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Dado Pessoal Sensível</strong>
+              <span>Informação envolvendo origem racial, convicção religiosa, opinião política, saúde, vida sexual, dado genético ou biométrico.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Ferramentas Gerais / FG</strong>
+              <span>Ferramentas Gerais Comércio e Importação de Ferramentas e Máquinas LTDA, CNPJ 92.664.028/0001-41, Porto Alegre/RS.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Encarregado de Dados</strong>
+              <span>Pessoa que atuará como canal de comunicação entre a FG, o Titular dos Dados e a ANPD.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>LGPD</strong>
+              <span>Lei Geral de Proteção de Dados (Lei n. 13.709/2018).</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Operador</strong>
+              <span>Qualquer pessoa ou empresa que realize o tratamento de dados pessoais em nome da FG.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Parceiro</strong>
+              <span>Pessoa física ou jurídica que figure como fornecedor, prestador de serviços ou qualquer terceiro com relação negocial com a FG.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Titular de Dados</strong>
+              <span>Pessoa física a quem se referem os Dados Pessoais.</span>
+            </div>
+            <div class="politica-def-item">
+              <strong>Usuário</strong>
+              <span>Pessoa física que acessa e utiliza as Plataformas da FG.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 2 — POR QUE COLETAMOS -->
+        <section class="politica-secao" id="por-que-coletamos">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">2</div>
+            <h2>Por que coletamos e tratamos seus dados pessoais?</h2>
+          </div>
+          <p>O atendimento da FG é individual e personalizado tanto para candidatos a vagas, quanto para Colaboradores FG, Parceiros, Usuários, Clientes e representantes. Para possibilitar tal interação e ofertar a melhor experiência de forma adequada e segura, podemos solicitar alguns de seus Dados Pessoais conforme a tabela a seguir:</p>
+
+          <table class="politica-tabela">
+            <thead>
+              <tr>
+                <th>Por que coletamos?</th>
+                <th>Quais dados são coletados?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Para candidaturas às nossas vagas e processo de recrutamento e seleção</td>
+                <td>Nome, documentos de identidade, CPF, histórico profissional e acadêmico e informações sobre sua saúde.</td>
+              </tr>
+              <tr>
+                <td>Para admissão de Colaboradores FG e obrigações decorrentes do contrato de trabalho</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail, telefone, dados exigidos por lei e documentos de dependentes.</td>
+              </tr>
+              <tr>
+                <td>Para cotação, contratação, comunicação e gestão de Parceiros</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail e telefone dos representantes legais e/ou colaboradores do parceiro.</td>
+              </tr>
+              <tr>
+                <td>Para realização de vendas via Plataforma de Comércio Eletrônico</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail, telefone, dados de cartão de crédito, conta bancária e informações de cadastros de proteção ao crédito.</td>
+              </tr>
+              <tr>
+                <td>Para recebimento e atendimento dos pedidos de informações via Plataformas FG</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail, telefone, informações de interesses e dados coletados via cookies.</td>
+              </tr>
+              <tr>
+                <td>Para prospecção, contato com potenciais Clientes e fornecimento de orçamentos</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail e telefone dos Clientes e representantes.</td>
+              </tr>
+              <tr>
+                <td>Para atendimento de Clientes, presencialmente ou não</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail, telefone, informações de interesses e preferências.</td>
+              </tr>
+              <tr>
+                <td>Para segurança física e patrimonial</td>
+                <td>Imagens através de câmeras de segurança.</td>
+              </tr>
+              <tr>
+                <td>Para ações de promoção e marketing</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail, telefone, informações de interesses e preferências.</td>
+              </tr>
+              <tr>
+                <td>Para análise de crédito e prevenção à fraude</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail, telefone, dados de cartão de crédito e informações de cadastros de proteção ao crédito.</td>
+              </tr>
+              <tr>
+                <td>Para melhoria e personalização de nossos produtos e atendimento</td>
+                <td>Nome, documentos de identidade, CPF, endereço, e-mail, telefone, informações de interesses e preferências.</td>
+              </tr>
+              <tr>
+                <td>Para interação e desenvolvimento de anúncios nas redes sociais e materiais publicitários</td>
+                <td>Fotos, nome, documentos de identidade, CPF, endereço, geolocalização, perfis e dados de interesses e preferências.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SEÇÃO 3 — COMO COLETAMOS -->
+        <section class="politica-secao" id="como-coletamos">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">3</div>
+            <h2>Como coletamos seus dados pessoais?</h2>
+          </div>
+          <p>Podemos coletar os seus dados de forma direta ou indireta, de diversas maneiras, incluindo, mas não se limitando a:</p>
+          <ul class="politica-lista">
+            <li>Plataformas de recrutamento e seleção</li>
+            <li>Plataformas de comércio eletrônico FG</li>
+            <li>Processo de contratação de Colaboradores FG</li>
+            <li>Cotação ou contratação de Parceiros</li>
+            <li>Formulários dispostos nas Plataformas FG</li>
+            <li>Cookies nas Plataformas FG</li>
+            <li>E-mails constantes nas Plataformas FG</li>
+            <li>Cartões de visitas e documentos diversos recebidos pelos Colaboradores FG</li>
+            <li>Comunicações com Clientes e Parceiros</li>
+            <li>Urnas localizadas nas Lojas FG</li>
+            <li>Termos, contratos e documentos diversos recebidos de Clientes, Colaboradores FG ou Parceiros</li>
+            <li>Câmeras de segurança</li>
+            <li>Cadastro para acesso às dependências da FG</li>
+            <li>Redes sociais e aplicativos de comunicação</li>
+            <li>Feiras e eventos presenciais ou não</li>
+            <li>Processos judiciais, administrativos ou arbitrais</li>
+          </ul>
+        </section>
+
+        <!-- SEÇÃO 4 — HIPÓTESES LEGAIS -->
+        <section class="politica-secao" id="hipoteses">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">4</div>
+            <h2>Hipóteses legais que permitem o tratamento</h2>
+          </div>
+          <p>A Lei Geral de Proteção de Dados determina as hipóteses que nos permitem tratar os seus Dados Pessoais:</p>
+          <ul class="politica-lista">
+            <li>Consentimento fornecido pelo Titular dos Dados</li>
+            <li>Cumprimento de obrigação legal ou regulatória pela FG</li>
+            <li>Execução de Contrato ou de procedimentos preliminares relacionados a Contrato do qual seja parte o Titular dos Dados</li>
+            <li>Exercício regular de direitos da FG em contratos ou, em processo judicial, administrativo ou arbitral</li>
+            <li>Proteção à vida ou incolumidade física do Titular do Dado e de Terceiros</li>
+            <li>Garantia da prevenção à fraude e à segurança do titular</li>
+            <li>Proteção ao crédito</li>
+            <li>Interesses legítimos da FG ou de terceiros</li>
+          </ul>
+          <p style="margin-top: 16px;">As hipóteses (b) a (h) permitem o tratamento de dados pessoais sem a autorização prévia do Titular. Em sendo necessária a coleta do consentimento, o faremos no momento da solicitação dos Dados Pessoais.</p>
+        </section>
+
+        <!-- SEÇÃO 5 — POR QUANTO TEMPO -->
+        <section class="politica-secao" id="por-quanto-tempo">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">5</div>
+            <h2>Por quanto tempo tratamos seus dados?</h2>
+          </div>
+          <p>Os Dados Pessoais serão tratados pelo prazo necessário para o cumprimento da sua finalidade, sendo respeitados os prazos contratuais ou legalmente previstos.</p>
+        </section>
+
+        <!-- SEÇÃO 6 — COMPARTILHAMENTO -->
+        <section class="politica-secao" id="compartilhamento">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">6</div>
+            <h2>Com quem compartilhamos seus dados?</h2>
+          </div>
+          <p>Os Dados Pessoais disponibilizados por você à FG podem ser compartilhados com:</p>
+          <ul class="politica-lista">
+            <li><strong>Parceiros</strong> — que nos auxiliarão no fornecimento dos produtos e em todas as atividades necessárias para o desenvolvimento do objeto social da FG</li>
+            <li><strong>Autoridades competentes no Poder Público</strong> — se necessário, para cumprimento de obrigações judiciais ou administrativas</li>
+            <li><strong>Colaboradores FG</strong> — que necessitam ter acesso a estas informações para execução do trabalho</li>
+          </ul>
+        </section>
+
+        <!-- SEÇÃO 7 — TRANSFERÊNCIAS INTERNACIONAIS -->
+        <section class="politica-secao" id="transferencias">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">7</div>
+            <h2>Transferências internacionais de dados</h2>
+          </div>
+          <p>Embora o Grupo OVD seja uma empresa brasileira, alguns dos Dados Pessoais que tratamos podem ser transferidos internacionalmente para atender às finalidades previstas nesta Política. Isso ocorre porque determinados fornecedores, parceiros tecnológicos, plataformas de armazenamento e sistemas corporativos utilizados pelo Grupo OVD podem estar localizados fora do Brasil.</p>
+          <p>Essas transferências são realizadas apenas com organizações que demonstrem estar em conformidade com as normas aplicáveis de proteção de dados e que adotem padrões de segurança compatíveis com os previstos na legislação brasileira.</p>
+        </section>
+
+        <!-- SEÇÃO 8 — DIREITOS -->
+        <section class="politica-secao" id="direitos">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">8</div>
+            <h2>Quais são seus direitos?</h2>
+          </div>
+          <p>Como Titular dos Dados, você possui uma série de direitos garantidos por lei que podem ser exercidos a qualquer momento mediante requisição direcionada à FG:</p>
+
+          <div class="politica-direitos">
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">A</div>
+              <p>Confirmação da existência de tratamento</p>
+            </div>
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">B</div>
+              <p>Acesso aos Dados tratados</p>
+            </div>
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">C</div>
+              <p>Correção de Dados incompletos, inexatos ou desatualizados</p>
+            </div>
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">D</div>
+              <p>Portabilidade dos Dados a outro fornecedor</p>
+            </div>
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">E</div>
+              <p>Eliminação dos Dados Pessoais tratados com o consentimento, salvo existência de outra base legal</p>
+            </div>
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">F</div>
+              <p>Informação das entidades com as quais o controlador realizou uso compartilhado de Dados</p>
+            </div>
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">G</div>
+              <p>Informação sobre a possibilidade de não fornecer consentimento e suas consequências</p>
+            </div>
+            <div class="politica-direito-card">
+              <div class="politica-direito-letra">H</div>
+              <p>Revogação do consentimento</p>
+            </div>
+          </div>
+
+          <div class="politica-destaque" style="margin-top: 24px;">
+            <div class="politica-destaque-icon"></div>
+            <p>Para exercer qualquer um destes direitos, entre em contato com nosso Encarregado de Proteção de Dados (DPO) pelo e-mail <a href="mailto:privacidade@ovd.com.br">privacidade@ovd.com.br</a>. Nos termos da LGPD, temos o direito de avaliar os pedidos recebidos e atendê-los quando tecnicamente viável e efetivamente exigido por lei.</p>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 9 — SEGURANÇA -->
+        <section class="politica-secao" id="seguranca">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">9</div>
+            <h2>Como manter suas informações seguras?</h2>
+          </div>
+          <p>A FG está comprometida com a privacidade de seus dados e utiliza as melhores práticas de segurança técnica e organizacional para proteger suas informações de acessos não autorizados, vazamento, perdas, destruição ou outros danos acidentais. Além disto, estamos em constante desenvolvimento e/ou atualização de protocolos, comunicação aos colaboradores, políticas e testes de ferramentas.</p>
+          <p>Entretanto, você é responsável pela veracidade e confirmação dos Dados Pessoais compartilhados conosco. Temos algumas recomendações:</p>
+
+          <div class="politica-recomendacoes">
+            <p>Não compartilhe login e senha com qualquer terceiro ao realizar o acesso ou contato conosco por meio de ferramentas ou computadores públicos.</p>
+            <p>Certifique-se de ter encerrado a sessão imediatamente após o término do uso e não forneça informações pessoais sem se certificar de que o destinatário é de fato a FG.</p>
+          </div>
+        </section>
+
+        <!-- SEÇÃO 11 — ALTERAÇÕES -->
+        <section class="politica-secao" id="alteracoes">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">11</div>
+            <h2>Alterações na Política de Privacidade</h2>
+          </div>
+          <p>Esta política poderá ser alterada a qualquer tempo. Para se manter atualizado, recomendamos que visite esta página com regularidade.</p>
+        </section>
+
+        <!-- SEÇÃO 12 — LEGISLAÇÃO -->
+        <section class="politica-secao" id="legislacao">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">12</div>
+            <h2>Legislação aplicável</h2>
+          </div>
+          <p>Esta Política é regida pela legislação brasileira, em especial a <strong>Lei Geral de Proteção de Dados Pessoais (Lei n. 13.709/2018)</strong>.</p>
+        </section>
+
+        <!-- SEÇÃO 13 — DISPOSIÇÕES GERAIS -->
+        <section class="politica-secao" id="disposicoes">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">13</div>
+            <h2>Disposições gerais</h2>
+          </div>
+          <p>É responsabilidade de todos os Colaboradores da FG e Parceiros que atuem em nome da FG obedecer a esta Política de Privacidade e Proteção de Dados Pessoais. O não cumprimento destas regras e princípios de privacidade pode resultar em rescisão do vínculo comercial ou de parceria e, para os Colaboradores, ação disciplinar e/ou dispensa por falta grave, de acordo com os procedimentos de recursos humanos aplicáveis e as leis locais.</p>
+        </section>
+
+        <!-- SEÇÃO 14 — CONTATO -->
+        <section class="politica-secao" id="contato">
+          <div class="politica-secao-header">
+            <div class="politica-secao-num">14</div>
+            <h2>Como entrar em contato conosco?</h2>
+          </div>
+          <p>Caso tenha qualquer dúvida sobre o conteúdo desta política, a forma como utilizamos seus dados ou ainda queira exercer qualquer um de seus direitos, pedimos a gentileza de entrar em contato com nosso Encarregado de Proteção de Dados (DPO):</p>
+
+          <div class="politica-destaque">
+            <div class="politica-destaque-icon"></div>
+            <p>Entre em contato pelo e-mail: <a href="mailto:privacidade@ovd.com.br">privacidade@ovd.com.br</a></p>
+          </div>
+        </section>
+
+        <!-- RODAPÉ DO CONTEÚDO -->
+        <div class="politica-footer-info">
+          <p>Dúvidas sobre nossa política? <strong>Entre em contato com nosso DPO.</strong></p>
+          <a href="mailto:privacidade@ovd.com.br" class="politica-contato-btn">
+            ✉ privacidade@ovd.com.br
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="tm-footer">
+    <div class="tm-footer-gray">
+      <div class="tm-footer-content">
+        <div class="tm-footer-columns">
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+            <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+            <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+            <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
+            <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+            <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-orange">
+      <div class="tm-footer-orange-content">
+        <a href="index.html">
+          <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+        </a>
+        <div class="tm-footer-social">
+          <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+          </a>
+          <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+          </a>
+          <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+          </a>
+          <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-bottom">
+      © Grupo OVD. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

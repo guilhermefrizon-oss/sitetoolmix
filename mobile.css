@@ -1,0 +1,631 @@
+/* =========================================
+   CONFIGURAÇÕES EXCLUSIVAS MOBILE (< 768px)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+/* Esconde o mosaico de 3 imagens no celular */
+  .tm-cards {
+    display: none !important;
+  }
+
+
+/* ======================================================
+   AJUSTES PÁGINA INSTITUCIONAL (MOBILE)
+   ====================================================== */
+
+/* Ajusta os textos corridos de cima e de baixo */
+.tm-institucional-primeiro-texto,
+.tm-institucional-segundo-texto {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  padding: 0 20px !important;
+  margin: 40px auto !important;
+}
+
+/* Reduz o respiro lateral do container principal */
+.tm-institucional-duas-colunas {
+  padding: 0 20px !important;
+  gap: 20px !important;
+}
+
+/* Ajusta o bloco laranja: remove a altura máxima e reduz o padding interno */
+.tm-institucional-bloco-laranja {
+  padding: 30px 20px !important;
+  max-height: none !important;
+  border-radius: 12px; /* Opcional: arredonda as bordas para um aspecto mais moderno no mobile */
+}
+
+/* Corrige o espaçamento de linha e tamanho da fonte dentro do bloco laranja */
+.tm-institucional-bloco-laranja p {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+/* Garante que a imagem se ajuste bem abaixo do bloco laranja */
+.tm-institucional-imagem {
+  width: 100%;
+}
+/* 1. Ajusta o container Mosaico para respeitar a altura e dar um respiro embaixo */
+  .tm-cards-mobile,
+  #tm-cards-mobile {
+    display: grid !important; 
+    position: relative !important;
+    width: 90%;
+    max-width: 400px;
+    margin: 40px auto 80px !important;
+  }
+
+/* 2. Garante que a imagem preencha certinho sem sobrar espaços fantasmas */
+  .tm-card-slide {
+    grid-area: 1 / 1; /* Coloca todas as imagens exatamente no mesmo "quadrado" */
+    display: block !important; /* Remove o display: none antigo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease; /* Mesmo tempo do banner principal */
+    width: 100%;
+  }
+
+.tm-card-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  .tm-card-slide img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain;
+    display: block !important; 
+    border-radius: 25px;
+  }
+
+.tm-card-slide img {
+    width: 100%;
+    height: auto !important; /* Mantém proporção sem cortar */
+    object-fit: contain;
+    border-radius: 25px;
+}
+
+/* 3. Move as bolinhas para baixo da imagem (para não cobrirem a arte) */
+  .tm-cards-dots,
+  #tm-cards-dots {
+    display: flex !important;
+    position: absolute;
+    bottom: -30px !important; /* Tira as bolinhas de cima da foto */
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+    z-index: 5;
+  }
+
+.tm-cards-dots button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #ccc;
+}
+
+.tm-cards-dots button.active {
+    background: var(--tm-primary);
+}
+
+/* Ajuste de Seções seguintes para tirar o branco */
+.tm-launch-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Ajuste do Header Mobile (já que você comentou que estava pequeno) */
+.tm-header-top-gray {
+    height: auto !important;
+    padding: 12px 0;
+}
+
+.tm-header-slogan {
+    font-size: 13px !important;
+    line-height: 1.4;
+}
+
+
+
+
+/* ======================================================
+   RESPONSIVIDADE — MOBILE (até 768px)
+   ====================================================== */
+  /* Header */
+  .tm-header {
+    height: auto;
+  }
+
+  .tm-header-shape {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    clip-path: none;
+    background-color: var(--tm-gray-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .tm-logo {
+    width: 140px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .tm-header-content-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .tm-header-top-gray {
+  height: auto; 
+  padding: 10px 0; /* Adiciona espaçamento em cima e embaixo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tm-header-slogan {
+  font-size: 12px; /* Aumentei um pouco para facilitar a leitura */
+  line-height: 1.4;
+  padding: 0 15px; /* Evita que o texto encoste nas bordas da tela */
+  text-align: center;
+  width: 100%;
+}
+
+  .tm-header-orange {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .tm-orange-wrapper {
+    padding-right: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .tm-search-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tm-header-support {
+    display: none;
+  }
+
+  .tm-header-bottom {
+    height: auto;
+    padding: 15px 0;
+  }
+
+  /* Menu desktop/mobile */
+  .tm-desktop-menu {
+    display: none;
+  }
+
+  .tm-mobile-menu-btn {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tm-white);
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 100;
+    padding: 0;
+  }
+
+  /* Sidebar */
+  .tm-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -320px;
+    right: auto;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--tm-white);
+    z-index: 9999;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .tm-sidebar.active {
+    left: 0;
+  }
+
+  .tm-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--tm-gray-light);
+    color: var(--tm-gray-dark);
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  #btn-close-menu {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--tm-gray-dark);
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .tm-nav-mobile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tm-nav-mobile li {
+    border-bottom: 1px solid var(--tm-gray-light);
+  }
+
+  .tm-nav-mobile a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--tm-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .tm-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+  }
+
+  .tm-menu-overlay.active {
+    display: block;
+  }
+
+  /* Hero / Slider */
+.tm-slider {
+  height: auto;
+  aspect-ratio: 720 / 736; /* proporção do seu banner mobile */
+  position: relative;
+  overflow: hidden;
+}
+
+.tm-slide         { position: absolute; inset: 0; }
+.tm-slide.active  { position: absolute; }
+.tm-slide picture { display: block; width: 100%; height: 100%; }
+.tm-slide picture img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.tm-slide-control { width: 36px; height: 36px; font-size: 18px; }
+.tm-prev          { left: 10px; }
+.tm-next          { right: 10px; }
+.tm-text-section  { padding: 40px 20px; }
+.tm-banner-title  { font-size: 20px; }
+
+  /* Cards mosaico */
+    /* Remove a altura fixa e o posicionamento que causa o vácuo branco */
+  .tm-cards {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: hidden;
+  }
+
+  .tm-card.active-mosaico {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .tm-cards-mobile {
+    display: block !important;
+    position: relative !important;
+    width: 90%;
+    max-width: 400px;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    margin: 20px auto 10px !important; /* Margem pequena para eliminar o branco */
+  }
+
+  .tm-card-slide {
+    display: none; /* Esconde todos por padrão */
+    width: 100%;
+    height: 100%;
+  }
+
+  .tm-card-slide.active {
+    display: block; /* Só mostra o que tiver a classe active */
+  }
+
+  .tm-card-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+  }
+
+  .tm-cards-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+  }
+
+  .tm-cards-dots button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+  }
+  /* 4. Puxa a secção de Lançamentos para cima */
+  .tm-launch-section {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+  }
+
+  .tm-cards-dots button.active { background: var(--tm-primary); }
+
+  /* Carrossel de lançamentos */
+  /* 4. Reajusta o título LANÇAMENTOS para ele ficar centralizado e com espaço */
+  .tm-launch-title {
+  display: block !important;
+  width: 100%;
+  text-align: center !important;
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  padding-left: 0 !important;
+}
+  .tm-background-gray {
+  padding: 40px 0 !important;
+  display: flex !important;
+  flex-direction: column !important; /* Empilha no mobile também */
+  width: 100%;
+}
+  .tm-launch-wrapper  { padding: 0 15px; }
+  .tm-arrow           { display: none; }
+
+  .tm-launch-card {
+    flex: 0 0 80vw;
+    max-width: 300px;
+    scroll-snap-align: center;
+  }
+
+  /* Infos gerais */
+  .tm-infos-gerais  { padding: 40px 20px; }
+  .tm-infos-wrapper { gap: 40px; flex-direction: column; }
+  .tm-info-card     { width: 100%; height: auto; padding: 10px; }
+  .tm-info-text     { height: auto; margin-bottom: 20px; }
+
+  /* Footer */
+  .tm-footer         { height: auto; overflow: visible; }
+  .tm-footer-gray    { position: relative; height: auto; }
+  .tm-footer-content { padding: 50px 20px; flex-direction: column; }
+  .tm-footer-columns { flex-direction: column; gap: 30px; }
+
+  .tm-footer-orange {
+    position: relative;
+    width: 100%;
+    height: auto;
+    clip-path: none;
+    padding: 40px 0 60px;
+  }
+
+  .tm-footer-orange-content {
+    position: relative;
+    right: 0;
+    top: 0;
+    transform: none;
+    padding: 0 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tm-footer-logo   { width: 200px; }
+  .tm-footer-bottom { z-index: 10; position: absolute; bottom: 0; }
+
+  /* PDP */
+  /* Ajustes para todas as páginas de produto no Mobile */
+@media (max-width: 768px) {
+  
+  .pdp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+  }
+
+  /* --- INÍCIO DA MUDANÇA DE ORDEM --- */
+  /* 1. Joga qualquer outro elemento extra pro final por padrão */
+  .pdp-container > * {
+    order: 4;
+  }
+
+  /* 2. Força a imagem principal a ser o primeiro elemento */
+  .pdp-imagem-produto,
+  .pdp-carrossel {
+    order: 1;
+  }
+
+  /* 3. Puxa as miniaturas para logo abaixo da foto principal */
+  .pdp-miniatura {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* 4. Deixa os textos, preço e botão "Onde comprar" em terceiro */
+  .pdp-texto-produto {
+    order: 3;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* --- FIM DA MUDANÇA DE ORDEM --- */
+
+  .pdp-imagem-produto {
+    max-width: 100% !important;
+    padding: 10px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .pdp-texto-produto h1 {
+    font-size: 22px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .pdp-especificacoes {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+  .pdp-carrossel-janela,
+  .pdp-carrossel-imagem { max-width: 100%; }
+
+  .pdp-carrossel-seta-esquerda { left: 5px; }
+  .pdp-carrossel-seta-direita  { right: 5px; }
+
+  /* Diminui um pouco as setas do carrossel principal para não cobrirem tanto a foto */
+  .pdp-carrossel-seta {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .pdp-miniatura {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Reduz o espaço entre as miniaturas */
+  .pdp-miniaturas-imagens {
+    gap: 15px;
+  }
+
+  .pdp-miniaturas-janela { width: 100%; }
+
+  .pdp-botao-onde-comprar {
+    max-width: 100%;
+    font-size: 1rem;
+    margin-top: 40px;
+  }
+
+  .pdp-especificacoes-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .pdp-spec-item { padding-inline: 24px; }
+
+  /* PLP */
+  .tm-plp-container { flex-direction: column; padding: 0 20px; }
+  .tm-plp-sidebar   { width: 100%; }
+  .tm-plp-grid      { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Responsividade intermediária — 768px a 1024px */
+@media (max-width: 1024px) {
+  .tm-plp-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .tm-plp-grid { grid-template-columns: 1fr; }
+}
+
+/* ======================================================
+   AJUSTES PÁGINA LANÇAMENTOS (MOBILE)
+   ====================================================== */
+@media (max-width: 768px) {
+  
+  /* Ajusta a largura da faixa preta de título para caber na tela */
+  .title-banner {
+    width: 90%;
+    max-width: 350px;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+  }
+
+  /* Muda o alinhamento de lado a lado para empilhado (coluna) */
+  .lancamentos-info {
+    flex-direction: column;
+    margin: 40px auto;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  /* Remove a altura fixa de 900px e o espaçamento lateral da imagem */
+  .lancamentos-image {
+    height: auto;
+    padding-right: 0;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Garante que a imagem do banner não vaze da tela */
+  .lancamentos-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  /* Reduz levemente o título dos produtos para evitar quebras excessivas de linha */
+  .lancamentos-title {
+    font-size: 18px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .tm-plp-sidebar h3 {
+    text-align: center;
+    font-size: 14px;
+  }
+  .tm-plp-sidebar ul {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+
+
