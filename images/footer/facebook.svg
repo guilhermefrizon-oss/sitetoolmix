@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 78.64 78.87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+        opacity: .35;
+      }
+
+      .cls-3 {
+        fill: #414042;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="39.32" cy="44.59" fx="39.32" fy="44.59" r="39.32" gradientTransform="translate(0 -5.29)" gradientUnits="userSpaceOnUse">
+      <stop offset=".58" stop-color="#000" stop-opacity="0"/>
+      <stop offset=".69" stop-color="#000" stop-opacity=".8"/>
+      <stop offset=".95" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="34.33" y1="43.77" x2="65.56" y2="12.54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".1"/>
+    </linearGradient>
+  </defs>
+  <g id="Camada_1-2" data-name="Camada 1">
+    <g>
+      <ellipse class="cls-1" cx="39.32" cy="39.44" rx="39.32" ry="39.44"/>
+      <path class="cls-3" d="M42.27,2.96C23.97,2.96,9.13,17.84,9.13,36.2s14.84,33.24,33.14,33.24,33.14-14.88,33.14-33.24S60.58,2.96,42.27,2.96ZM51.47,24.96h-3.33c-2.61,0-3.12,1.25-3.12,3.08v4.03h6.24l-.81,6.32h-5.42v16.21h-6.5v-16.21h-5.44v-6.32h5.44v-4.66c0-5.4,3.29-8.35,8.1-8.35,2.3,0,4.28.17,4.86.25v5.65Z"/>
+      <path class="cls-2" d="M42.27,2.96c-9.16,0-17.46,3.73-23.46,9.76,2.06,23.94,22.07,42.73,46.48,42.73,1.39,0,2.77-.07,4.13-.19,3.77-5.4,6-11.97,6-19.06,0-18.36-14.84-33.24-33.14-33.24Z"/>
+    </g>
+  </g>
+</svg>
