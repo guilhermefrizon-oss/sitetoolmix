@@ -194,7 +194,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 60px;
+  gap: 40px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -207,6 +207,7 @@ body {
   font-size: 16px;
   font-weight: 700;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .tm-nav a:hover {
@@ -250,7 +251,9 @@ body {
   max-width: 1920px;
   margin: 0 auto;
   overflow: hidden;
-  height: 433px;
+  /* Proporção do banner desktop (1920x433) */
+  aspect-ratio: 1920 / 433;
+  height: auto;
 }
 
 .tm-slide {
@@ -614,6 +617,7 @@ body {
   justify-content: center;
   width: 280px;
   height: 60px;
+  margin-top: auto;
   background-color: var(--tm-primary);
   color: var(--tm-white);
   font-weight: 700;
@@ -2048,6 +2052,51 @@ body {
 }
 
 /* -------------------------------------------------------
+   ULTRAWIDE (1601px+):
+   ------------------------------------------------------- */
+@media (min-width: 1601px) {
+  .tm-header-shape {
+    width: 650px;
+  }
+
+  .tm-logo {
+    width: 300px;
+    left: 10%;
+  }
+
+  .tm-header-content-wrapper {
+    padding-left: 690px;
+  }
+
+  .tm-header-top-gray .tm-header-content-wrapper {
+    padding-left: 690px;
+    padding-right: 60px;
+    justify-content: center;
+  }
+
+  .tm-orange-wrapper {
+    padding-right: 60px;
+  }
+
+  .tm-nav ul {
+    gap: 60px;
+  }
+
+  .tm-footer-content {
+    padding-left: 60px;
+    padding-right: 550px;
+  }
+
+  .tm-footer-orange {
+    width: 620px;
+  }
+
+  .tm-footer-orange-content {
+    right: 100px;
+  }
+}
+
+/* -------------------------------------------------------
    FAIXA 1441px–1600px:
    ------------------------------------------------------- */
 @media (min-width: 1441px) and (max-width: 1600px) {
@@ -2068,6 +2117,7 @@ body {
   .tm-header-top-gray .tm-header-content-wrapper {
     padding-left: 590px;
     padding-right: 40px;
+    justify-content: center;
   }
 
   .tm-nav ul {

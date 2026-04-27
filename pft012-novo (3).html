@@ -632,89 +632,6 @@
         padding: 24px 16px !important;
       }
     }
-    /* ---- MÍDIA ENRIQUECIDA ---- */
-    /* ---- ACCORDION MÍDIA ENRIQUECIDA ---- */
-    .pdp2-accordion-section {
-      max-width: 1280px;
-      margin: 0 auto 60px;
-      padding: 0 40px;
-    }
-
-    .pdp2-accordion-item {
-      border-bottom: 1px solid var(--tm-gray-light);
-    }
-
-    .pdp2-accordion-item:first-child {
-      border-top: 1px solid var(--tm-gray-light);
-    }
-
-    .pdp2-accordion-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 0;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: "Montserrat", sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--tm-gray-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: color 0.2s;
-      text-align: left;
-    }
-
-    .pdp2-accordion-btn:hover {
-      color: var(--tm-primary);
-    }
-
-    .pdp2-accordion-btn[aria-expanded="true"] {
-      color: var(--tm-primary);
-    }
-
-    .pdp2-accordion-icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-
-    .pdp2-accordion-btn[aria-expanded="true"] .pdp2-accordion-icon {
-      transform: rotate(180deg);
-    }
-
-    .pdp2-accordion-painel {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.35s ease;
-    }
-
-    .pdp2-accordion-painel.aberto {
-      grid-template-rows: 1fr;
-    }
-
-    .pdp2-accordion-painel-inner {
-      overflow: hidden;
-    }
-
-    .pdp2-accordion-painel-inner img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      margin-bottom: 24px;
-    }
-
-    @media (max-width: 1024px) {
-      .pdp2-accordion-section {
-        padding: 0 20px;
-        margin-bottom: 40px;
-      }
-    }
-
   </style>
 </head>
 
@@ -1018,47 +935,6 @@
 
     </div>
 
-  <!-- MÍDIA ENRIQUECIDA — ACCORDION -->
-  <section class="pdp2-accordion-section">
-
-    <div class="pdp2-accordion-item">
-      <button class="pdp2-accordion-btn" aria-expanded="false">
-        <span>Conteúdo da embalagem</span>
-        <svg class="pdp2-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="pdp2-accordion-painel">
-        <div class="pdp2-accordion-painel-inner">
-          <img src="images/midia_enriquecida/PFT012/TOOLMX_anatomia_PFT_012-1.jpg" alt="Conteúdo da embalagem — PFT 012" loading="lazy">
-        </div>
-      </div>
-    </div>
-
-    <div class="pdp2-accordion-item">
-      <button class="pdp2-accordion-btn" aria-expanded="false">
-        <span>Características técnicas</span>
-        <svg class="pdp2-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="pdp2-accordion-painel">
-        <div class="pdp2-accordion-painel-inner">
-          <img src="images/midia_enriquecida/PFT012/TOOLMX_anatomia_PFT_012-2.jpg" alt="Características técnicas — PFT 012" loading="lazy">
-        </div>
-      </div>
-    </div>
-
-    <div class="pdp2-accordion-item">
-      <button class="pdp2-accordion-btn" aria-expanded="false">
-        <span>Destaques e diferenciais</span>
-        <svg class="pdp2-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="pdp2-accordion-painel">
-        <div class="pdp2-accordion-painel-inner">
-          <img src="images/midia_enriquecida/PFT012/TOOLMX_anatomia_PFT_012-3.jpg" alt="Destaques e diferenciais — PFT 012" loading="lazy">
-        </div>
-      </div>
-    </div>
-
-  </section>
-
   </main>
 
   <!-- INFOS GERAIS -->
@@ -1303,28 +1179,6 @@
 
     document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('.pdp-360-viewer').forEach(initViewer));
   })();
-  </script>
-
-  <script>
-    // Accordion mídia enriquecida
-    document.querySelectorAll('.pdp2-accordion-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const painel = btn.nextElementSibling;
-        const aberto = btn.getAttribute('aria-expanded') === 'true';
-
-        // Fecha todos
-        document.querySelectorAll('.pdp2-accordion-btn').forEach(b => {
-          b.setAttribute('aria-expanded', 'false');
-          b.nextElementSibling.classList.remove('aberto');
-        });
-
-        // Abre o clicado (se estava fechado)
-        if (!aberto) {
-          btn.setAttribute('aria-expanded', 'true');
-          painel.classList.add('aberto');
-        }
-      });
-    });
   </script>
 
   <script src="script.js"></script>
