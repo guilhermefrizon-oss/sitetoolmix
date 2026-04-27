@@ -347,8 +347,8 @@
      ====================================================== */
 
   .tm-infos-gerais  { padding: 40px 20px; }
-  .tm-infos-wrapper { gap: 40px; flex-direction: column; }
-  .tm-info-card     { width: 100%; height: auto; padding: 10px; }
+  .tm-infos-wrapper { gap: 40px; flex-direction: column; align-items: center; }
+  .tm-info-card     { width: 100%; max-width: 340px; height: auto; padding: 20px; }
   .tm-info-text     { height: auto; margin-bottom: 20px; }
 
   /* ======================================================
