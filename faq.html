@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOOLMIX - Perguntas Frequentes</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tablet.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    /* =============================================
+       ESTILOS EXCLUSIVOS — FAQ
+       ============================================= */
+
+    .faq-hero {
+      background-color: var(--tm-gray-dark);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 100%;
+      background-color: var(--tm-primary);
+      clip-path: polygon(180px 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .faq-hero-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .faq-hero-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .faq-hero h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--tm-white);
+      text-transform: uppercase;
+      line-height: 1.1;
+      max-width: 700px;
+    }
+
+    .faq-hero h1 span {
+      color: var(--tm-primary);
+    }
+
+    .tm-breadcrumb {
+      max-width: 1280px;
+      margin: 24px auto 0;
+      padding: 0 40px;
+      font-size: 13px;
+      color: var(--tm-gray-secondary);
+    }
+
+    .tm-breadcrumb a {
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      transition: color 0.2s;
+    }
+
+    .tm-breadcrumb a:hover {
+      color: var(--tm-primary);
+    }
+
+    /* LAYOUT PRINCIPAL */
+    .faq-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ÍNDICE LATERAL */
+    .faq-indice {
+      position: sticky;
+      top: 30px;
+    }
+
+    .faq-indice-titulo {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--tm-gray-secondary);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--tm-gray-light);
+    }
+
+    .faq-indice ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .faq-indice li {
+      margin-bottom: 4px;
+    }
+
+    .faq-indice a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: var(--tm-gray-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+    }
+
+    .faq-indice a:hover {
+      background-color: var(--tm-gray-light);
+      color: var(--tm-primary);
+      border-left-color: var(--tm-primary);
+    }
+
+    .faq-indice a::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--tm-primary);
+      flex-shrink: 0;
+    }
+
+    /* CONTEÚDO */
+    .faq-conteudo {
+      min-width: 0;
+    }
+
+    .faq-intro {
+      background-color: var(--tm-gray-light);
+      border-left: 5px solid var(--tm-primary);
+      padding: 28px 32px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 50px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--tm-gray-secondary);
+    }
+
+    .faq-intro strong {
+      color: var(--tm-gray-dark);
+    }
+
+    /* CATEGORIA */
+    .faq-categoria {
+      margin-bottom: 50px;
+      scroll-margin-top: 30px;
+    }
+
+    .faq-categoria-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--tm-gray-light);
+    }
+
+    .faq-categoria-icon {
+      width: 36px;
+      height: 36px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .faq-categoria h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--tm-gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    /* ACORDEÃO */
+    .faq-item {
+      border: 1.5px solid var(--tm-gray-light);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item.open {
+      border-color: var(--tm-primary);
+    }
+
+    .faq-pergunta {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--tm-gray-dark);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .faq-pergunta:hover {
+      background-color: var(--tm-gray-light);
+      color: var(--tm-primary);
+    }
+
+    .faq-item.open .faq-pergunta {
+      background-color: var(--tm-gray-light);
+      color: var(--tm-primary);
+    }
+
+    .faq-pergunta-texto {
+      flex: 1;
+    }
+
+    .faq-chevron {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-size: 13px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-resposta {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-resposta {
+      max-height: 500px;
+    }
+
+    .faq-resposta-inner {
+      padding: 0 20px 20px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--tm-gray-secondary);
+      border-top: 1px solid var(--tm-gray-light);
+      padding-top: 16px;
+    }
+
+    .faq-resposta-inner a {
+      color: var(--tm-primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .faq-resposta-inner a:hover {
+      text-decoration: underline;
+    }
+
+    /* BLOCO DE CONTATO */
+    .faq-contato-bloco {
+      background: linear-gradient(135deg, var(--tm-gray-dark) 0%, #555 100%);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .faq-contato-bloco-texto p {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .faq-contato-bloco-texto strong {
+      color: var(--tm-white);
+      font-size: 17px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .faq-contato-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--tm-primary);
+      color: var(--tm-white);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 32px;
+      text-decoration: none;
+      clip-path: polygon(6% 0, 100% 0, 94% 100%, 0% 100%);
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .faq-contato-btn:hover {
+      background-color: var(--tm-primary-hover);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1024px) {
+      .faq-body {
+        grid-template-columns: 1fr;
+        padding: 40px 30px 60px;
+      }
+
+      .faq-indice {
+        position: relative;
+        top: auto;
+        background: var(--tm-gray-light);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .faq-hero::before {
+        width: 200px;
+      }
+
+      .faq-hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .faq-hero {
+        padding: 40px 20px;
+      }
+
+      .faq-hero::before {
+        display: none;
+      }
+
+      .faq-hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .tm-breadcrumb {
+        padding: 0 20px;
+      }
+
+      .faq-body {
+        padding: 30px 20px 50px;
+        gap: 30px;
+      }
+
+      .faq-intro {
+        padding: 20px;
+      }
+
+      .faq-contato-bloco {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="tm-header">
+    <div class="tm-header-top-gray">
+      <div class="tm-header-content-wrapper">
+        <p class="tm-header-slogan">
+          TECNOLOGIA E PERFORMANCE EM SUAS MÃOS.
+          <span>CONHEÇA A NOVA TOOLMIX!</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="tm-header-shape">
+      <a href="index.html">
+        <img src="images/header/logo_toolmix.png" alt="Logo Toolmix" class="tm-logo">
+      </a>
+      <button class="tm-mobile-menu-btn" id="btn-menu">☰</button>
+    </div>
+
+    <div class="tm-header-orange">
+      <div class="tm-header-content-wrapper tm-orange-wrapper">
+        <div class="tm-search-container">
+          <form action="buscar.html" method="GET">
+            <input type="text" name="q" placeholder="O que você procura?" class="tm-search-input">
+            <button type="submit" class="tm-search-btn">
+              <img src="images/header/search.svg" alt="Buscar">
+            </button>
+          </form>
+        </div>
+        <div class="tm-header-support tm-atendimento-desktop">
+          <a href="sedes.html" class="tm-btn-onde-comprar">Onde Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-header-bottom tm-desktop-menu">
+      <div class="tm-header-content-wrapper">
+        <nav class="tm-nav">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="institucional.html">Institucional</a></li>
+            <li><a href="produtos.html">Produtos e Acessórios</a></li>
+            <li><a href="lancamentos.html">Lançamentos</a></li>
+            <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tm-sidebar" id="sidebar-menu">
+      <div class="tm-sidebar-header">
+        <span>MENU</span>
+        <button id="btn-close-menu">✕</button>
+      </div>
+      <nav class="tm-nav-mobile">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="institucional.html">Institucional</a></li>
+          <li><a href="produtos.html">Produtos e Acessórios</a></li>
+          <li><a href="lancamentos.html">Lançamentos</a></li>
+          <li><a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="tm-menu-overlay" id="menu-overlay"></div>
+  </header>
+
+  <hr class="horizontal-line">
+  <nav class="tm-breadcrumb">
+    <a href="index.html">Home</a> &nbsp;›&nbsp;
+    <span style="font-weight: 700; color: var(--tm-gray-dark);">Perguntas Frequentes</span>
+  </nav>
+
+  <div class="title-section" style="margin-top: 40px; margin-bottom: 40px;">
+    <div class="title-banner" style="font-size: 18px; height: 50px; width: 450px; text-transform: uppercase;">
+      Perguntas Frequentes
+    </div>
+  </div>
+
+  <main>
+    <div class="faq-body">
+
+      <!-- ÍNDICE LATERAL -->
+      <aside class="faq-indice">
+        <p class="faq-indice-titulo">Categorias</p>
+        <ul>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#garantia">Garantia e Assistência</a></li>
+          <li><a href="#onde-comprar">Onde Comprar</a></li>
+          <li><a href="#uso-manutencao">Uso e Manutenção</a></li>
+          <li><a href="#empresa">Sobre a Toolmix</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <div class="faq-conteudo">
+
+        <div class="faq-intro">
+          Reunimos aqui as dúvidas mais comuns dos nossos clientes. Se não encontrar o que procura, entre em contato com nossa equipe de atendimento — ficaremos felizes em ajudar.
+        </div>
+
+        <!-- CATEGORIA 1 — PRODUTOS -->
+        <section class="faq-categoria" id="produtos">
+          <div class="faq-categoria-header">
+            <div class="faq-categoria-icon">🔧</div>
+            <h2>Produtos</h2>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Quais tipos de ferramentas a Toolmix oferece?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                A Toolmix oferece uma linha completa de ferramentas elétricas e a bateria para uso profissional e doméstico, incluindo parafusadeiras, furadeiras, serras, lixadeiras, esmerilhadeiras e muito mais. Também contamos com uma linha de acessórios para complementar o desempenho das ferramentas.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">As ferramentas Toolmix são para uso profissional ou doméstico?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Temos produtos para ambos os perfis. Nossa linha profissional é desenvolvida para uso intenso e contínuo em obras e indústrias, enquanto a linha doméstica é ideal para reformas e projetos em casa, com ótima relação custo-benefício. Confira as especificações de cada produto para escolher o mais adequado ao seu uso.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Os acessórios Toolmix são compatíveis com outras marcas?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Muitos de nossos acessórios seguem padrões universais e podem ser utilizados com ferramentas de outras marcas. Recomendamos verificar as especificações do produto (encaixe, diâmetro, velocidade máxima) antes de usar em equipamentos de outras marcas para garantir segurança e desempenho.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">As baterias da linha a bateria são intercambiáveis entre os modelos?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Sim! As baterias da linha Toolmix são compatíveis entre os produtos que utilizam a mesma tensão (ex.: 20V). Isso significa que você pode usar a mesma bateria em diferentes ferramentas da linha, o que reduz custos e aumenta a praticidade no dia a dia.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Onde encontro o manual do meu produto?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                O manual acompanha o produto na embalagem. Caso tenha perdido, acesse a página do produto em nosso site — muitos modelos disponibilizam o manual para download. Você também pode entrar em contato com nosso atendimento solicitando o manual pelo código do produto.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORIA 2 — GARANTIA -->
+        <section class="faq-categoria" id="garantia">
+          <div class="faq-categoria-header">
+            <div class="faq-categoria-icon">🛡️</div>
+            <h2>Garantia e Assistência Técnica</h2>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Qual é o prazo de garantia dos produtos Toolmix?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Os produtos Toolmix possuem garantia de 12 meses contra defeitos de fabricação, contados a partir da data de compra mediante apresentação da nota fiscal. Alguns modelos podem ter garantia estendida — consulte a embalagem ou o revendedor.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">O que a garantia cobre?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                A garantia cobre defeitos de fabricação em peças e componentes do produto. Não estão cobertos pela garantia: danos causados por mau uso, quedas, exposição à água sem proteção adequada, uso de acessórios inadequados, desgaste natural de peças como escovas de carvão, e reparos realizados fora da rede autorizada.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Como acionar a assistência técnica?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Você pode localizar a assistência técnica autorizada mais próxima de você pelo nosso site, na seção <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento</a>. Leve o produto junto com a nota fiscal de compra e, se possível, a embalagem original.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Posso levar o produto em qualquer loja para assistência?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Para garantir a validade da garantia e a qualidade do serviço, recomendamos sempre utilizar a rede de assistência técnica autorizada Toolmix. Reparos feitos por terceiros não autorizados podem anular a garantia do produto.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORIA 3 — ONDE COMPRAR -->
+        <section class="faq-categoria" id="onde-comprar">
+          <div class="faq-categoria-header">
+            <div class="faq-categoria-icon">📍</div>
+            <h2>Onde Comprar</h2>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Onde posso comprar produtos Toolmix?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Os produtos Toolmix estão disponíveis em uma ampla rede de revendedores autorizados em todo o Brasil, incluindo lojas de ferramentas, materiais de construção e grandes redes varejistas. Acesse nossa página <a href="sedes.html">Onde Comprar</a> para encontrar o ponto de venda mais próximo de você.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">A Toolmix vende diretamente ao consumidor?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                A Toolmix comercializa seus produtos por meio de revendedores autorizados. Para compras, consulte nossa rede de parceiros. Caso tenha interesse em se tornar um revendedor, entre em contato com nossa equipe comercial.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Como me tornar um revendedor Toolmix?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Se você tem interesse em revender os produtos Toolmix, entre em contato com nossa equipe comercial pelo <a href="sedes.html">formulário de contato</a>. Nossa equipe analisará sua solicitação e entrará em contato com as informações sobre como se tornar um parceiro.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORIA 4 — USO E MANUTENÇÃO -->
+        <section class="faq-categoria" id="uso-manutencao">
+          <div class="faq-categoria-header">
+            <div class="faq-categoria-icon">⚙️</div>
+            <h2>Uso e Manutenção</h2>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Como conservar a bateria do meu produto por mais tempo?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Para prolongar a vida útil da bateria: evite deixá-la completamente descarregada por longos períodos; carregue antes de guardar; armazene em local fresco e seco, longe de luz solar direta; e utilize sempre o carregador original Toolmix. Baterias de íon-lítio não precisam ser descarregadas completamente antes de recarregar.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Posso usar o produto em locais úmidos ou ao ar livre?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Isso depende do modelo. Verifique o índice de proteção (IP) na ficha técnica do seu produto. Ferramentas sem classificação IP específica não devem ser utilizadas em ambientes com alta umidade ou expostas à chuva. Sempre consulte o manual antes de usar em condições adversas.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Com que frequência devo fazer a manutenção preventiva?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Recomendamos limpeza e inspeção visual após cada uso intenso. Para ferramentas de uso profissional diário, uma revisão periódica na assistência técnica autorizada a cada 6 a 12 meses garante maior durabilidade e segurança. Consulte o manual do produto para recomendações específicas do modelo.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Como limpar corretamente minha ferramenta?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Sempre desligue e desconecte a ferramenta antes de limpar. Use um pano seco ou levemente umedecido para limpar a carcaça. Nunca use água diretamente, solventes ou produtos abrasivos. Para remover pó interno, utilize ar comprimido nas aberturas de ventilação. Nunca mergulhe o produto em água.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORIA 5 — SOBRE A EMPRESA -->
+        <section class="faq-categoria" id="empresa">
+          <div class="faq-categoria-header">
+            <div class="faq-categoria-icon">🏭</div>
+            <h2>Sobre a Toolmix</h2>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">O que é a Toolmix?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                A Toolmix é uma marca brasileira de ferramentas elétricas e acessórios, com foco em tecnologia, performance e acessibilidade. Pertencente ao Grupo OVD, a Toolmix está presente em todo o Brasil por meio de uma ampla rede de revendedores autorizados. Saiba mais em nossa página <a href="institucional.html">Institucional</a>.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">A Toolmix tem presença nas redes sociais?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Sim! Siga a Toolmix no <a href="https://www.instagram.com/toolmixferramentas/" target="_blank" rel="noopener noreferrer">Instagram</a>, <a href="https://web.facebook.com/toolmixferramentas" target="_blank" rel="noopener noreferrer">Facebook</a>, <a href="https://www.tiktok.com/@toolmixferramentas" target="_blank" rel="noopener noreferrer">TikTok</a> e <a href="https://www.youtube.com/@toolmixferramentas" target="_blank" rel="noopener noreferrer">YouTube</a> para ficar por dentro dos lançamentos, dicas de uso e novidades.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta">
+              <span class="faq-pergunta-texto">Como entrar em contato com a Toolmix?</span>
+              <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-resposta">
+              <div class="faq-resposta-inner">
+                Você pode nos contatar por meio da página <a href="sedes.html">Onde Comprar</a> ou diretamente pela assistência técnica autorizada. Para dúvidas sobre privacidade de dados, acesse nossa <a href="politica-privacidade.html">Política de Privacidade</a> ou escreva para <a href="mailto:privacidade@ovd.com.br">privacidade@ovd.com.br</a>.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BLOCO DE CONTATO -->
+        <div class="faq-contato-bloco">
+          <div class="faq-contato-bloco-texto">
+            <strong>Não encontrou sua resposta?</strong>
+            <p>Nossa equipe está pronta para ajudar. Entre em contato com a assistência técnica autorizada mais próxima.</p>
+          </div>
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer" class="faq-contato-btn">
+            Falar com Atendimento
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="tm-footer">
+    <div class="tm-footer-gray">
+      <div class="tm-footer-content">
+        <div class="tm-footer-columns">
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
+            <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+            <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">POLÍTICAS</h4>
+            <a href="politica-privacidade.html" class="tm-footer-link">Política de Privacidade</a>
+            <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
+          </div>
+          <div class="tm-footer-column">
+            <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
+            <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer" class="tm-footer-link">Assistência Técnica</a>
+            <a href="faq.html" class="tm-footer-link">Perguntas Frequentes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-orange">
+      <div class="tm-footer-orange-content">
+        <a href="index.html">
+          <img src="images/footer/tool_mix_cinza.svg" alt="Logo Toolmix" class="tm-footer-logo">
+        </a>
+        <div class="tm-footer-social">
+          <a href="https://www.instagram.com/toolmixferramentas/" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/instagram.svg" class="tm-social-icon" alt="Instagram">
+          </a>
+          <a href="https://web.facebook.com/toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/facebook.svg" class="tm-social-icon" alt="Facebook">
+          </a>
+          <a href="https://www.tiktok.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/tiktok.svg" class="tm-social-icon" alt="TikTok">
+          </a>
+          <a href="https://www.youtube.com/@toolmixferramentas" class="tm-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="images/footer/youtube.svg" class="tm-social-icon" alt="YouTube">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-footer-bottom">
+      © Grupo OVD. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Acordeão FAQ
+    document.querySelectorAll('.faq-pergunta').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        // Fecha todos
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+
+        // Abre o clicado (se estava fechado)
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
