@@ -99,6 +99,42 @@ body {
 
 
 
+
+/* ── BREADCRUMB GLOBAL ── */
+.tm-breadcrumb {
+  max-width: 1280px;
+  margin: 24px auto 0;
+  padding: 0 40px;
+  font-size: 13px;
+  color: var(--tm-gray-secondary);
+  font-family: "Montserrat", sans-serif;
+}
+
+.tm-breadcrumb a {
+  text-decoration: none;
+  color: var(--tm-gray-secondary);
+  transition: color 0.2s;
+}
+
+.tm-breadcrumb a:hover { color: var(--tm-primary); }
+
+.tm-breadcrumb span {
+  font-weight: 700;
+  color: var(--tm-gray-dark);
+}
+
+@media (max-width: 1024px) {
+  .tm-breadcrumb { padding: 0 20px; }
+}
+
+@media (max-width: 768px) {
+  .tm-breadcrumb {
+    padding: 0 20px;
+    margin: 16px auto 0;
+    font-size: 11px;
+  }
+}
+
 /* Slogan centralizado na área branca à direita da forma cinza — APENAS desktop */
 @media (min-width: 1367px) {
   .tm-header-top-gray .tm-header-content-wrapper {
@@ -119,6 +155,7 @@ body {
 .tm-orange-wrapper {
   justify-content: space-between;
   padding-right: 40px;
+  gap: 40px;
 }
 
 .tm-search-container {
@@ -131,7 +168,7 @@ body {
   width: 100%;
   height: 40px;
   border: 1px solid var(--tm-white);
-  border-radius: 20px;
+  border-radius: 6px;
   background: transparent;
   padding: 0 45px 0 20px;
   color: var(--tm-white);
@@ -176,6 +213,30 @@ body {
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
+}
+
+/* Botão Onde Comprar — barra laranja */
+.tm-btn-onde-comprar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--tm-gray-dark);
+  color: var(--tm-white);
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  padding: 10px 32px;
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  white-space: nowrap;
+  transition: background-color 0.2s;
+  height: 40px;
+}
+
+.tm-btn-onde-comprar:hover {
+  background-color: var(--tm-gray-hover);
 }
 
 /* Faixa 3 — Menu */
@@ -441,6 +502,8 @@ body {
   width: 100%;
   justify-content: flex-start;
   scrollbar-width: none;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tm-carousel-container::-webkit-scrollbar {
@@ -479,10 +542,12 @@ body {
   position: absolute;
   background-color: var(--tm-primary);
   color: var(--tm-white);
-  font-size: 14px;
-  font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 5px;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .tm-launch-card-img {

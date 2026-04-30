@@ -47,7 +47,7 @@
           </form>
         </div>
         <div class="tm-header-support tm-atendimento-desktop">
-          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">Atendimento <span>∨</span></a>
+          <a href="sedes.html" class="tm-btn-onde-comprar">Onde Comprar</a>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@
       <div class="tm-header-content-wrapper">
         <nav class="tm-nav">
           <ul>
-            <li><a href="index.html"><img src="images/header/icon_home_desk.svg" alt="Início" class="tm-icon"/></a></li>
+            <li><a href="index.html">Início</a></li>
             <li><a href="institucional.html">Institucional</a></li>
             <li><a href="produtos.html">Produtos e Acessórios</a></li>
             <li><a href="lancamentos.html">Lançamentos</a></li>
@@ -85,7 +85,11 @@
     <div class="tm-menu-overlay" id="menu-overlay"></div>
   </header>
 
-<hr class="horizontal-line">
+    <hr class="horizontal-line">
+    <nav class="tm-breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp; <span>Produtos e Acessórios</span>
+    </nav>
+
   <div class="title-section" style="margin-top: 40px; margin-bottom: 40px;">
     <div class="title-banner" style="font-size: 18px; height: 50px; width: 450px; text-transform: uppercase;">
       Produtos e Acessórios
@@ -93,78 +97,99 @@
   </div>
 
   <section class="tm-plp-container">
-    
+
+    <!-- DROPDOWN MOBILE DE FILTRO -->
+    <div class="tm-plp-mobile-filter">
+      <button class="tm-plp-filter-toggle" id="btn-filter-toggle">
+        FILTROS <span class="tm-filter-arrow" id="filter-arrow">∨</span>
+      </button>
+      <div class="tm-plp-filter-dropdown" id="filter-dropdown" style="display:none;">
+        <ul>
+          <li><a href="javascript:void(0)" data-filter="all">Todos os Produtos</a></li>
+          <li><a href="javascript:void(0)" data-filter="parafusadeiras">Parafusadeiras (4)</a></li>
+          <li><a href="javascript:void(0)" data-filter="baterias">Baterias (2)</a></li>
+        </ul>
+      </div>
+    </div>
+
     <aside class="tm-plp-sidebar">
-  <h3>Categoria de<br>Produtos</h3>
-  <ul>
-    <li><a href="javascript:void(0)" data-filter="all">> Todos os Produtos</a></li>
-    <li><a href="javascript:void(0)" data-filter="parafusadeiras">> Parafusadeiras (4)</a></li>
-    <li><a href="javascript:void(0)" data-filter="baterias">> Baterias (2)</a></li>
-  </ul>
-</aside>
+      <h3>Categoria de<br>Produtos</h3>
+      <ul>
+        <li>
+          <a href="javascript:void(0)" data-filter="all">
+            <span class="tm-filter-bullet">•</span> Todos os Produtos
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" data-filter="parafusadeiras">
+            <span class="tm-filter-bullet">•</span> Parafusadeiras (4)
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" data-filter="baterias">
+            <span class="tm-filter-bullet">•</span> Baterias (2)
+          </a>
+        </li>
+      </ul>
+    </aside>
 
     <main class="tm-plp-main">
       <div class="tm-plp-topbar">
         <span>Ordenar produtos por</span>
-        <select>
-          <option>Relevância</option>
-          <option>Menor Preço</option>
-          <option>Maior Preço</option>
-        </select>
+        <div class="tm-select-wrapper">
+          <select id="sort-select">
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+          </select>
+        </div>
       </div>
 
       <div class="tm-plp-grid">
         
         <div class="tm-plp-card" data-category="parafusadeiras">
-            <a href="pft012.html" class="tm-plp-card-link">
+          <a href="pft012.html" class="tm-plp-card-link">
             <span class="tm-plp-badge">Lançamento</span>
-            <span class="tm-plp-fav">♡</span>
             <img src="images/lancamentos/produto_01.jpg" alt="Parafusadeira PFT 012I">
             <p>Parafusadeira/furadeira a bateria, 12 V, fonte bivolt automática, PFT 012 TOOLMIX</p>
           </a>
         </div>
 
         <div class="tm-plp-card" data-category="parafusadeiras">
-            <a href="pft020I.html" class="tm-plp-card-link">
+          <a href="pft020I.html" class="tm-plp-card-link">
             <span class="tm-plp-badge">Lançamento</span>
-            <span class="tm-plp-fav">♡</span>
-            <img src="images/lancamentos/produto_02.jpg" alt="Parafusadeira PFT 012I">
+            <img src="images/lancamentos/produto_02.jpg" alt="Parafusadeira PFT 020I">
             <p>Parafusadeira/furadeira de impacto a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020I TOOLMIX</p>
           </a>
         </div>
 
         <div class="tm-plp-card" data-category="parafusadeiras">
-            <a href="pft012I.html" class="tm-plp-card-link">
+          <a href="pft012I.html" class="tm-plp-card-link">
             <span class="tm-plp-badge">Lançamento</span>
-            <span class="tm-plp-fav">♡</span>
             <img src="images/lancamentos/produto_03.jpg" alt="Parafusadeira PFT 012I">
             <p>Parafusadeira/furadeira de impacto a bateria, 12 V, fonte de carregamento bivolt automática, PFT 012I TOOLMIX</p>
           </a>
         </div>
 
         <div class="tm-plp-card" data-category="parafusadeiras">
-            <a href="pft020.html" class="tm-plp-card-link">
+          <a href="pft020.html" class="tm-plp-card-link">
             <span class="tm-plp-badge">Lançamento</span>
-            <span class="tm-plp-fav">♡</span>
-            <img src="images/lancamentos/produto_04.jpg" alt="Parafusadeira PFT 012I">
+            <img src="images/lancamentos/produto_04.jpg" alt="Parafusadeira PFT 020">
             <p>Parafusadeira/furadeira a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020 TOOLMIX</p>
           </a>
         </div>
 
         <div class="tm-plp-card" data-category="baterias">
-            <a href="pft012_bateria.html" class="tm-plp-card-link">
+          <a href="pft012_bateria.html" class="tm-plp-card-link">
             <span class="tm-plp-badge">Lançamento</span>
-            <span class="tm-plp-fav">♡</span>
-            <img src="images/produtos/pft012_bateria/1213216_principal.jpg" alt="Parafusadeira PFT 012I">
+            <img src="images/produtos/pft012_bateria/1213216_principal.jpg" alt="Bateria 12V">
             <p>Bateria 12 V - 1,5 Ah, íons de lítio, para PFT 012 e PFT 012I TOOLMIX</p>
           </a>
         </div>
 
         <div class="tm-plp-card" data-category="baterias">
-            <a href="pft020_bateria.html" class="tm-plp-card-link">
+          <a href="pft020_bateria.html" class="tm-plp-card-link">
             <span class="tm-plp-badge">Lançamento</span>
-            <span class="tm-plp-fav">♡</span>
-            <img src="images/produtos/pft020_bateria/1213219_embalagem_1.jpg" alt="Parafusadeira PFT 012I">
+            <img src="images/produtos/pft020_bateria/1213219_embalagem_1.jpg" alt="Bateria 20V">
             <p>Bateria 20 V - 1,5 Ah, íons de lítio, para PFT 020 e PFT 020I TOOLMIX</p>
           </a>
         </div>
@@ -215,6 +240,7 @@
         <div class="tm-footer-column">
           <h4 class="tm-footer-section-title">INSTITUCIONAL</h4>
           <a href="institucional.html" class="tm-footer-link">Sobre a TOOLMIX</a>
+          <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
         </div>
 
         <!-- COLUNA 2 – POLÍTICAS -->
@@ -224,16 +250,10 @@
           <a href="politica-cookies.html" class="tm-footer-link">Política de Cookies</a>
         </div>
 
-        <!-- COLUNA 3 – NOSSA ESTRUTURA -->
-        <div class="tm-footer-column">
-          <h4 class="tm-footer-section-title">NOSSA ESTRUTURA</h4>
-          <a href="nossa-estrutura.html" class="tm-footer-link">Estrutura</a>
-        </div>
-
-        <!-- COLUNA 4 – ATENDIMENTO -->
+        <!-- COLUNA 3 – ATENDIMENTO -->
         <div class="tm-footer-column">
           <h4 class="tm-footer-section-title">ATENDIMENTO</h4>
-          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" class="tm-footer-link">Assistência Técnica</a>
+          <a href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer" class="tm-footer-link">Assistência Técnica</a>
         </div>
 
       </div>
@@ -278,5 +298,210 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <style>
+    /* ── BULLET LARANJA NA SIDEBAR ── */
+    .tm-plp-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tm-plp-sidebar ul li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #EEEEEE;
+      border-radius: 8px;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .tm-plp-sidebar ul li a:hover,
+    .tm-plp-sidebar ul li a.active {
+      background: #e0e0e0;
+      font-weight: 700;
+    }
+
+    .tm-filter-bullet {
+      color: #E87722; /* laranja Toolmix */
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* ── SELECT ORDENAÇÃO ESTILIZADO ── */
+    .tm-select-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tm-select-wrapper select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: #fff;
+      border: 1.5px solid #ccc;
+      border-radius: 20px;
+      padding: 7px 36px 7px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .tm-select-wrapper::after {
+      content: '∨';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* ── DROPDOWN MOBILE DE FILTRO ── */
+    .tm-plp-mobile-filter {
+      display: none; /* escondido no desktop */
+    }
+
+    .tm-plp-filter-toggle {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+      border: none;
+      padding: 14px 20px;
+      cursor: pointer;
+    }
+
+    .tm-filter-arrow {
+      font-size: 16px;
+    }
+
+    .tm-plp-filter-dropdown {
+      background: #fff;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .tm-plp-filter-dropdown ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tm-plp-filter-dropdown ul li a {
+      display: block;
+      padding: 14px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+      font-weight: 500;
+    }
+
+    .tm-plp-filter-dropdown ul li a:hover,
+    .tm-plp-filter-dropdown ul li a.active {
+      background: #f5f5f5;
+      font-weight: 700;
+      color: #E87722;
+    }
+
+    @media (max-width: 768px) {
+      .tm-plp-mobile-filter {
+        display: block;
+        margin-bottom: 16px;
+      }
+      .tm-plp-sidebar {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    // ── FILTRO DE CATEGORIA ──
+    function initFilter() {
+      const allLinks = document.querySelectorAll('[data-filter]');
+      const cards    = document.querySelectorAll('.tm-plp-card');
+
+      allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const filter = link.dataset.filter;
+
+          // marca active em todos os links com o mesmo data-filter
+          allLinks.forEach(l => l.classList.remove('active'));
+          document.querySelectorAll(`[data-filter="${filter}"]`).forEach(l => l.classList.add('active'));
+
+          cards.forEach(card => {
+            const match = filter === 'all' || card.dataset.category === filter;
+            card.style.display = match ? '' : 'none';
+          });
+
+          // fecha dropdown mobile
+          const dd = document.getElementById('filter-dropdown');
+          const arrow = document.getElementById('filter-arrow');
+          if (dd && dd.style.display !== 'none') {
+            dd.style.display = 'none';
+            arrow.textContent = '∨';
+          }
+        });
+      });
+    }
+
+    // ── ORDENAÇÃO A-Z / Z-A ──
+    function initSort() {
+      const select = document.getElementById('sort-select');
+      if (!select) return;
+
+      select.addEventListener('change', () => {
+        const grid  = document.querySelector('.tm-plp-grid');
+        const cards = Array.from(grid.querySelectorAll('.tm-plp-card'));
+
+        cards.sort((a, b) => {
+          const textA = a.querySelector('p').textContent.trim().toLowerCase();
+          const textB = b.querySelector('p').textContent.trim().toLowerCase();
+          return select.value === 'az'
+            ? textA.localeCompare(textB, 'pt')
+            : textB.localeCompare(textA, 'pt');
+        });
+
+        cards.forEach(c => grid.appendChild(c));
+      });
+    }
+
+    // ── DROPDOWN MOBILE FILTRO ──
+    function initMobileFilter() {
+      const btn   = document.getElementById('btn-filter-toggle');
+      const dd    = document.getElementById('filter-dropdown');
+      const arrow = document.getElementById('filter-arrow');
+      if (!btn) return;
+
+      btn.addEventListener('click', () => {
+        const open = dd.style.display !== 'none';
+        dd.style.display    = open ? 'none' : 'block';
+        arrow.textContent   = open ? '∨' : '∧';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initFilter();
+      initSort();
+      initMobileFilter();
+    });
+  </script>
 </body>
 </html>
