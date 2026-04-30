@@ -568,7 +568,7 @@
    RESPONSIVIDADE INTERMEDIARIA - 768px a 1024px
    ====================================================== */
 @media (max-width: 1024px) {
-  .tm-plp-grid { grid-template-columns: repeat(3, 1fr); }
+  .tm-plp-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 
@@ -576,7 +576,7 @@
    MOBILE PEQUENO - ate 480px
    ====================================================== */
 @media (max-width: 480px) {
-  .tm-plp-grid { grid-template-columns: 1fr; }
+  .tm-plp-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Cards lancamentos: garante que nao vaze em telas muito pequenas */
   .tm-launch-card {
