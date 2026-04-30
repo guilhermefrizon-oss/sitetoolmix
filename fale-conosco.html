@@ -54,7 +54,7 @@
       align-items: center;
       justify-content: center;
       font-size: 26px;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      border-radius: 12px;
       flex-shrink: 0;
     }
 
@@ -130,7 +130,7 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      border-radius: 12px;
     }
 
     .fc-secao-header h2 {
@@ -152,61 +152,61 @@
 
     .fc-rede-card {
       border-radius: 12px;
-      padding: 28px 20px;
+      border: 1.5px solid var(--tm-gray-light);
+      padding: 32px 24px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 10px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      color: var(--tm-white);
-      text-align: center;
+      background: var(--tm-white);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
 
     .fc-rede-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+      border-color: var(--tm-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
-    .fc-rede-card.instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
-    .fc-rede-card.facebook  { background: #1877F2; }
-    .fc-rede-card.tiktok    { background: #010101; }
-    .fc-rede-card.youtube   { background: #FF0000; }
-
     .fc-rede-icon {
-      width: 52px;
-      height: 52px;
-      background: rgba(255,255,255,0.2);
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
+      margin-bottom: 4px;
     }
+
+    .fc-rede-card.instagram .fc-rede-icon { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .fc-rede-card.facebook  .fc-rede-icon { background: #1877F2; }
+    .fc-rede-card.tiktok    .fc-rede-icon { background: #010101; }
+    .fc-rede-card.youtube   .fc-rede-icon { background: #FF0000; }
 
     .fc-rede-card h3 {
       font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       margin: 0;
-      color: var(--tm-white);
+      color: var(--tm-gray-dark);
     }
 
     .fc-rede-card p {
-      font-size: 12px;
-      opacity: 0.85;
+      font-size: 13px;
       margin: 0;
-      line-height: 1.5;
-      color: var(--tm-white);
+      line-height: 1.6;
+      color: var(--tm-gray-secondary);
     }
 
     .fc-rede-btn {
-      margin-top: 4px;
-      background: rgba(255,255,255,0.2);
-      border: 1.5px solid rgba(255,255,255,0.5);
-      border-radius: 20px;
-      padding: 6px 18px;
+      margin-top: 8px;
+      background: var(--tm-primary);
+      border: none;
+      border-radius: 0;
+      clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+      padding: 8px 22px;
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
@@ -215,10 +215,11 @@
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .fc-rede-btn:hover {
-      background: rgba(255,255,255,0.35);
+      background: var(--tm-primary-hover);
     }
 
     /* SEÇÃO INSTAGRAM FEED */
@@ -269,18 +270,21 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      background-color: var(--tm-primary);
       color: var(--tm-white);
       font-weight: 700;
       font-size: 13px;
-      padding: 10px 24px;
+      padding: 12px 32px;
       text-decoration: none;
-      border-radius: 24px;
-      transition: opacity 0.2s;
+      clip-path: polygon(6% 0, 100% 0, 94% 100%, 0% 100%);
+      transition: background 0.2s;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .fc-instagram-seguir:hover {
-      opacity: 0.88;
+      background-color: var(--tm-primary-hover);
     }
 
     /* GRID DE POSTS */
@@ -524,7 +528,9 @@
 
       <!-- OPÇÃO 1: ASSISTÊNCIA TÉCNICA -->
       <a class="fc-opcao-card" href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">
-        <div class="fc-opcao-icone"><img src="images/footer/instagram.svg" alt="" style="width:24px;height:24px;filter:brightness(0) invert(1);display:none"></div>
+        <div class="fc-opcao-icone">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M13.78 2.83a4.5 4.5 0 0 0-5.94 5.94L2 14.59 4.41 17l5.82-5.82a4.5 4.5 0 0 0 5.94-5.94l-2.83 2.83-1.41-1.41 2.83-2.83z"/></svg>
+        </div>
         <h2>Assistência Técnica</h2>
         <p>Precisa de suporte técnico para o seu produto Toolmix? Encontre a assistência técnica autorizada mais próxima de você e agende seu atendimento.</p>
         <span class="fc-opcao-link">Encontrar assistência <span>→</span></span>
@@ -532,7 +538,9 @@
 
       <!-- OPÇÃO 2: REDES SOCIAIS -->
       <a class="fc-opcao-card" href="#redes-sociais">
-        <div class="fc-opcao-icone" style="font-size:0;"><img src="images/footer/instagram.svg" alt="" style="width:26px;height:26px;filter:brightness(0) invert(1);"></div>
+        <div class="fc-opcao-icone">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+        </div>
         <h2>Redes Sociais</h2>
         <p>Fale com a gente pelas nossas redes sociais! Acompanhe novidades, lançamentos e envie sua mensagem pelo canal de sua preferência.</p>
         <span class="fc-opcao-link">Ver redes sociais <span>→</span></span>
@@ -547,7 +555,7 @@
 
       <!-- CARDS REDES -->
       <div class="fc-secao-header">
-        <div class="fc-secao-num" style="font-size:0;"><img src="images/footer/instagram.svg" alt="" style="width:18px;height:18px;filter:brightness(0) invert(1);"></div>
+        <div class="fc-secao-num"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
         <h2>Nossas Redes Sociais</h2>
       </div>
 
@@ -556,28 +564,32 @@
         <a class="fc-rede-card instagram" href="https://www.instagram.com/toolmixferramentas/" target="_blank" rel="noopener noreferrer">
           <div class="fc-rede-icon"><img src="images/footer/instagram.svg" alt="Instagram" style="width:28px;height:28px;filter:brightness(0) invert(1);"></div>
           <h3>Instagram</h3>
-          <p>@toolmixferramentas<br>Fotos, vídeos e novidades</p>
+          <p>@toolmixferramentas</p>
+          <p style="font-size:12px;color:#aaa;margin:0;">Fotos, vídeos e novidades</p>
           <span class="fc-rede-btn">Seguir</span>
         </a>
 
         <a class="fc-rede-card facebook" href="https://web.facebook.com/toolmixferramentas" target="_blank" rel="noopener noreferrer">
           <div class="fc-rede-icon"><img src="images/footer/facebook.svg" alt="Facebook" style="width:28px;height:28px;filter:brightness(0) invert(1);"></div>
           <h3>Facebook</h3>
-          <p>toolmixferramentas<br>Curtir nossa página</p>
+          <p>toolmixferramentas</p>
+          <p style="font-size:12px;color:#aaa;margin:0;">Curtir nossa página</p>
           <span class="fc-rede-btn">Curtir</span>
         </a>
 
         <a class="fc-rede-card tiktok" href="https://www.tiktok.com/@toolmixferramentas" target="_blank" rel="noopener noreferrer">
           <div class="fc-rede-icon"><img src="images/footer/tiktok.svg" alt="TikTok" style="width:28px;height:28px;filter:brightness(0) invert(1);"></div>
           <h3>TikTok</h3>
-          <p>@toolmixferramentas<br>Vídeos curtos e dicas</p>
+          <p>@toolmixferramentas</p>
+          <p style="font-size:12px;color:#aaa;margin:0;">Vídeos curtos e dicas</p>
           <span class="fc-rede-btn">Seguir</span>
         </a>
 
         <a class="fc-rede-card youtube" href="https://www.youtube.com/@toolmixferramentas" target="_blank" rel="noopener noreferrer">
           <div class="fc-rede-icon"><img src="images/footer/youtube.svg" alt="YouTube" style="width:28px;height:28px;filter:brightness(0) invert(1);"></div>
           <h3>YouTube</h3>
-          <p>@toolmixferramentas<br>Tutoriais e lançamentos</p>
+          <p>@toolmixferramentas</p>
+          <p style="font-size:12px;color:#aaa;margin:0;">Tutoriais e lançamentos</p>
           <span class="fc-rede-btn">Inscrever-se</span>
         </a>
 
@@ -586,7 +598,7 @@
       <!-- FEED DO INSTAGRAM -->
       <div class="fc-instagram">
         <div class="fc-secao-header" style="margin-bottom: 24px;">
-          <div class="fc-secao-num" style="font-size:0;"><img src="images/footer/instagram.svg" alt="" style="width:18px;height:18px;filter:brightness(0) invert(1);"></div>
+          <div class="fc-secao-num"><img src="images/footer/instagram.svg" alt="" style="width:18px;height:18px;filter:brightness(0) invert(1);"></div>
           <h2>Últimos Posts do Instagram</h2>
         </div>
 
