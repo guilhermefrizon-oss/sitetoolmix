@@ -548,7 +548,14 @@
     width: 100%;
   }
 
-  .lancamentos-image img {
+  .lancamentos-image picture {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .lancamentos-image img,
+  .lancamentos-image picture img {
     width: 100%;
     max-width: 400px;
     height: auto;

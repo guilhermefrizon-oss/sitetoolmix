@@ -46,21 +46,24 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 650px;
+  width: 32%;
   height: 100%;
   background-color: var(--tm-gray-dark);
   clip-path: polygon(0 0, 100% 0, 84% 100%, 0% 100%);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: calc(32vw * 0.16);
+  box-sizing: border-box;
 }
 
 .tm-logo {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  width: 300px;
+  position: relative;
+  width: clamp(160px, 18vw, 300px);
   height: auto;
   z-index: 11;
+  flex-shrink: 0;
 }
 
 /* Wrapper para alinhar conteúdo à direita da forma inclinada */
@@ -68,7 +71,7 @@ body {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding-left: 600px; /* 30px de margem segura além dos 650px da forma */
+  padding-left: calc(32% + 20px);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -136,9 +139,9 @@ body {
 }
 
 /* Slogan centralizado na área branca à direita da forma cinza — APENAS desktop */
-@media (min-width: 1367px) {
+@media (min-width: 1025px) {
   .tm-header-top-gray .tm-header-content-wrapper {
-    padding-left: 650px;
+    padding-left: calc(32% + 20px);
     padding-right: 40px;
     justify-content: center;
   }
@@ -254,7 +257,7 @@ body {
 .tm-nav ul {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 40px;
   list-style: none;
   margin: 0;
@@ -326,6 +329,12 @@ body {
 
 .tm-slide.active {
   opacity: 1;
+}
+
+.tm-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .tm-slide img {
@@ -955,6 +964,20 @@ body {
   display: flex;
   height: 900px;
   padding-right: 80px;
+}
+
+.lancamentos-image picture {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.lancamentos-image picture img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 20px;
 }
 
 .lancamentos-text ul {
@@ -1961,45 +1984,26 @@ body {
    FAIXA 1367px–1440px:
    ------------------------------------------------------- */
 @media (min-width: 1367px) and (max-width: 1440px) {
-  .tm-header-shape {
-    width: 480px; /* Largura da forma cinza */
-  }
-
-  .tm-logo {
-    width: 220px;
-    left: 5%;
-  }
-
-  /* Zona de segurança: padding-left MAIOR que a largura da forma */
-  .tm-header-content-wrapper {
-    padding-left: 510px; 
-  }
-
-  .tm-header-top-gray .tm-header-content-wrapper {
-    padding-left: 510px;
-    padding-right: 30px;
+  .tm-nav ul {
+    gap: 20px;
   }
 
   .tm-orange-wrapper {
     padding-right: 30px;
   }
 
-  .tm-nav ul {
-    gap: 20px; /* Reduz o espaço do menu para não vazar pela direita */
-  }
-
   .tm-footer-content {
     padding-left: 40px;
-    padding-right: 480px; /* Margem de segurança */
+    padding-right: 480px;
   }
   .tm-footer-columns {
-    gap: 30px; /* Reduz o espaço entre as colunas para caberem bem */
+    gap: 30px;
   }
   .tm-footer-orange {
-    width: 500px; /* Diminui um pouco a largura da forma laranja */
+    width: 500px;
   }
   .tm-footer-orange-content {
-    right: 60px; /* Centraliza o logo dentro da forma laranja menor */
+    right: 60px;
   }
 }
 
@@ -2120,31 +2124,12 @@ body {
    ULTRAWIDE (1601px+):
    ------------------------------------------------------- */
 @media (min-width: 1601px) {
-  .tm-header-shape {
-    width: 650px;
-  }
-
-  .tm-logo {
-    width: 300px;
-    left: 10%;
-  }
-
-  .tm-header-content-wrapper {
-    padding-left: 690px;
-  }
-
-  .tm-header-top-gray .tm-header-content-wrapper {
-    padding-left: 690px;
-    padding-right: 60px;
-    justify-content: center;
+  .tm-nav ul {
+    gap: 60px;
   }
 
   .tm-orange-wrapper {
     padding-right: 60px;
-  }
-
-  .tm-nav ul {
-    gap: 60px;
   }
 
   .tm-footer-content {
@@ -2165,26 +2150,6 @@ body {
    FAIXA 1441px–1600px:
    ------------------------------------------------------- */
 @media (min-width: 1441px) and (max-width: 1600px) {
-  .tm-header-shape {
-    width: 550px; /* Largura da forma cinza */
-  }
-
-  .tm-logo {
-    width: 250px;
-    left: 8%;
-  }
-
-  /* Zona de segurança: padding-left MAIOR que a largura da forma */
-  .tm-header-content-wrapper {
-    padding-left: 590px; 
-  }
-
-  .tm-header-top-gray .tm-header-content-wrapper {
-    padding-left: 590px;
-    padding-right: 40px;
-    justify-content: center;
-  }
-
   .tm-nav ul {
     gap: 30px;
   }

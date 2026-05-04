@@ -56,6 +56,7 @@
       font-size: 26px;
       border-radius: 12px;
       flex-shrink: 0;
+      color: var(--tm-white);
     }
 
     .fc-opcao-card h2 {
@@ -222,175 +223,10 @@
       background: var(--tm-primary-hover);
     }
 
-    /* SEÇÃO INSTAGRAM FEED */
-    .fc-instagram {
-      margin-top: 60px;
-    }
-
-    .fc-instagram-topo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .fc-instagram-perfil {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .fc-instagram-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-
-    .fc-instagram-perfil-info strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--tm-gray-dark);
-    }
-
-    .fc-instagram-perfil-info span {
-      font-size: 13px;
-      color: var(--tm-gray-secondary);
-    }
-
-    .fc-instagram-seguir {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background-color: var(--tm-primary);
-      color: var(--tm-white);
-      font-weight: 700;
-      font-size: 13px;
-      padding: 12px 32px;
-      text-decoration: none;
-      clip-path: polygon(6% 0, 100% 0, 94% 100%, 0% 100%);
-      transition: background 0.2s;
-      font-family: 'Montserrat', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .fc-instagram-seguir:hover {
-      background-color: var(--tm-primary-hover);
-    }
-
-    /* GRID DE POSTS */
-    .fc-posts-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .fc-post {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      aspect-ratio: 1;
-      background-color: var(--tm-gray-light);
-      cursor: pointer;
-    }
-
-    .fc-post-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-      transition: filter 0.2s;
-    }
-
-    .fc-post:hover .fc-post-placeholder {
-      filter: brightness(0.88);
-    }
-
-    .fc-post-placeholder-icon {
-      font-size: 36px;
-      opacity: 0.4;
-    }
-
-    .fc-post-placeholder-texto {
-      font-size: 11px;
-      font-weight: 700;
-      color: #aaa;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-align: center;
-      padding: 0 12px;
-    }
-
-    .fc-post-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(242,101,34,0.82);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      opacity: 0;
-      transition: opacity 0.25s;
-      padding: 16px;
-    }
-
-    .fc-post:hover .fc-post-overlay {
-      opacity: 1;
-    }
-
-    .fc-post-overlay span {
-      font-size: 28px;
-    }
-
-    .fc-post-overlay p {
-      font-size: 12px;
-      color: var(--tm-white);
-      font-weight: 600;
-      text-align: center;
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    /* AVISO DE API */
-    .fc-api-aviso {
-      margin-top: 20px;
-      background-color: var(--tm-gray-light);
-      border-left: 4px solid var(--tm-primary);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 13px;
-      color: var(--tm-gray-secondary);
-      line-height: 1.7;
-    }
-
-    .fc-api-aviso strong {
-      color: var(--tm-gray-dark);
-    }
 
     /* RESPONSIVO */
     @media (max-width: 1024px) {
       .fc-redes-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .fc-posts-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -416,15 +252,6 @@
 
       .fc-redes-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .fc-posts-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .fc-instagram-topo {
-        flex-direction: column;
-        align-items: flex-start;
       }
 
       .fc-divisor {
@@ -529,7 +356,7 @@
       <!-- OPÇÃO 1: ASSISTÊNCIA TÉCNICA -->
       <a class="fc-opcao-card" href="http://orahml.ovd.net:7077/assistenciatecnica/pages/pesquisa/listaAssistencias.xhtml?marca=06" target="_blank" rel="noopener noreferrer">
         <div class="fc-opcao-icone">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M13.78 2.83a4.5 4.5 0 0 0-5.94 5.94L2 14.59 4.41 17l5.82-5.82a4.5 4.5 0 0 0 5.94-5.94l-2.83 2.83-1.41-1.41 2.83-2.83z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <h2>Assistência Técnica</h2>
         <p>Precisa de suporte técnico para o seu produto Toolmix? Encontre a assistência técnica autorizada mais próxima de você e agende seu atendimento.</p>
@@ -539,7 +366,7 @@
       <!-- OPÇÃO 2: REDES SOCIAIS -->
       <a class="fc-opcao-card" href="#redes-sociais">
         <div class="fc-opcao-icone">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         </div>
         <h2>Redes Sociais</h2>
         <p>Fale com a gente pelas nossas redes sociais! Acompanhe novidades, lançamentos e envie sua mensagem pelo canal de sua preferência.</p>
@@ -555,7 +382,7 @@
 
       <!-- CARDS REDES -->
       <div class="fc-secao-header">
-        <div class="fc-secao-num"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
+        <div class="fc-secao-num"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
         <h2>Nossas Redes Sociais</h2>
       </div>
 
@@ -595,75 +422,6 @@
 
       </div>
 
-      <!-- FEED DO INSTAGRAM -->
-      <div class="fc-instagram">
-        <div class="fc-secao-header" style="margin-bottom: 24px;">
-          <div class="fc-secao-num"><img src="images/footer/instagram.svg" alt="" style="width:18px;height:18px;filter:brightness(0) invert(1);"></div>
-          <h2>Últimos Posts do Instagram</h2>
-        </div>
-
-        <div class="fc-instagram-topo">
-          <div class="fc-instagram-perfil">
-            <div class="fc-instagram-avatar"><img src="images/footer/instagram.svg" alt="Instagram" style="width:26px;height:26px;filter:brightness(0) invert(1);"></div>
-            <div class="fc-instagram-perfil-info">
-              <strong>@toolmixferramentas</strong>
-              <span>Siga para acompanhar os lançamentos</span>
-            </div>
-          </div>
-          <a class="fc-instagram-seguir" href="https://www.instagram.com/toolmixferramentas/" target="_blank" rel="noopener noreferrer">
-            <img src="images/footer/instagram.svg" alt="" style="width:16px;height:16px;filter:brightness(0) invert(1);"> Seguir no Instagram
-          </a>
-        </div>
-
-        <!-- GRID DE POSTS PLACEHOLDER -->
-        <div class="fc-posts-grid">
-
-          <div class="fc-post">
-            <div class="fc-post-placeholder">
-              <div class="fc-post-placeholder-icon"><img src="images/footer/instagram.svg" alt="" style="width:36px;height:36px;opacity:0.3;"></div>
-              <div class="fc-post-placeholder-texto">Post 1</div>
-            </div>
-            <div class="fc-post-overlay">
-              <img src="images/footer/instagram.svg" alt="" style="width:28px;height:28px;filter:brightness(0) invert(1);">
-              <p>Ver no Instagram</p>
-            </div>
-          </div>
-
-          <div class="fc-post">
-            <div class="fc-post-placeholder">
-              <div class="fc-post-placeholder-icon"><img src="images/footer/instagram.svg" alt="" style="width:36px;height:36px;opacity:0.3;"></div>
-              <div class="fc-post-placeholder-texto">Post 2</div>
-            </div>
-            <div class="fc-post-overlay">
-              <img src="images/footer/instagram.svg" alt="" style="width:28px;height:28px;filter:brightness(0) invert(1);">
-              <p>Ver no Instagram</p>
-            </div>
-          </div>
-
-          <div class="fc-post">
-            <div class="fc-post-placeholder">
-              <div class="fc-post-placeholder-icon"><img src="images/footer/instagram.svg" alt="" style="width:36px;height:36px;opacity:0.3;"></div>
-              <div class="fc-post-placeholder-texto">Post 3</div>
-            </div>
-            <div class="fc-post-overlay">
-              <img src="images/footer/instagram.svg" alt="" style="width:28px;height:28px;filter:brightness(0) invert(1);">
-              <p>Ver no Instagram</p>
-            </div>
-          </div>
-
-          <div class="fc-post">
-            <div class="fc-post-placeholder">
-              <div class="fc-post-placeholder-icon"><img src="images/footer/instagram.svg" alt="" style="width:36px;height:36px;opacity:0.3;"></div>
-              <div class="fc-post-placeholder-texto">Post 4</div>
-            </div>
-            <div class="fc-post-overlay">
-              <img src="images/footer/instagram.svg" alt="" style="width:28px;height:28px;filter:brightness(0) invert(1);">
-              <p>Ver no Instagram</p>
-            </div>
-          </div>
-
-        </div>
-</div>
     </div>
 
   </main>

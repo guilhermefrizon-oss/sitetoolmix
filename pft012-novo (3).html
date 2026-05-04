@@ -1089,8 +1089,60 @@
 
     if (setaEsq) setaEsq.addEventListener('click', () => { currentIndex = (currentIndex - 1 + total()) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
     if (setaDir) setaDir.addEventListener('click', () => { currentIndex = (currentIndex + 1) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
-    if (miniEsq) miniEsq.addEventListener('click', () => { currentIndex = (currentIndex - 1 + total()) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
-    if (miniDir) miniDir.addEventListener('click', () => { currentIndex = (currentIndex + 1) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
+    // Setas das miniaturas: rolam APENAS as miniaturas (não trocam a foto principal)
+    if (miniEsq) miniEsq.addEventListener('click', () => {
+      const janela = document.querySelector('.pdp-miniaturas-janela');
+      const itensVisiveis = Math.max(1, Math.floor(janela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
+      const maxIdx = Math.max(0, document.querySelectorAll('.pdp-miniatura').length - itensVisiveis);
+      miniaturaIndex = Math.max(0, miniaturaIndex - 1);
+      atualizarMiniaturasCarrossel();
+    });
+    if (miniDir) miniDir.addEventListener('click', () => {
+      const janela = document.querySelector('.pdp-miniaturas-janela');
+      const itensVisiveis = Math.max(1, Math.floor(janela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
+      const maxIdx = Math.max(0, document.querySelectorAll('.pdp-miniatura').length - itensVisiveis);
+      miniaturaIndex = Math.min(maxIdx, miniaturaIndex + 1);
+      atualizarMiniaturasCarrossel();
+    });
+
+    // Scroll com mouse wheel na galeria principal: acumulador para trackpad
+    const galeriaContainer = document.querySelector('.pdp-carrossel');
+    if (galeriaContainer) {
+      let deltaAcum = 0;
+      let wheelLock = false;
+      galeriaContainer.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (wheelLock) return;
+        deltaAcum += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+        if (Math.abs(deltaAcum) >= 50) {
+          const dir = deltaAcum > 0 ? 1 : -1;
+          deltaAcum = 0;
+          wheelLock = true;
+          setTimeout(() => { wheelLock = false; }, 600);
+          currentIndex = (currentIndex + dir + total()) % total();
+          atualizarCarrossel();
+          garantirMiniaturaVisivel();
+        }
+      }, { passive: false });
+    }
+
+    // Scroll com mouse wheel nas miniaturas: rola a faixa
+    const miniaturasJanela = document.querySelector('.pdp-miniaturas-janela');
+    if (miniaturasJanela) {
+      let miniDeltaAcum = 0;
+      miniaturasJanela.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        miniDeltaAcum += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+        if (Math.abs(miniDeltaAcum) >= 30) {
+          const dir = miniDeltaAcum > 0 ? 1 : -1;
+          miniDeltaAcum = 0;
+          const itensVisiveis = Math.max(1, Math.floor(miniaturasJanela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
+          const maxIdx = Math.max(0, document.querySelectorAll('.pdp-miniatura').length - itensVisiveis);
+          miniaturaIndex = Math.min(maxIdx, Math.max(0, miniaturaIndex + dir));
+          atualizarMiniaturasCarrossel();
+        }
+      }, { passive: false });
+    }
 
     window.addEventListener('resize', () => { atualizarCarrossel(); garantirMiniaturaVisivel(); });
 
