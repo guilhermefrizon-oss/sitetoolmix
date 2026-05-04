@@ -74,18 +74,25 @@
       position: relative;
       background-color: var(--tm-white-light);
       border-radius: 16px;
-      overflow: hidden;
+      overflow: visible; /* setas ficam fora sem serem cortadas */
       aspect-ratio: 1 / 1;
       max-height: 520px;
       margin-bottom: 16px;
     }
 
-    /* Setas do carrossel — reaproveitando o JS existente */
+    /* Setas do carrossel */
     .pdp2-img-principal .pdp-carrossel {
+      position: relative;
       width: 100%;
       height: 100%;
-      padding: 0 50px;
+      padding: 0;
+      overflow: visible;
+      border-radius: 16px;
+    }
+    .pdp2-img-principal .pdp-carrossel-janela {
       overflow: hidden;
+      border-radius: 16px;
+      width: 100%;
     }
 
     .pdp2-img-principal .pdp-carrossel-janela {
@@ -134,10 +141,12 @@
       color: var(--tm-white);
       border-color: var(--tm-primary);
       opacity: 1;
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
 
-    .pdp2-img-principal .pdp-carrossel-seta-esquerda { left: 10px; }
-    .pdp2-img-principal .pdp-carrossel-seta-direita  { right: 10px; }
+    .pdp2-img-principal .pdp-carrossel-seta-esquerda { left: -20px; }
+    .pdp2-img-principal .pdp-carrossel-seta-direita  { right: -20px; }
 
     /* Miniaturas */
     .pdp2-miniaturas {
@@ -199,11 +208,19 @@
       color: var(--tm-gray-secondary);
       flex-shrink: 0;
       transition: all 0.2s;
+      /* Sobrescreve position:absolute do style.css global */
+      position: static !important;
+      top: auto !important;
+      transform: none !important;
+      opacity: 1 !important;
     }
 
     .pdp2-mini-seta:hover {
       border-color: var(--tm-primary);
       color: var(--tm-primary);
+      position: static !important;
+      transform: none !important;
+      opacity: 1 !important;
     }
 
     /* ---- COLUNA DIREITA — INFORMAÇÕES ---- */
@@ -641,11 +658,9 @@
       }
     }
 
-    /* Setas da imagem principal — visíveis apenas em tablet/mobile */
-    @media (min-width: 1367px) {
-      .pdp2-img-principal .pdp-carrossel-seta {
-        display: none;
-      }
+    /* Setas da imagem principal — visíveis em todos os tamanhos */
+    .pdp2-img-principal .pdp-carrossel-seta {
+      display: flex;
     }
 
     /* ── ACCORDION MÍDIA ENRIQUECIDA ── */
@@ -823,13 +838,13 @@
 
         <!-- Miniaturas -->
         <div class="pdp2-miniaturas">
-          <button class="pdp2-mini-seta pdp-miniaturas-seta pdp-miniaturas-seta-esquerda">‹</button>
+          <button class="pdp2-mini-seta pdp-miniaturas-seta-esquerda">‹</button>
           <div class="pdp2-miniaturas-janela pdp-miniaturas-janela">
             <div class="pdp2-miniaturas-faixa pdp-miniaturas-imagens">
               <!-- geradas pelo JS existente -->
             </div>
           </div>
-          <button class="pdp2-mini-seta pdp-miniaturas-seta pdp-miniaturas-seta-direita">›</button>
+          <button class="pdp2-mini-seta pdp-miniaturas-seta-direita">›</button>
         </div>
 
       </div>
@@ -1150,145 +1165,131 @@
 
   <!-- JS carrossel + 360 (reaproveitado do original) -->
   <script>
-  const LARGURA_THUMB = 72;
-  const GAP_THUMB = 10;
+  // =====================================================
+  // GALERIA PDP — lógica única e centralizada
+  // =====================================================
+  (function () {
+    const LARGURA_THUMB = 72;
+    const GAP_THUMB = 10;
+    let currentIndex = 0;
+    let miniaturaIndex = 0;
 
-  let currentIndex = 0;
-  let miniaturaIndex = 0;
-
-  function atualizarCarrossel() {
-    const lista = document.querySelector('.pdp-carrossel-lista');
-    const janela = document.querySelector('.pdp-carrossel-janela');
-    if (!lista || !janela) return;
-    const primeiraImagem = lista.querySelector('.pdp-carrossel-imagem');
-    const largura = primeiraImagem ? primeiraImagem.offsetWidth : janela.offsetWidth;
-    lista.style.transform = `translateX(-${currentIndex * largura}px)`;
-    atualizarMiniaturaAtiva();
-  }
-
-  function atualizarMiniaturaAtiva() {
-    document.querySelectorAll('.pdp-miniatura').forEach(m => m.classList.remove('pdp-miniatura-ativa', 'ativa'));
-    const mins = document.querySelectorAll('.pdp-miniatura');
-    if (mins[currentIndex]) mins[currentIndex].classList.add('pdp-miniatura-ativa', 'ativa');
-  }
-
-  function atualizarMiniaturasCarrossel() {
-    const faixa = document.querySelector('.pdp-miniaturas-imagens');
-    if (!faixa) return;
-    faixa.style.transform = `translateX(-${miniaturaIndex * (LARGURA_THUMB + GAP_THUMB)}px)`;
-  }
-
-  function garantirMiniaturaVisivel() {
-    const janela = document.querySelector('.pdp-miniaturas-janela');
-    const mins = document.querySelectorAll('.pdp-miniatura');
-    if (!janela || !mins.length) return;
-    const itensVisiveis = Math.max(1, Math.floor(janela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
-    let novo = currentIndex - Math.floor(itensVisiveis / 2);
-    novo = Math.max(0, Math.min(Math.max(0, mins.length - itensVisiveis), novo));
-    miniaturaIndex = novo;
-    atualizarMiniaturasCarrossel();
-  }
-
-  function gerarMiniaturas() {
-    const imgs = document.querySelectorAll('.pdp-carrossel-imagem');
-    const container = document.querySelector('.pdp-miniaturas-imagens');
-    if (!container || !imgs.length) return;
-
-    imgs.forEach((img, i) => {
-      const mini = document.createElement('img');
-      mini.src = img.src;
-      mini.alt = img.alt;
-      mini.classList.add('pdp-miniatura', 'pdp2-miniatura');
-      mini.addEventListener('click', () => {
-        currentIndex = i;
-        atualizarCarrossel();
-        garantirMiniaturaVisivel();
-      });
-      container.appendChild(mini);
-    });
-
-    atualizarCarrossel();
-    garantirMiniaturaVisivel();
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    gerarMiniaturas();
-
-    const setaEsq = document.querySelector('.pdp-carrossel-seta-esquerda');
-    const setaDir = document.querySelector('.pdp-carrossel-seta-direita');
-    const miniEsq = document.querySelector('.pdp-miniaturas-seta-esquerda');
-    const miniDir = document.querySelector('.pdp-miniaturas-seta-direita');
-    const total = () => document.querySelectorAll('.pdp-carrossel-imagem').length;
-
-    if (setaEsq) setaEsq.addEventListener('click', () => { currentIndex = (currentIndex - 1 + total()) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
-    if (setaDir) setaDir.addEventListener('click', () => { currentIndex = (currentIndex + 1) % total(); atualizarCarrossel(); garantirMiniaturaVisivel(); });
-    // Setas das miniaturas: rolam APENAS as miniaturas (não trocam a foto principal)
-    if (miniEsq) miniEsq.addEventListener('click', () => {
-      const janela = document.querySelector('.pdp-miniaturas-janela');
-      const itensVisiveis = Math.max(1, Math.floor(janela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
-      const maxIdx = Math.max(0, document.querySelectorAll('.pdp-miniatura').length - itensVisiveis);
-      miniaturaIndex = Math.max(0, miniaturaIndex - 1);
-      atualizarMiniaturasCarrossel();
-    });
-    if (miniDir) miniDir.addEventListener('click', () => {
-      const janela = document.querySelector('.pdp-miniaturas-janela');
-      const itensVisiveis = Math.max(1, Math.floor(janela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
-      const maxIdx = Math.max(0, document.querySelectorAll('.pdp-miniatura').length - itensVisiveis);
-      miniaturaIndex = Math.min(maxIdx, miniaturaIndex + 1);
-      atualizarMiniaturasCarrossel();
-    });
-
-    // Scroll com mouse wheel na galeria principal: acumulador para trackpad
-    const galeriaContainer = document.querySelector('.pdp-carrossel');
-    if (galeriaContainer) {
-      let deltaAcum = 0;
-      let wheelLock = false;
-      galeriaContainer.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        if (wheelLock) return;
-        deltaAcum += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-        if (Math.abs(deltaAcum) >= 50) {
-          const dir = deltaAcum > 0 ? 1 : -1;
-          deltaAcum = 0;
-          wheelLock = true;
-          setTimeout(() => { wheelLock = false; }, 600);
-          currentIndex = (currentIndex + dir + total()) % total();
-          atualizarCarrossel();
-          garantirMiniaturaVisivel();
-        }
-      }, { passive: false });
+    function total() {
+      return document.querySelectorAll('.pdp-carrossel-imagem').length;
     }
 
-    // Scroll com mouse wheel nas miniaturas: rola a faixa
-    const miniaturasJanela = document.querySelector('.pdp-miniaturas-janela');
-    if (miniaturasJanela) {
-      let miniDeltaAcum = 0;
-      miniaturasJanela.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        miniDeltaAcum += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-        if (Math.abs(miniDeltaAcum) >= 30) {
-          const dir = miniDeltaAcum > 0 ? 1 : -1;
-          miniDeltaAcum = 0;
-          const itensVisiveis = Math.max(1, Math.floor(miniaturasJanela.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
-          const maxIdx = Math.max(0, document.querySelectorAll('.pdp-miniatura').length - itensVisiveis);
-          miniaturaIndex = Math.min(maxIdx, Math.max(0, miniaturaIndex + dir));
-          atualizarMiniaturasCarrossel();
-        }
-      }, { passive: false });
+    function irParaFoto(idx) {
+      currentIndex = ((idx % total()) + total()) % total();
+      const lista = document.querySelector('.pdp-carrossel-lista');
+      const janela = document.querySelector('.pdp-carrossel-janela');
+      if (!lista || !janela) return;
+      const img = lista.querySelector('.pdp-carrossel-imagem');
+      const largura = img ? img.offsetWidth : janela.offsetWidth;
+      lista.style.transform = 'translateX(-' + (currentIndex * largura) + 'px)';
+      document.querySelectorAll('.pdp-miniatura').forEach(function(m, i) {
+        m.classList.toggle('pdp-miniatura-ativa', i === currentIndex);
+        m.classList.toggle('ativa', i === currentIndex);
+      });
+      const janelaMin = document.querySelector('.pdp-miniaturas-janela');
+      const mins = document.querySelectorAll('.pdp-miniatura');
+      if (janelaMin && mins.length) {
+        const visiveis = Math.max(1, Math.floor(janelaMin.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
+        const maxIdx = Math.max(0, mins.length - visiveis);
+        const novo = currentIndex - Math.floor(visiveis / 2);
+        miniaturaIndex = Math.min(maxIdx, Math.max(0, novo));
+        rolarMiniaturas();
+      }
     }
 
-    window.addEventListener('resize', () => { atualizarCarrossel(); garantirMiniaturaVisivel(); });
+    function rolarMiniaturas() {
+      const faixa = document.querySelector('.pdp-miniaturas-imagens');
+      if (faixa) faixa.style.transform = 'translateX(-' + (miniaturaIndex * (LARGURA_THUMB + GAP_THUMB)) + 'px)';
+    }
 
-    // TABS
-    document.querySelectorAll('.pdp2-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.pdp2-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.pdp2-painel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+    function moverMiniaturas(dir) {
+      const janelaMin = document.querySelector('.pdp-miniaturas-janela');
+      const mins = document.querySelectorAll('.pdp-miniatura');
+      if (!janelaMin || !mins.length) return;
+      const visiveis = Math.max(1, Math.floor(janelaMin.offsetWidth / (LARGURA_THUMB + GAP_THUMB)));
+      const maxIdx = Math.max(0, mins.length - visiveis);
+      miniaturaIndex = Math.min(maxIdx, Math.max(0, miniaturaIndex + dir));
+      rolarMiniaturas();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const imgs = document.querySelectorAll('.pdp-carrossel-imagem');
+      const container = document.querySelector('.pdp-miniaturas-imagens');
+      if (container && imgs.length) {
+        imgs.forEach(function (img, i) {
+          const mini = document.createElement('img');
+          mini.src = img.src;
+          mini.alt = img.alt;
+          mini.className = 'pdp-miniatura pdp2-miniatura';
+          mini.addEventListener('click', function () { irParaFoto(i); });
+          container.appendChild(mini);
+        });
+      }
+
+      // Setas da foto principal — trocam foto
+      const setaEsq = document.querySelector('.pdp-carrossel-seta-esquerda');
+      const setaDir = document.querySelector('.pdp-carrossel-seta-direita');
+      if (setaEsq) setaEsq.addEventListener('click', function () { irParaFoto(currentIndex - 1); });
+      if (setaDir) setaDir.addEventListener('click', function () { irParaFoto(currentIndex + 1); });
+
+      // Setas das miniaturas — rolam apenas a faixa
+      const miniEsq = document.querySelector('.pdp-miniaturas-seta-esquerda');
+      const miniDir = document.querySelector('.pdp-miniaturas-seta-direita');
+      if (miniEsq) miniEsq.addEventListener('click', function () { moverMiniaturas(-1); });
+      if (miniDir) miniDir.addEventListener('click', function () { moverMiniaturas(1); });
+
+      // Scroll do mouse na foto — troca foto
+      const galeriaContainer = document.querySelector('.pdp-carrossel');
+      if (galeriaContainer) {
+        let deltaAcum = 0;
+        let wheelLock = false;
+        galeriaContainer.addEventListener('wheel', function (e) {
+          e.preventDefault();
+          if (wheelLock) return;
+          deltaAcum += Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+          if (Math.abs(deltaAcum) >= 50) {
+            const dir = deltaAcum > 0 ? 1 : -1;
+            deltaAcum = 0;
+            wheelLock = true;
+            setTimeout(function () { wheelLock = false; }, 600);
+            irParaFoto(currentIndex + dir);
+          }
+        }, { passive: false });
+      }
+
+      // Scroll do mouse nas miniaturas — rola a faixa
+      const janelaMin = document.querySelector('.pdp-miniaturas-janela');
+      if (janelaMin) {
+        let miniDelta = 0;
+        janelaMin.addEventListener('wheel', function (e) {
+          e.preventDefault();
+          miniDelta += Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+          if (Math.abs(miniDelta) >= 30) {
+            moverMiniaturas(miniDelta > 0 ? 1 : -1);
+            miniDelta = 0;
+          }
+        }, { passive: false });
+      }
+
+      window.addEventListener('resize', function () { irParaFoto(currentIndex); });
+      irParaFoto(0);
+
+      // TABS
+      document.querySelectorAll('.pdp2-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          document.querySelectorAll('.pdp2-tab').forEach(function (t) { t.classList.remove('active'); });
+          document.querySelectorAll('.pdp2-painel').forEach(function (p) { p.classList.remove('active'); });
+          tab.classList.add('active');
+          const painel = document.getElementById('tab-' + tab.getAttribute('data-tab'));
+          if (painel) painel.classList.add('active');
+        });
       });
     });
-  });
+  })();
   </script>
 
   <!-- 360 viewer -->

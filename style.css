@@ -1397,8 +1397,8 @@ body {
   transform: translateY(-1px);
 }
 
-.pdp-carrossel-seta-esquerda { left: -60px; }
-.pdp-carrossel-seta-direita  { right: -60px; }
+.pdp-carrossel-seta-esquerda { left: 10px; }
+.pdp-carrossel-seta-direita  { right: 10px; }
 
 .pdp-carrossel-seta:hover {
   background-color: var(--tm-primary);
