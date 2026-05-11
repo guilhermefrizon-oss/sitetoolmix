@@ -342,13 +342,22 @@
     width: 100%;
   }
 
-  .tm-launch-wrapper  { padding: 0 15px; }
+  .tm-launch-wrapper  { padding: 0; }
   .tm-arrow           { display: none; }
+  .tm-launch-arrows   { display: none; }
+  .tm-launch-title    { justify-content: center; padding: 0; }
+
+  .tm-carousel-container {
+    /* Padding lateral = metade do espaço restante, para o card ficar centrado */
+    padding-left: calc((100% - min(80vw, 300px)) / 2);
+    padding-right: calc((100% - min(80vw, 300px)) / 2);
+    scroll-padding-left: calc((100% - min(80vw, 300px)) / 2);
+    box-sizing: border-box;
+  }
 
   .tm-launch-card {
     flex: 0 0 min(80vw, 300px);
     max-width: 300px;
-    scroll-snap-align: center;
   }
 
   /* ======================================================
@@ -508,9 +517,9 @@
      PLP - LISTAGEM DE PRODUTOS
      ====================================================== */
 
-  .tm-plp-container { flex-direction: column; padding: 0 20px; }
+  .tm-plp-container { flex-direction: column; padding: 0 16px; }
   .tm-plp-sidebar   { width: 100%; }
-  .tm-plp-grid      { grid-template-columns: repeat(2, 1fr); }
+  .tm-plp-grid      { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
   .tm-plp-sidebar h3 {
     text-align: center;
@@ -583,7 +592,7 @@
    MOBILE PEQUENO - ate 480px
    ====================================================== */
 @media (max-width: 480px) {
-  .tm-plp-grid { grid-template-columns: repeat(2, 1fr); }
+  .tm-plp-grid { grid-template-columns: repeat(1, 1fr); }
 
   /* Cards lancamentos: garante que nao vaze em telas muito pequenas */
   .tm-launch-card {

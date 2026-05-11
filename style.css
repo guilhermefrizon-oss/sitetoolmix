@@ -405,7 +405,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 80px 20px;
+  padding: 40px 20px 20px;
   background-color: var(--tm-white);
 }
 
@@ -427,9 +427,9 @@ body {
   justify-content: center;
   align-items: center;
   gap: 40px;
-  max-width: 1440px;
-  margin: 60px auto 80px;
-  padding: 0 40px;
+  max-width: 1200px;
+  margin: 20px auto 80px;
+  padding: 0 20px;
 }
 
 .tm-card {
@@ -465,17 +465,30 @@ body {
 .tm-launch-title {
   width: 100%;
   max-width: 1200px;
-  text-align: center; /* Centralizado para dar mais destaque */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   margin-top: 0;
   margin-bottom: 40px;
-  padding-left: 0; /* Removido o padding para que o centro seja exato */
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .tm-launch-title h2 {
-  font-size: 28px; /* Tamanho maior, igual ao do slogan */
-  font-weight: 700; /* Fonte mais grossa (negrito) */
-  color: var(--tm-gray-dark); /* Cinza escuro para chamar mais atenção */
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--tm-gray-dark);
   text-transform: uppercase;
+  flex: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.tm-launch-arrows {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 
@@ -496,10 +509,18 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%; /* Garante que o carrossel tenha espaço para esticar */
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 20px 0;
+  gap: 0;
+}
+
+/* Mascara os clones sem afetar as setas (que são irmãs desta div) */
+.tm-carousel-mask {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .tm-carousel-container {
@@ -507,12 +528,13 @@ body {
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
   width: 100%;
   justify-content: flex-start;
   scrollbar-width: none;
   touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
 .tm-carousel-container::-webkit-scrollbar {
@@ -566,38 +588,34 @@ body {
 }
 
 .tm-product-title {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   line-height: 1.4;
-  color: #333;
+  color: var(--tm-gray-dark);
   margin-top: 10px;
 }
 
 /* Setas do carrossel */
 .tm-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
+  transform: none;
   background-color: var(--tm-white);
   border: 1px solid #ccc;
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 }
 
 .tm-arrow:hover {
   background-color: #f0f0f0;
 }
-
-.tm-arrow.left  { left: 0; }
-.tm-arrow.right { right: 0; }
 
 
 /* Esconde o carrossel mobile e as bolinhas no Computador */
@@ -621,6 +639,25 @@ body {
 .tm-white-background {
   background-color: var(--tm-white);
   padding: 60px 0;
+}
+
+.tm-home-banner-meio {
+  background-color: var(--tm-white);
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.tm-home-banner-meio-inner {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.tm-home-banner-meio-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
 }
 
 
@@ -1115,6 +1152,9 @@ body {
 
 .lojas-fisicas {
   width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
 }
 
 .endereco-lojas {
@@ -1296,23 +1336,45 @@ body {
   object-fit: contain;
 }
 
-@media (max-width: 992px) {
-  .card-loja,
-  .card-online {
-    width: 200px;
-    flex: 0 0 200px;
-  }
-}
-
-@media (max-width: 600px) {
+/* Tablet e mobile: cards em coluna única, padding lateral confortável */
+@media (max-width: 1024px) {
   .cards-grid {
-    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 24px;
   }
 
   .card-loja,
   .card-online {
     width: 100%;
-    max-width: 340px;
+    max-width: 480px;
+    flex: 0 0 100%;
+  }
+
+  .lojas-fisicas,
+  .lojas-fisicas-cards,
+  .lojas-online-cards {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .endereco-lojas {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-grid {
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: 16px;
+  }
+
+  .card-loja,
+  .card-online {
+    width: 100%;
+    max-width: 100%;
     flex: 0 0 100%;
     aspect-ratio: auto;
   }
@@ -1425,7 +1487,7 @@ body {
   width: 100%;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .pdp-miniaturas-imagens {
@@ -1902,8 +1964,8 @@ body {
 }
 
 .tm-plp-card {
-  border: 1.5px solid var(--tm-gray-secondary);
-  border-radius: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px 15px;
   position: relative;
   display: flex;
@@ -1916,9 +1978,8 @@ body {
 }
 
 .tm-plp-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  border-color: var(--tm-primary);
 }
 
 .tm-plp-badge {
@@ -2166,5 +2227,66 @@ body {
   }
   .tm-footer-orange-content {
     right: 70px;
+  }
+}
+
+
+/* =====================================================
+   PDP2 — TABELA DE ESPECIFICAÇÕES TÉCNICAS (global)
+   ===================================================== */
+
+.pdp2-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+.pdp2-spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: var(--tm-gray-dark);
+  border-radius: 6px;
+  background-color: var(--tm-gray-light);
+}
+
+/* Desktop (2 colunas): itens 3 e 4 de cada grupo de 4 ficam brancos */
+.pdp2-spec-item:nth-child(4n+3),
+.pdp2-spec-item:nth-child(4n+4) {
+  background-color: var(--tm-white);
+  border: 1px solid var(--tm-gray-light);
+}
+
+.pdp2-spec-label { font-weight: 700; }
+
+.pdp2-spec-value {
+  text-align: right;
+  color: var(--tm-gray-secondary);
+  max-width: 55%;
+}
+
+/* Mobile/tablet portrait (1 coluna): zebra simples odd/even */
+@media (max-width: 1024px) {
+  .pdp2-specs-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Reseta o padrão 4n+3/4n+4 e aplica zebra de 1 coluna */
+  .pdp2-spec-item:nth-child(4n+3),
+  .pdp2-spec-item:nth-child(4n+4) {
+    background-color: var(--tm-gray-light);
+    border: none;
+  }
+
+  .pdp2-spec-item:nth-child(odd) {
+    background-color: var(--tm-gray-light);
+    border: none;
+  }
+
+  .pdp2-spec-item:nth-child(even) {
+    background-color: var(--tm-white);
+    border: 1px solid var(--tm-gray-light);
   }
 }

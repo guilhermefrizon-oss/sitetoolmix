@@ -102,86 +102,97 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // --- 3. CARROSSEL DE LANÇAMENTOS (AUTO-SCROLL INFINITO, SETAS E SWIPE) ---
+  // --- 3. CARROSSEL DE LANÇAMENTOS (loop infinito) ---
   const carousel = document.querySelector(".tm-carousel-container");
   if (carousel) {
+    const isMobile = () => window.innerWidth <= 768;
     const originalCards = Array.from(carousel.children);
+    const n = originalCards.length;
 
-    originalCards.forEach(card => {
-      carousel.appendChild(card.cloneNode(true));
-    });
-    originalCards.slice().reverse().forEach(card => {
-      carousel.prepend(card.cloneNode(true));
-    });
+    // Clones: 1 set depois + 1 set antes (para loop infinito)
+    originalCards.forEach(card => carousel.appendChild(card.cloneNode(true)));
+    originalCards.slice().reverse().forEach(card => carousel.prepend(card.cloneNode(true)));
 
-    setTimeout(() => {
-      carousel.style.scrollBehavior = "auto";
-      const firstRealCard = carousel.children[originalCards.length];
-      const centerPos = firstRealCard.offsetLeft - (carousel.clientWidth / 2) + (firstRealCard.clientWidth / 2);
-      carousel.scrollLeft = centerPos;
-      carousel.style.scrollBehavior = "smooth";
-    }, 100);
-
-    let scrollTimer;
-    carousel.addEventListener("scroll", () => {
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        const jumpDistance = carousel.children[originalCards.length].offsetLeft - carousel.children[0].offsetLeft;
-        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-        if (carousel.scrollLeft <= 10) {
-          carousel.style.scrollBehavior = "auto";
-          carousel.scrollLeft += jumpDistance;
-          carousel.style.scrollBehavior = "smooth";
-        } else if (carousel.scrollLeft >= maxScroll - 10) {
-          carousel.style.scrollBehavior = "auto";
-          carousel.scrollLeft -= jumpDistance;
-          carousel.style.scrollBehavior = "smooth";
-        }
-      }, 150); 
-    });
-
-    function getScrollAmount() {
-      const cardWidth = carousel.children[0].clientWidth;
-      const gap = parseInt(window.getComputedStyle(carousel).gap) || 0;
-      return cardWidth + gap;
+    function getStep() {
+      const card = carousel.children[n];
+      const gap  = parseFloat(window.getComputedStyle(carousel).gap) || 20;
+      return card.offsetWidth + gap;
     }
 
-    let isAutoPlay = true;
-    setInterval(() => {
-      if (isAutoPlay) {
-        carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    function getTargetScroll() {
+      // Desktop: borda esquerda do primeiro card real
+      // Mobile: primeiro card real centralizado na tela
+      const firstReal = carousel.children[n];
+      if (isMobile()) {
+        return firstReal.offsetLeft - (carousel.clientWidth - firstReal.offsetWidth) / 2;
       }
-    }, 3000);
+      return firstReal.offsetLeft;
+    }
 
-    // Swipe touch no carrossel de lançamentos
+    function init() {
+      carousel.style.scrollBehavior = "auto";
+      carousel.scrollLeft = getTargetScroll();
+      requestAnimationFrame(() => {
+        carousel.style.scrollBehavior = "smooth";
+      });
+    }
+
+    setTimeout(init, 80);
+    window.addEventListener("resize", () => { carousel.style.scrollBehavior = "auto"; init(); });
+
+    // Reposiciona silenciosamente quando entra na zona de clones
+    let loopTimer;
+    carousel.addEventListener("scroll", () => {
+      clearTimeout(loopTimer);
+      loopTimer = setTimeout(() => {
+        const step     = getStep();
+        const jumpDist = n * step;
+        const first    = carousel.children[n].offsetLeft;
+        const last     = carousel.children[n * 2 - 1].offsetLeft;
+
+        if (carousel.scrollLeft < first - step) {
+          carousel.style.scrollBehavior = "auto";
+          carousel.scrollLeft += jumpDist;
+          requestAnimationFrame(() => { carousel.style.scrollBehavior = "smooth"; });
+        } else if (carousel.scrollLeft > last + step) {
+          carousel.style.scrollBehavior = "auto";
+          carousel.scrollLeft -= jumpDist;
+          requestAnimationFrame(() => { carousel.style.scrollBehavior = "smooth"; });
+        }
+      }, 150);
+    });
+
+    function step(dir) {
+      carousel.scrollBy({ left: dir * getStep(), behavior: "smooth" });
+    }
+
+    // Autoplay
+    let isAutoPlay = true;
+    setInterval(() => { if (isAutoPlay) step(1); }, 3000);
+
+    // Swipe (mobile)
     addSwipe(
       carousel,
-      function() { carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }); isAutoPlay = false; setTimeout(function(){ isAutoPlay = true; }, 4000); },
-      function() { carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }); isAutoPlay = false; setTimeout(function(){ isAutoPlay = true; }, 4000); }
+      function() { step(1);  isAutoPlay = false; setTimeout(() => isAutoPlay = true, 4000); },
+      function() { step(-1); isAutoPlay = false; setTimeout(() => isAutoPlay = true, 4000); }
     );
-
-    carousel.addEventListener("touchstart", () => isAutoPlay = false, {passive: true});
+    carousel.addEventListener("touchstart", () => isAutoPlay = false, { passive: true });
     carousel.addEventListener("touchend", () => {
-      setTimeout(() => isAutoPlay = true, 4000);
+      setTimeout(() => {
+        // Snap ao card mais próximo
+        const s = getStep();
+        const first = carousel.children[n].offsetLeft;
+        const rel   = carousel.scrollLeft - first;
+        carousel.scrollLeft = Math.round(rel / s) * s + first;
+        isAutoPlay = true;
+      }, 300);
     });
 
-    const leftArrow = document.querySelector(".tm-arrow.left");
+    // Setas
+    const leftArrow  = document.querySelector(".tm-arrow.left");
     const rightArrow = document.querySelector(".tm-arrow.right");
-
-    if (leftArrow) {
-      leftArrow.addEventListener("click", () => {
-        carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-        isAutoPlay = false;
-        setTimeout(() => isAutoPlay = true, 5000);
-      });
-    }
-    if (rightArrow) {
-      rightArrow.addEventListener("click", () => {
-        carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-        isAutoPlay = false;
-        setTimeout(() => isAutoPlay = true, 5000);
-      });
-    }
+    if (leftArrow)  leftArrow.addEventListener("click",  () => { step(-1); isAutoPlay = false; setTimeout(() => isAutoPlay = true, 5000); });
+    if (rightArrow) rightArrow.addEventListener("click", () => { step(1);  isAutoPlay = false; setTimeout(() => isAutoPlay = true, 5000); });
   }
 
   // --- FILTRO DE PRODUTOS ---
