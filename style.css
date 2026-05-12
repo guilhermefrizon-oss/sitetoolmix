@@ -2124,9 +2124,11 @@ body {
 }
 
 /* -------------------------------------------------------
-   FAIXA 1200px–1366px — Footer (sem clip-path fixo)
+   FAIXA 1200px–1366px — Footer (sem clip-path fixo) — DESATIVADO
+   Tablet agora vai até 1024px; acima disso é desktop normal.
+   Bloco mantido para referência caso seja necessário reativar.
    ------------------------------------------------------- */
-@media (min-width: 1025px) and (max-width: 1366px) {
+@media (min-width: 99999px) and (max-width: 99999px) {
 
   .tm-footer {
     height: auto;
