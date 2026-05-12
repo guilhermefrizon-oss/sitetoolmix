@@ -478,9 +478,13 @@
 
 
 /* ======================================================
-   LANDSCAPE (tablet deitado) — 1025px até 1366px
+/* ======================================================
+   LANDSCAPE (tablet deitado) — DESATIVADO
+   Anteriormente: 1025px-1366px. Agora desktop vale a partir de 1025px.
+   O bloco abaixo foi mantido mas o range foi tornado inalcançável
+   para preservar o código caso seja necessário reativar.
    ====================================================== */
-@media (min-width: 1025px) and (max-width: 1366px) {
+@media (min-width: 99999px) and (max-width: 99999px) {
 
   /* --- HEADER — hamburguer também no landscape --- */
   .tm-header {
