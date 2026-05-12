@@ -40,19 +40,25 @@
       margin: 40px auto 0;
       padding: 0 40px 80px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 520px 1fr;
       gap: 60px;
-      align-items: start;
+      align-items: center;
     }
 
     /* ---- COLUNA ESQUERDA — GALERIA ---- */
     .pdp2-galeria {
       position: sticky;
       top: 30px;
+      max-width: 520px;
+      width: 100%;
     }
 
-    /* Badge lançamento */
+    /* Badge lançamento — absoluto sobre a foto, fora do fluxo */
     .pdp2-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 10;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -64,7 +70,6 @@
       border-radius: 4px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 16px;
     }
 
     /* Imagem principal */
@@ -75,6 +80,7 @@
       overflow: visible;
       aspect-ratio: 1 / 1;
       margin-bottom: 16px;
+      margin-top: 0;
     }
 
     /* Setas do carrossel */
@@ -223,7 +229,7 @@
 
     /* ---- COLUNA DIREITA — INFORMAÇÕES ---- */
     .pdp2-info {
-      padding-top: 10px;
+      padding-top: 0;
     }
 
     .pdp2-categoria {
@@ -1056,20 +1062,16 @@
         <img src="images/infos/onde_encontrar.svg" alt="Ícone localização" class="tm-info-icon-onde-comprar">
         <p class="tm-info-title">ONDE COMPRAR</p>
         <p class="tm-info-text">
-          Os produtos e acessórios TOOLMIX estão
-          disponíveis em todas as lojas físicas
-          e também no site oficial da <br> Ferramentas Gerais.
-        </p>
+              Os produtos e acessórios TOOLMIX estão <br>disponíveis em todas as lojas físicas e também no <br>site oficial da Ferramentas Gerais.
+            </p>
         <a href="sedes.html" class="tm-info-btn">Confira</a>
       </div>
       <div class="tm-info-card">
         <img src="images/infos/duvidas.svg" alt="Ícone contato" class="tm-info-icon-contato">
         <p class="tm-info-title">ENTRE EM CONTATO</p>
         <p class="tm-info-text">
-          Dúvidas sobre os produtos TOOLMIX? Entre
-          em contato com nossa <br> Assistência
-          Técnica agora!
-        </p>
+              Dúvidas sobre os produtos TOOLMIX? <br>Entre em contato com nossa <br>Assistência Técnica agora!
+            </p>
         <a href="fale-conosco.html" class="tm-info-btn">Fale conosco</a>
       </div>
     </div>

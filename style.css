@@ -9,6 +9,22 @@
   --tm-gray-hover:     #2e2e2d; /* cinza hover */
   --tm-gray-light:     #EEEEEE; /* cinza claro */
   --tm-white:          #ffffff; /* branco */
+
+  /* Containers — larguras máximas padronizadas */
+  --tm-container-narrow: 1100px; /* textos longos (legibilidade) */
+  --tm-container:        1280px; /* padrão para a maioria das seções */
+  --tm-container-wide:   1440px; /* hero/banner full-bleed */
+
+  /* Padding lateral de página (sobrescrito em tablet/mobile) */
+  --tm-pad-page: 40px;
+}
+
+/* Padding lateral responsivo */
+@media (max-width: 1024px) {
+  :root { --tm-pad-page: 24px; }
+}
+@media (max-width: 768px) {
+  :root { --tm-pad-page: 16px; }
 }
 
 
@@ -69,7 +85,7 @@ body {
 /* Wrapper para alinhar conteúdo à direita da forma inclinada */
 .tm-header-content-wrapper {
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--tm-container-wide);
   margin: 0 auto;
   padding-left: calc(32% + 20px);
   display: flex;
@@ -105,9 +121,9 @@ body {
 
 /* ── BREADCRUMB GLOBAL ── */
 .tm-breadcrumb {
-  max-width: 1280px;
+  max-width: var(--tm-container);
   margin: 24px auto 0;
-  padding: 0 40px;
+  padding: 0 var(--tm-pad-page);
   font-size: 13px;
   color: var(--tm-gray-secondary);
   font-family: "Montserrat", sans-serif;
@@ -126,13 +142,8 @@ body {
   color: var(--tm-gray-dark);
 }
 
-@media (max-width: 1024px) {
-  .tm-breadcrumb { padding: 0 20px; }
-}
-
 @media (max-width: 768px) {
   .tm-breadcrumb {
-    padding: 0 20px;
     margin: 16px auto 0;
     font-size: 11px;
   }
@@ -203,7 +214,7 @@ body {
 /* Container auxiliar da busca + atendimento */
 .tm-header-top-content {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--tm-container);
   margin: 0 auto;
   padding-left: 350px;
   display: flex;
@@ -427,9 +438,9 @@ body {
   justify-content: center;
   align-items: center;
   gap: 40px;
-  max-width: 1200px;
+  max-width: var(--tm-container);
   margin: 20px auto 80px;
-  padding: 0 20px;
+  padding: 0 var(--tm-pad-page);
 }
 
 .tm-card {
@@ -464,19 +475,19 @@ body {
    ========================================= */
 .tm-launch-title {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--tm-container);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   margin-top: 0;
-  margin-bottom: 40px;
-  padding: 0 20px;
+  margin-bottom: 24px;
+  padding: 0 var(--tm-pad-page);
   box-sizing: border-box;
 }
 
 .tm-launch-title h2 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--tm-gray-dark);
   text-transform: uppercase;
@@ -497,7 +508,7 @@ body {
    ========================================= */
 .tm-background-gray {
   background-color: var(--tm-gray-light);
-  padding: 80px 20px;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column; /* Força o título a ficar em cima do carrossel */
   justify-content: center;
@@ -510,9 +521,9 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--tm-container);
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 0;
   gap: 0;
 }
 
@@ -650,7 +661,7 @@ body {
 
 .tm-home-banner-meio-inner {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--tm-container);
 }
 
 .tm-home-banner-meio-img {
@@ -670,7 +681,7 @@ body {
 }
 
 .tm-infos-wrapper {
-  max-width: 1200px;
+  max-width: var(--tm-container);
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -679,13 +690,20 @@ body {
 }
 
 .tm-info-card {
-  max-width: 420px;
+  max-width: 480px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 400px;
+  height: auto;
   padding: 20px;
+}
+
+.tm-info-card .tm-info-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tm-info-icon-onde-comprar {
@@ -703,7 +721,7 @@ body {
 }
 
 .tm-info-title {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--tm-gray-dark);
   letter-spacing: 1px;
@@ -715,10 +733,8 @@ body {
   font-weight: 600;
   line-height: 1.6;
   color: var(--tm-gray-dark);
-  margin: 0 auto 25px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
+  max-width: 440px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -726,13 +742,13 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 280px;
-  height: 60px;
-  margin-top: auto;
+  width: 220px;
+  height: 48px;
+  margin-top: 16px;
   background-color: var(--tm-primary);
   color: var(--tm-white);
   font-weight: 700;
-  font-size: 24px;
+  font-size: 16px;
   text-decoration: none;
   clip-path: polygon(14% 0, 100% 0, 86% 100%, 0% 100%);
   transition: background 0.2s ease, transform 0.2s ease;
@@ -778,11 +794,11 @@ body {
 .tm-footer-content {
   position: relative;
   z-index: 5;
-  max-width: 1440px; 
+  max-width: var(--tm-container-wide); 
   margin: 0 auto;
   /* Reduzimos o padding-right para 500px. Como a forma laranja é diagonal, 
      500px já são suficientes para proteger o texto no topo do footer */
-  padding: 100px 500px 60px 40px; 
+  padding: 100px 500px 60px var(--tm-pad-page); 
   display: flex;
   align-items: flex-start;
 }
@@ -882,20 +898,20 @@ body {
    ====================================================== */
 
 .tm-institucional-primeiro-texto {
-  max-width: 1440px;
+  max-width: var(--tm-container);
   margin: 80px auto 40px;
-  padding: 0 30px;
-  font-size: 20px;
-  line-height: 2.5;
+  padding: 0 var(--tm-pad-page);
+  font-size: 17px;
+  line-height: 1.7;
   color: var(--tm-gray-dark);
   font-weight: 400;
   text-align: justify;
 }
 
 .tm-institucional-duas-colunas {
-  max-width: 1440px;
+  max-width: var(--tm-container);
   margin: 10px auto;
-  padding: 0 40px;
+  padding: 0 var(--tm-pad-page);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -915,8 +931,8 @@ body {
 }
 
 .tm-institucional-bloco-laranja p {
-  font-size: 20px;
-  line-height: 3;
+  font-size: 17px;
+  line-height: 1.8;
   font-weight: 400;
 }
 
@@ -936,11 +952,11 @@ body {
 }
 
 .tm-institucional-segundo-texto {
-  max-width: 1440px;
+  max-width: var(--tm-container);
   margin: 40px auto 80px;
-  padding: 0 40px;
-  font-size: 20px;
-  line-height: 2.5;
+  padding: 0 var(--tm-pad-page);
+  font-size: 17px;
+  line-height: 1.7;
   color: var(--tm-gray-dark);
   font-weight: 400;
   text-align: justify;
@@ -991,9 +1007,9 @@ body {
   display: flex;
   justify-content: center;
   gap: 40px;
-  max-width: 1440px;
+  max-width: var(--tm-container);
   margin: 80px auto;
-  padding: 0 20px;
+  padding: 0 var(--tm-pad-page);
   box-sizing: border-box;
 }
 
@@ -1107,13 +1123,13 @@ body {
 }
 
 .texto-sedes-intro {
-  max-width: 1100px;
+  max-width: var(--tm-container-narrow);
   text-align: center;
 }
 
 .texto-sedes-intro p {
   font-size: 1.2rem;
-  line-height: 2.25;
+  line-height: 1.7;
   color: var(--tm-gray-secondary);
   margin-bottom: 24px;
 }
@@ -1130,7 +1146,7 @@ body {
 }
 
 .links-lojas {
-  max-width: 1150px;
+  max-width: var(--tm-container);
   margin: 0 auto;
 }
 
@@ -1158,7 +1174,7 @@ body {
 }
 
 .endereco-lojas {
-  max-width: 1200px;
+  max-width: var(--tm-container);
   margin: 0 auto;
 }
 
@@ -1181,7 +1197,7 @@ body {
 /* Fundo X */
 .cards-lojas {
   position: relative;
-  max-width: 1150px;
+  max-width: var(--tm-container);
   margin: 0 auto;
   min-height: 1150px;
   z-index: 1;
@@ -1234,28 +1250,20 @@ body {
 .card-loja-telefone {
   font-size: 0.9rem;
   color: var(--tm-gray-secondary);
-  line-height: 2.3;
+  line-height: 1.6;
   position: relative;
-  padding-left: 24px;
+  padding-left: 0;
 }
 
 .card-loja-atendimento {
   font-size: 0.8rem;
   color: var(--tm-gray-secondary);
-  line-height: 1.8;
+  line-height: 1.5;
   position: relative;
 }
 
 .card-loja-endereco::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.5rem;
-  width: 14px;
-  height: 14px;
-  background-image: url("../images/sedes/onde_encontrar.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
+  display: none;
 }
 
 .card-loja-telefone {
@@ -1263,15 +1271,7 @@ body {
 }
 
 .card-loja-telefone::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.6rem;
-  width: 13px;
-  height: 13px;
-  background-image: url("../images/sedes/telefone.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
+  display: none;
 }
 
 /* Card — Lojas Online */
@@ -1306,26 +1306,19 @@ body {
   text-decoration: none;
   color: var(--tm-gray-dark);
   font-size: 20px;
+  line-height: 1.4;
 }
 
 .card-online-link {
   font-size: 0.9rem;
   color: var(--tm-gray-secondary);
-  line-height: 2.3;
+  line-height: 1.6;
   position: relative;
-  padding-left: 24px;
+  padding-left: 0;
 }
 
 .card-online-link::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.5rem;
-  width: 14px;
-  height: 14px;
-  background-image: url("../images/sedes/click-2.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
+  display: none;
 }
 
 .tm-mini-logo {
@@ -1477,7 +1470,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1280px;
+  max-width: var(--tm-container);
   overflow: hidden;
   position: relative;
   margin: 0 auto 80px;
@@ -1573,7 +1566,7 @@ body {
 }
 
 .pdp-codigo {
-  font-size: 1.4rem;
+  font-size: 1rem;
   padding: 0 35px;
   color: var(--tm-gray-secondary);
   margin-bottom: 40px;
@@ -1581,7 +1574,7 @@ body {
 
 .pdp-descricao {
   font-size: 1.2rem;
-  line-height: 2;
+  line-height: 1.7;
   padding: 0 35px;
   color: var(--tm-gray-secondary);
   margin-bottom: 20px;
@@ -1612,11 +1605,11 @@ body {
 
 /* Conteúdo da embalagem */
 .pdp-conteudo-embalagem {
-  max-width: 1280px;
+  max-width: var(--tm-container);
   width: 100%;
   margin: 30px auto 0;
   font-size: 0.95rem;
-  line-height: 2;
+  line-height: 1.7;
   padding: 0 35px;
   color: var(--tm-gray-secondary);
 }
@@ -1628,7 +1621,7 @@ body {
 }
 
 .pdp-titulo-especificacoes {
-  max-width: 1280px;
+  max-width: var(--tm-container);
   margin: 0 auto;
 }
 
@@ -1650,7 +1643,7 @@ body {
 
 /* Tabela de especificações */
 .pdp-especificacoes {
-  max-width: 1280px;
+  max-width: var(--tm-container);
   width: 100%;
   margin: 50px auto;
 }
@@ -1872,9 +1865,9 @@ body {
 .tm-plp-container {
   display: flex;
   gap: 40px;
-  max-width: 1440px;
+  max-width: var(--tm-container);
   margin: 0 auto 80px;
-  padding: 0 40px;
+  padding: 0 var(--tm-pad-page);
 }
 
 .tm-plp-sidebar {
@@ -2051,6 +2044,10 @@ body {
 
   .tm-orange-wrapper {
     padding-right: 30px;
+  }
+
+  .tm-header-top-content {
+    padding-left: 320px;
   }
 
   .tm-footer-content {

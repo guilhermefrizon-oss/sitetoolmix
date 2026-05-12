@@ -235,7 +235,7 @@
   }
 
   .tm-launch-title h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   /* --- INFOS GERAIS --- */
@@ -258,19 +258,22 @@
   }
 
   .tm-info-title {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .tm-info-text {
     font-size: 14px;
-    height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+  }
+
+  .tm-info-text br {
+    display: none;
   }
 
   .tm-info-card .tm-info-btn {
     width: 220px;
     height: 52px;
-    font-size: 18px;
+    font-size: 15px;
   }
 
   /* --- FOOTER — mesmo padrão do mobile --- */
@@ -333,14 +336,14 @@
   .tm-institucional-primeiro-texto,
   .tm-institucional-segundo-texto {
     font-size: 17px;
-    line-height: 2;
-    padding: 0 30px;
+    line-height: 1.7;
+    padding: 0 var(--tm-pad-page);
     margin: 50px auto;
   }
 
   .tm-institucional-duas-colunas {
     flex-direction: column;
-    padding: 0 30px;
+    padding: 0 var(--tm-pad-page);
     gap: 30px;
   }
 
@@ -352,7 +355,7 @@
 
   .tm-institucional-bloco-laranja p {
     font-size: 17px;
-    line-height: 2;
+    line-height: 1.8;
   }
 
   .tm-institucional-imagem {
@@ -363,7 +366,7 @@
   .lancamentos-info {
     flex-direction: column;
     margin: 40px auto;
-    padding: 0 30px;
+    padding: 0 var(--tm-pad-page);
     gap: 30px;
   }
 
@@ -394,7 +397,7 @@
   /* --- PÁGINA DE PRODUTOS (PLP) --- */
   .tm-plp-container {
     flex-direction: row;
-    padding: 0 20px;
+    padding: 0 var(--tm-pad-page);
     gap: 20px;
   }
 
@@ -689,17 +692,16 @@
   }
 
   .tm-info-title {
-    font-size: 26px;
+    font-size: 20px;
   }
 
   .tm-info-text {
-    height: auto;
     font-size: 15px;
   }
 
   .tm-info-card .tm-info-btn {
     width: 240px;
-    font-size: 20px;
+    font-size: 15px;
   }
 
   /* --- FOOTER --- */
@@ -757,8 +759,8 @@
   /* --- PÁGINA INSTITUCIONAL --- */
   .tm-institucional-primeiro-texto,
   .tm-institucional-segundo-texto {
-    font-size: 18px;
-    padding: 0 40px;
+    font-size: 16px;
+    padding: 0 var(--tm-pad-page);
   }
 
   .tm-institucional-bloco-laranja {
@@ -766,8 +768,8 @@
   }
 
   .tm-institucional-bloco-laranja p {
-    font-size: 18px;
-    line-height: 2.5;
+    font-size: 16px;
+    line-height: 1.8;
   }
 
   /* --- PÁGINA LANÇAMENTOS --- */
@@ -782,7 +784,7 @@
 
   /* --- PÁGINA DE PRODUTOS (PLP) --- */
   .tm-plp-container {
-    padding: 0 30px;
+    padding: 0 var(--tm-pad-page);
     gap: 30px;
   }
 
