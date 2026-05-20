@@ -480,7 +480,7 @@
 /* ======================================================
    LANDSCAPE (tablet deitado) — 1025px até 1366px
    ====================================================== */
-@media (min-width: 1025px) and (max-width: 1366px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
 
   /* --- HEADER — hamburguer também no landscape --- */
   .tm-header {
@@ -824,60 +824,5 @@
 
   .pdp-360 {
     max-width: 600px;
-  }
-
-  /* --- PÁGINA NOSSA ESTRUTURA --- */
-  .estrutura-intro,
-  .estrutura-fg {
-    padding: 0 30px;
-  }
-
-  .estrutura-hero {
-    padding: 50px 30px;
-  }
-
-  .estrutura-hero::before {
-    width: 220px;
-  }
-
-  .estrutura-hero h1 {
-    font-size: 1.9rem;
-    max-width: 580px;
-  }
-
-  .estrutura-fg-intro h2 {
-    font-size: 1.4rem;
-  }
-
-  .estrutura-fg-intro p {
-    font-size: 15px;
-  }
-
-  .estrutura-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .estrutura-stat-num {
-    font-size: 1.7rem;
-  }
-
-  .estrutura-cds-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-
-  .estrutura-cta {
-    padding: 36px 30px;
-    gap: 24px;
-  }
-
-  .estrutura-cta-texto h3 {
-    font-size: 1.2rem;
-  }
-
-  .estrutura-cta-btn {
-    font-size: 14px;
-    padding: 14px 28px;
   }
 }
