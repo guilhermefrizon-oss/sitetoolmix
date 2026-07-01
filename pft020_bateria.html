@@ -676,6 +676,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .pdp2-img-principal .pdp-carrossel-seta {
       display: flex;
     }
+
+    /* Setas da imagem principal - visíveis em todos os tamanhos */
+    .pdp2-img-principal .pdp-carrossel-seta {
+      display: flex;
+    }
+
+    @media (max-width: 1024px) {
+    .pdp2-botoes-topo {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+    
+    .pdp2-botoes-topo > * {
+        width: 100% !important;
+        flex: none !important;
+        height: 44px !important;
+    }
+}
+
   </style>
 </head>
 
@@ -816,18 +835,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <!-- Destaques rápidos -->
         <div class="pdp2-destaques">
+
+          <!-- 1. 12 V -->
           <div class="pdp2-destaque-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"/><path d="m11 7-3 5h4l-3 5"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
-            <span>20 V - Íons de lítio</span>
+            <span>20 V</span>
           </div>
+
+          <!-- 2. Íons de lítio -->
           <div class="pdp2-destaque-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"/><path d="m11 7-3 5h4l-3 5"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="2"/>
+              <ellipse cx="12" cy="12" rx="8" ry="4"/>
+              <ellipse cx="12" cy="12" rx="4" ry="8" transform="rotate(60 12 12)"/>
+            </svg>
+            <span>Íons de lítio</span>
+          </div>
+
+          <!-- 3. 1,5 Ah -->
+          <div class="pdp2-destaque-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v2"/>
+              <path d="M12 19v2"/>
+              <path d="M4 12h2"/>
+              <path d="M18 12h2"/>
+              <circle cx="12" cy="12" r="6"/>
+              <path d="M12 12l3-2"/>
+            </svg>
             <span>1,5 Ah</span>
           </div>
+
+          <!-- 4. LEDs indicadores de carga -->
           <div class="pdp2-destaque-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="4" width="14" height="16" rx="3"/>
+              <circle cx="12" cy="9" r="1"/>
+              <circle cx="12" cy="13" r="1"/>
+              <circle cx="12" cy="17" r="1"/>
+            </svg>
             <span><i>LEDs</i> indicadores de carga</span>
           </div>
+
         </div>
 
         <a href="sedes.html" class="pdp2-btn-comprar" style="margin-bottom: 16px; gap: 8px;">
@@ -907,6 +955,82 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
     </div>
+
+  <!-- CARROSSEL VEJA TAMBÉM  -->
+  <section class="tm-background-white">
+
+    <!-- Título da seção LANÇAMENTOS -->
+    <section class="tm-launch-title">
+        <h2>VEJA TAMBÉM</h2>
+        <div class="tm-launch-arrows">
+          <button class="tm-arrow left">‹</button>
+          <button class="tm-arrow right">›</button>
+        </div>
+    </section>
+
+    <div class="tm-launch-wrapper">
+
+      <!-- máscara que esconde os clones nas bordas -->
+      <div class="tm-carousel-mask">
+
+        <!-- container dos cards -->
+      <div class="tm-carousel-container">
+
+        <!-- Card do produto 1 -->
+        <div class="tm-launch-card">
+          <a href="pft012.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/lancamentos/produto_01.jpg" alt="Parafusadeira/furadeira a bateria 12 V PFT 012 TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Parafusadeira/furadeira a bateria, 12 V, fonte bivolt automática, PFT 012 TOOLMIX</p>
+          </a>
+        </div>
+
+        <!-- Card do produto 2 -->
+        <div class="tm-launch-card">
+          <a href="pft012I.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/lancamentos/produto_02.jpg" alt="Parafusadeira/furadeira de impacto a bateria 12 V PFT 012I TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Parafusadeira/furadeira de impacto a bateria, 12 V, fonte de carregamento bivolt automática, PFT 012I TOOLMIX</p>
+          </a>
+        </div>
+
+
+        <!-- Card do produto 3 -->
+        <div class="tm-launch-card">
+          <a href="pft020.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/lancamentos/produto_03.jpg" alt="Parafusadeira/furadeira a bateria 20 V PFT 020 TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Parafusadeira/furadeira a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020 TOOLMIX</p>
+          </a>
+        </div>
+
+
+        <!-- Card do produto 4 -->
+        <div class="tm-launch-card">
+          <a href="pft020I.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/lancamentos/produto_04.jpg" alt="Parafusadeira/furadeira de impacto a bateria 20 V PFT 020I TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Parafusadeira/furadeira de impacto a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020I TOOLMIX</p>
+          </a>
+        </div>
+
+              <!-- Card do produto 5 -->
+        <div class="tm-launch-card">
+          <a href="pft012_bateria.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/produtos/pft012_bateria/1213216_principal.jpg" alt="Bateria 12 V 1,5 Ah íons de lítio para PFT 012 e PFT 012I TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Bateria 12 V - 1,5 Ah, íons de lítio, para PFT 012 e PFT 012I TOOLMIX</p>
+          </a>
+        </div>
+
+       
+      </div>
+
+      </div><!-- tm-carousel-mask -->
+
+    </div>
+
+  </section>
 
   </main>
 

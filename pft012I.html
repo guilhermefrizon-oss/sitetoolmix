@@ -755,6 +755,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media (max-width: 1024px) {
       .pdp2-accordion-section { padding: 0 20px; margin-bottom: 40px; }
     }
+
+    /* Setas da imagem principal - visíveis em todos os tamanhos */
+    .pdp2-img-principal .pdp-carrossel-seta {
+      display: flex;
+    }
+
+    @media (max-width: 1024px) {
+    .pdp2-botoes-topo {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+    
+    .pdp2-botoes-topo > * {
+        width: 100% !important;
+        flex: none !important;
+        height: 44px !important;
+    }
+}
+
   </style>
 </head>
 
@@ -1115,6 +1134,82 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>    </div>    </div>    </div>
 
   </section>
+
+  <!-- CARROSSEL VEJA TAMBÉM  -->
+  <section class="tm-background-white">
+
+    <!-- Título da seção LANÇAMENTOS -->
+    <section class="tm-launch-title">
+        <h2>VEJA TAMBÉM</h2>
+        <div class="tm-launch-arrows">
+          <button class="tm-arrow left">‹</button>
+          <button class="tm-arrow right">›</button>
+        </div>
+    </section>
+
+    <div class="tm-launch-wrapper">
+
+      <!-- máscara que esconde os clones nas bordas -->
+      <div class="tm-carousel-mask">
+
+        <!-- container dos cards -->
+      <div class="tm-carousel-container">
+
+        <!-- Card do produto 1 -->
+        <div class="tm-launch-card">
+          <a href="pft012.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/lancamentos/produto_01.jpg" alt="Parafusadeira/furadeira a bateria 12 V PFT 012 TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Parafusadeira/furadeira a bateria, 12 V, fonte bivolt automática, PFT 012 TOOLMIX</p>
+          </a>
+        </div>
+
+
+        <!-- Card do produto 3 -->
+        <div class="tm-launch-card">
+          <a href="pft020.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/lancamentos/produto_03.jpg" alt="Parafusadeira/furadeira a bateria 20 V PFT 020 TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Parafusadeira/furadeira a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020 TOOLMIX</p>
+          </a>
+        </div>
+
+
+        <!-- Card do produto 4 -->
+        <div class="tm-launch-card">
+          <a href="pft020I.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/lancamentos/produto_04.jpg" alt="Parafusadeira/furadeira de impacto a bateria 20 V PFT 020I TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Parafusadeira/furadeira de impacto a bateria, 20 V, fonte de carregamento bivolt automática, PFT 020I TOOLMIX</p>
+          </a>
+        </div>
+
+              <!-- Card do produto 5 -->
+        <div class="tm-launch-card">
+          <a href="pft012_bateria.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/produtos/pft012_bateria/1213216_principal.jpg" alt="Bateria 12 V 1,5 Ah íons de lítio para PFT 012 e PFT 012I TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Bateria 12 V - 1,5 Ah, íons de lítio, para PFT 012 e PFT 012I TOOLMIX</p>
+          </a>
+        </div>
+
+              <!-- Card do produto 6 -->
+        <div class="tm-launch-card">
+          <a href="pft020_bateria.html">
+            <div class="tm-label">Lançamento</div>
+            <img src="images/produtos/pft020_bateria/1213219_principal.jpg" alt="Bateria 20 V 1,5 Ah íons de lítio para PFT 020 e PFT 020I TOOLMIX" class="tm-launch-card-img">
+            <p class="tm-product-title">Bateria 20 V - 1,5 Ah, íons de lítio, para PFT 020 e PFT 020I TOOLMIX</p>
+          </a>
+        </div>
+        
+      </div>
+
+      </div><!-- tm-carousel-mask -->
+
+    </div>
+
+  </section>
+
   </main>
 
   <!-- INFOS GERAIS -->
@@ -1431,7 +1526,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
   <script>
-    // MÍDIA ENRIQUECIDA - toggle simples (aberto por padrão)
+    // MÍDIA ENRIQUECIDA - toggle simples (abre por padrão)
     const midiaBtn = document.querySelector('.pdp2-midia-btn');
     if (midiaBtn) {
       midiaBtn.addEventListener('click', () => {
@@ -1439,13 +1534,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         midiaBtn.setAttribute('aria-expanded', String(!aberto));
         midiaBtn.nextElementSibling.classList.toggle('aberto', !aberto);
       });
-    }        if (!aberto) {
-          btn.setAttribute('aria-expanded', 'true');
-          btn.nextElementSibling.classList.add('aberto');
-        }
-      });
-    });
+    }
   </script>
+  
   <script>
 
     // ── Swipe touch nas fotos do produto ──

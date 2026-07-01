@@ -516,6 +516,16 @@ body {
   width: 100%;
 }
 
+.tm-background-white {
+  background-color: var(--tm-white);
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column; /* Força o título a ficar em cima do carrossel */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .tm-launch-wrapper {
   position: relative;
   display: flex;
