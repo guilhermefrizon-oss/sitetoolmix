@@ -119,14 +119,16 @@ document.addEventListener("DOMContentLoaded", function() {
       return card.offsetWidth + gap;
     }
 
+    // Desktop: sem deslocamento (alinha pela borda esquerda)
+    // Mobile: desloca para centralizar o card ativo na tela
+    function centerOffset() {
+      const card = carousel.children[n];
+      return isMobile() ? (carousel.clientWidth - card.offsetWidth) / 2 : 0;
+    }
+
     function getTargetScroll() {
-      // Desktop: borda esquerda do primeiro card real
-      // Mobile: primeiro card real centralizado na tela
       const firstReal = carousel.children[n];
-      if (isMobile()) {
-        return firstReal.offsetLeft - (carousel.clientWidth - firstReal.offsetWidth) / 2;
-      }
-      return firstReal.offsetLeft;
+      return firstReal.offsetLeft - centerOffset();
     }
 
     function init() {
@@ -147,8 +149,9 @@ document.addEventListener("DOMContentLoaded", function() {
       loopTimer = setTimeout(() => {
         const step     = getStep();
         const jumpDist = n * step;
-        const first    = carousel.children[n].offsetLeft;
-        const last     = carousel.children[n * 2 - 1].offsetLeft;
+        const offset   = centerOffset();
+        const first    = carousel.children[n].offsetLeft - offset;
+        const last     = carousel.children[n * 2 - 1].offsetLeft - offset;
 
         if (carousel.scrollLeft < first - step) {
           carousel.style.scrollBehavior = "auto";
@@ -179,10 +182,11 @@ document.addEventListener("DOMContentLoaded", function() {
     carousel.addEventListener("touchstart", () => isAutoPlay = false, { passive: true });
     carousel.addEventListener("touchend", () => {
       setTimeout(() => {
-        // Snap ao card mais próximo
-        const s = getStep();
-        const first = carousel.children[n].offsetLeft;
-        const rel   = carousel.scrollLeft - first;
+        // Snap ao card mais próximo (considerando a centralização no mobile)
+        const s      = getStep();
+        const offset = centerOffset();
+        const first  = carousel.children[n].offsetLeft - offset;
+        const rel    = carousel.scrollLeft - first;
         carousel.scrollLeft = Math.round(rel / s) * s + first;
         isAutoPlay = true;
       }, 300);

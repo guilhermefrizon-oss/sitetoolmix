@@ -348,10 +348,8 @@
   .tm-launch-title    { justify-content: center; padding: 0; }
 
   .tm-carousel-container {
-    /* Padding lateral = metade do espaço restante, para o card ficar centrado */
-    padding-left: calc((100% - min(80vw, 300px)) / 2);
-    padding-right: calc((100% - min(80vw, 300px)) / 2);
-    scroll-padding-left: calc((100% - min(80vw, 300px)) / 2);
+    /* Centralização agora é 100% controlada pelo JS (scrollLeft),
+       para funcionar com qualquer largura de card em qualquer tela */
     box-sizing: border-box;
   }
 
