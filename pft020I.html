@@ -748,6 +748,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .pdp2-accordion-painel.aberto { grid-template-rows: 1fr; }
     .pdp2-accordion-painel-inner { overflow: hidden; }
+    .pdp2-accordion-painel-inner picture {
+      display: block;
+    }
+
     .pdp2-accordion-painel-inner img {
       width: 100%; height: auto; display: block;
       border-radius: 12px; margin-bottom: 24px;
@@ -1118,9 +1122,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
       <div class="pdp2-accordion-painel aberto">
         <div class="pdp2-accordion-painel-inner">
-          <img src="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-1.jpg" alt="Conteúdo da embalagem - PFT 020I" loading="lazy">
-          <img src="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-2.jpg" alt="Características técnicas - PFT 020I" loading="lazy">
-          <img src="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-3.jpg" alt="Destaques e diferenciais - PFT 020I" loading="lazy">
+          <picture>
+            <source media="(max-width: 768px)" srcset="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-1-mobile.jpg">
+            <img src="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-1.jpg" alt="Conteúdo da embalagem - PFT 020I" loading="lazy">
+          </picture>
+          <picture>
+            <source media="(max-width: 768px)" srcset="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-2-mobile.jpg">
+            <img src="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-2.jpg" alt="Características técnicas - PFT 020I" loading="lazy">
+          </picture>
+          <picture>
+            <source media="(max-width: 768px)" srcset="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-3-mobile.jpg">
+            <img src="images/midia_enriquecida/PFT020I/TOOLMX_anatomia_PFT 020I-3.jpg" alt="Destaques e diferenciais - PFT 020I" loading="lazy">
+          </picture>
         </div>
       </div>
     </div>    </div>    </div>    </div>
@@ -1463,6 +1476,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       let index = first, dragging = false, lastX = 0, accum = 0;
       let zoom = 1, offsetX = 0, offsetY = 0;
       const ZOOM_MIN = 1, ZOOM_MAX = 5, ZOOM_STEP = 0.12;
+      const pointers = new Map();
+      let pinchStartDist = 0, pinchStartZoom = 1, pinchStartMidX = 0, pinchStartMidY = 0;
+      const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
       const wrap = i => { if (i < 1) return total - ((-i) % total); if (i > total) return ((i - 1) % total) + 1; return i; };
       const urlFor = i => `${basePath}${prefix}${String(startNumber + (wrap(i) - 1)).padStart(4, '0')}${ext}`;
@@ -1496,14 +1512,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       let lastUpdate = 0;
       function setFrame(i) { const now = performance.now(); if (now - lastUpdate < 16) return; lastUpdate = now; index = wrap(i); img.src = urlFor(index); preload(index); updateMarker(); }
 
-      el.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; el.setPointerCapture(e.pointerId); el.classList.add('is-interacting'); });
+      el.addEventListener('pointerdown', e => {
+        el.setPointerCapture(e.pointerId);
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        el.classList.add('is-interacting');
+        if (pointers.size === 1) {
+          dragging = true; lastX = e.clientX; accum = 0;
+        } else if (pointers.size === 2) {
+          dragging = false;
+          const pts = Array.from(pointers.values());
+          pinchStartDist = dist(pts[0], pts[1]);
+          pinchStartZoom = zoom;
+          const r = el.getBoundingClientRect();
+          pinchStartMidX = (pts[0].x + pts[1].x) / 2 - r.left - r.width / 2;
+          pinchStartMidY = (pts[0].y + pts[1].y) / 2 - r.top - r.height / 2;
+        }
+      });
       el.addEventListener('pointermove', e => {
+        if (!pointers.has(e.pointerId)) return;
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+        if (pointers.size >= 2) {
+          const pts = Array.from(pointers.values());
+          const d = dist(pts[0], pts[1]);
+          if (pinchStartDist > 0) {
+            const prevZoom = zoom;
+            zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, pinchStartZoom * (d / pinchStartDist)));
+            const scale = zoom / prevZoom;
+            offsetX = offsetX + (pinchStartMidX - offsetX) * (1 - scale);
+            offsetY = offsetY + (pinchStartMidY - offsetY) * (1 - scale);
+            if (zoom === ZOOM_MIN) { offsetX = 0; offsetY = 0; }
+            applyTransform();
+          }
+          return;
+        }
+
         if (!dragging) return;
         const dx = e.clientX - lastX; lastX = e.clientX;
         if (zoom > 1 && (e.buttons === 2 || e.shiftKey)) { offsetX += dx; applyTransform(); }
         else { accum += dx; const steps = Math.floor(accum * 0.5 / 10); if (steps) { setFrame(index - steps); accum -= steps * 20; } }
       });
-      el.addEventListener('pointerup', e => { dragging = false; try { el.releasePointerCapture(e.pointerId); } catch (_) {} el.classList.remove('is-interacting'); });
+      function endPointer(e) {
+        pointers.delete(e.pointerId);
+        try { el.releasePointerCapture(e.pointerId); } catch (_) {}
+        if (pointers.size === 0) { dragging = false; el.classList.remove('is-interacting'); }
+        else if (pointers.size === 1) { const p = Array.from(pointers.values())[0]; dragging = true; lastX = p.x; accum = 0; }
+      }
+      el.addEventListener('pointerup', endPointer);
+      el.addEventListener('pointercancel', endPointer);
       el.addEventListener('dblclick', () => { setFrame(first); zoom = ZOOM_MIN; offsetX = 0; offsetY = 0; applyTransform(); });
       el.addEventListener('wheel', e => { e.preventDefault(); const dir = e.deltaY < 0 ? 1 : -1; const prev = zoom; zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoom + dir * ZOOM_STEP)); const r = el.getBoundingClientRect(); const scale = zoom / prev; offsetX = offsetX + (e.clientX - r.left - r.width/2 - offsetX) * (1 - scale); offsetY = offsetY + (e.clientY - r.top - r.height/2 - offsetY) * (1 - scale); if (zoom === ZOOM_MIN) { offsetX = 0; offsetY = 0; } applyTransform(); }, { passive: false });
       window.addEventListener('resize', applyTransform);
