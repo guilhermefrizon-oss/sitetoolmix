@@ -516,6 +516,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .pdp2-painel-simples { display: none; }
     .pdp2-painel-simples.active { display: block; }
 
+    /* Texto de ajuda do 360 - desktop x mobile */
+    .pdp2-360-label-mobile { display: none; }
+
+    @media (max-width: 768px) {
+      .pdp2-360-label-desktop { display: none; }
+      .pdp2-360-label-mobile { display: inline; }
+    }
+
     /* Badge 360 */
     .pdp2-360-badge {
       display: inline-flex;
@@ -1014,7 +1022,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pdp2-col-360">
         <span class="pdp2-360-badge">⟳ &nbsp;Visão 360°</span>
         <div class="pdp2-360-wrapper">
-          <p class="pdp2-360-label">Arraste para girar · <i>Scroll</i> para zoom · Duplo clique para resetar</p>
+          <p class="pdp2-360-label">
+            <span class="pdp2-360-label-desktop">Arraste para girar · <i>Scroll</i> para zoom · Duplo clique para resetar</span>
+            <span class="pdp2-360-label-mobile">Arraste para girar · Pinça para dar zoom · Toque duas vezes para resetar</span>
+          </p>
           <div
             class="pdp-360-viewer"
             data-frames="36"
@@ -1568,7 +1579,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
       el.addEventListener('pointerup', endPointer);
       el.addEventListener('pointercancel', endPointer);
-      el.addEventListener('dblclick', () => { setFrame(first); zoom = ZOOM_MIN; offsetX = 0; offsetY = 0; applyTransform(); });
+      function resetView() { setFrame(first); zoom = ZOOM_MIN; offsetX = 0; offsetY = 0; applyTransform(); }
+      el.addEventListener('dblclick', resetView);
+
+      let lastTapTime = 0, lastTapX = 0, lastTapY = 0, tapDownX = 0, tapDownY = 0;
+      el.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'touch') return;
+        tapDownX = e.clientX; tapDownY = e.clientY;
+      });
+      el.addEventListener('pointerup', e => {
+        if (e.pointerType !== 'touch') return;
+        const moved = Math.hypot(e.clientX - tapDownX, e.clientY - tapDownY) > 12;
+        if (moved) { lastTapTime = 0; return; }
+        const now = Date.now();
+        const closeToLastTap = Math.hypot(e.clientX - lastTapX, e.clientY - lastTapY) < 40;
+        if (now - lastTapTime < 350 && closeToLastTap) {
+          resetView();
+          lastTapTime = 0;
+        } else {
+          lastTapTime = now; lastTapX = e.clientX; lastTapY = e.clientY;
+        }
+      });
       el.addEventListener('wheel', e => { e.preventDefault(); const dir = e.deltaY < 0 ? 1 : -1; const prev = zoom; zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoom + dir * ZOOM_STEP)); const r = el.getBoundingClientRect(); const scale = zoom / prev; offsetX = offsetX + (e.clientX - r.left - r.width/2 - offsetX) * (1 - scale); offsetY = offsetY + (e.clientY - r.top - r.height/2 - offsetY) * (1 - scale); if (zoom === ZOOM_MIN) { offsetX = 0; offsetY = 0; } applyTransform(); }, { passive: false });
       window.addEventListener('resize', applyTransform);
       img.onload = () => applyTransform();
